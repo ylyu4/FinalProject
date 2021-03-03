@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    active: local
+  main:
+    allow-bean-definition-overriding: true
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password=:
+
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://istm-6210.cnz8q60exo6v.us-east-1.rds.amazonaws.com:3306/job_search_system?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: istm6210
+    password: istm6210
+    driver-class-name: com.mysql.jdbc.Driver
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+server:
+  port: 8080
+
+
+
+
