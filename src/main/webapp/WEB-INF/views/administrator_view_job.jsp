@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <meta charset="utf-8">
-   <title>Capstone Group A</title>
+   <title>Review Job Description</title>
    <link rel="stylesheet" href="reset.css" />
    <link rel="stylesheet" href="global.css" />
    <script type="text/javascript" src="functions.js"></script>

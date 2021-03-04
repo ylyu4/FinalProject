@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <meta charset="utf-8">
-   <title>Capstone Group A</title>
+   <title>Administrator Sign Up</title>
 </head>
 <body>
 
