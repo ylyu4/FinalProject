@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Capstone Group A</title>
+   <link rel="stylesheet" href="reset.css" />
+   <link rel="stylesheet" href="global.css" />
+   <script type="text/javascript" src="functions.js"></script>
+</head>
+<body>
+
+  <!-- Title freelancer Profile-->
+  <h1>Freelancer Profile</h1>
+  <p>Account Balance: 2000 USD<button type="button" name="freelancer_profileWithdraw" onclick="buttonJump('freelancer_withdraw.html')">Withdraw</button></p>
+  <form action="">
+    <button type="button" name="freelancer_profileEdit" onclick="freelancerProfileEditEnable()">Edit</button>
+    <input type="submit" name="freelancer_profileSave" value="Save"><br>
+    Name:        <input id="freelancerEditName"        type="text" name="freelancerName"       disabled="disabled" value=""><br>
+    Age:         <input id="freelancerEditAge"         type="text" name="freelancerAge"        disabled="disabled" value=""><br>
+    Location:    <input id="freelancerEditLocation"    type="text" name="freelancerLocation"   disabled="disabled" value=""><br>
+    Phone:       <input id="freelancerEditPhone"       type="text" name="freelancerPhone"      disabled="disabled" value=""><br>
+    Email:       <input id="freelancerEditEmail"       type="text" name="freelancerEmail"      disabled="disabled" value=""><br>
+    Card:        <input id="freelancerEditEmail"       type="text" name="freelancerEmail"      disabled="disabled" value=""><br>
+  </form>
+
+  <button type="button" name="freelancer_profileViewResume" onclick="buttonJump('freelancer_view_resume.html')">View Resume</button>
+
+  <!-- Title Job Applied-->
+  <h1>Job Applied</h1>
+  <button type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('freelancer_browse_jobs.html')">Browse Jobs</button>
+  <table border="1" cellspacing="0">
+    <tr>
+      <th>Job ID</th>
+      <th>Job Name</th>
+      <th>Experience</th>
+      <th>Location</th>
+      <th>Salary</th>
+      <th>Status</th>
+      <th>Prepay</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>00000001</td>
+      <td>Babysitter</td>
+      <td>1 year experience</td>
+      <td>DC</td>
+      <td>5000</td>
+      <td>Reviewing Resume</td>
+      <td>Unpaid</td>
+      <td>
+        <button type="button" name="freelancer_profileTableDetails"  onclick="buttonJump('freelancer_browse_applied_jobs_details.html')">Details</button>
+        <button type="button" name="freelancer_profileTableDelete"   onclick="freelancerProfileDelete('00000001')">Delete</button>
+        <button type="button" name="freelancer_profileTableStart"    onclick="freelancerProfileStartWork('00000001')">Start Work</button>
+        <button type="button" name="freelancer_profileTableComplete" onclick="freelancerProfileCompleteWork('00000001')">Complete Work</button>
+      </td>
+    </tr>
+    <tr>
+      <td>00000002</td>
+      <td>Piano Teacher</td>
+      <td>5 year experience</td>
+      <td>MI</td>
+      <td>25000</td>
+      <td>Completed</td>
+      <td>
+        <!-- XXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXX -->
+        <!-- XXXXXXXXXXXXXXXXXXXXX -->
+      </td>
+    </tr>
+  </table>
+
+  <!-- Button -->
+  <button type="button" name="freelancer_profileReturn"         onclick="buttonJump('main.html')">Return to main page</button>
+  <button type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('freelancer_remuneration_history.html')">Remuneration History</button>
+
+</body>
+</html>
