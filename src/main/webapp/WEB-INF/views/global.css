@@ -1,4 +1,4 @@
-.main-div {
+.main-div, .employer_login-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -9,34 +9,52 @@ body {
   background:url('images/background-transparent.jpg') no-repeat;
 }
 
-body.main {
+body.main, body.employer_login {
 	background-size: cover;
   background:url('images/main-background.jpg') no-repeat;
 }
 
-.main-div h1 {
-  padding-top: 10%;
-  padding-bottom: 3%;
+.main-div h1, .employer_login-div h1{
+  margin-top: 15rem;
+  margin-bottom: 5rem;
   color: white;
   font: 700 3.5rem/3rem "Montserrat", sans-serif;
 }
 
-.main-div button {
+.employer_login-form-label label {
+  font: 700 1rem/0 "Montserrat", sans-serif;
+}
+
+.employer_login-form {
+  border: 4px solid #14bf98;
+	background-color: white;
+	color: #14bf98;
+	font: 700 1rem/0 "Montserrat", sans-serif;
+  width: 19rem;
+  height: 2rem;
+}
+
+.main-div button, .employer_login-div button {
 	margin: 1.25rem 3rem 0.5rem 3rem;
-  display: inline-block;
 	padding: 1.375rem 2.125rem 1.375rem 2.125rem;
 	border: 0.125rem solid #14bf98;
-	border-radius: 0.25rem;
 	background-color: #14bf98;
 	color: white;
 	font: 700 1rem/0 "Montserrat", sans-serif;
-	text-decoration: none;
-	transition: all 0.2s;
   width: 20rem;
 }
 
-.main-div button:hover {
+.main-div button:hover, .employer_login-div button:hover {
 	background-color: transparent;
 	color: white;
 	text-decoration: none;
+}
+
+.employer_login-div form, .employer_login-div p, .employer_login-div a {
+  color: white;
+  font: 700 1.125rem/1.625rem "Montserrat", sans-serif;
+}
+
+.employer_login-div p {
+  margin-top: 1rem;
 }
