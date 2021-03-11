@@ -9,12 +9,10 @@
 </head>
 <body class="administrator_profile-body">
 <div class="administrator_profile-div">
+  <div class="administrator_profile-div-left">
       <h1>Administrator Profile</h1>
       <p>Account Balance: 1000000 USD</p>
       <form action="" method="">
-        <button class="administrator_profile-top-button" type="button" name="administrator_profileEdit" onclick="administratorProfileEditEnable()">Edit</button>
-        <button class="administrator_profile-top-button" type="button" name="administrator_profileSave" onclick="updateAdminProfile()">Save</button>
-        <button class="administrator_profile-top-button" type="button" name="administrator_profileBack" onclick="buttonJump('main.jsp')">Quit</button>
         <div>
           <label class="administrator_profile-form-label" for="name">Name</label>
         </div>
@@ -34,6 +32,11 @@
           <input id="administratorEditEmail" class="administrator_profile-form" type="text" name="administratorEmail"  disabled="disabled" value="" required>
         </div>
       </form>
+      <button class="administrator_profile-top-button" type="button" name="administrator_profileEdit" onclick="administratorProfileEditEnable()">Edit</button>
+      <button class="administrator_profile-top-button" type="button" name="administrator_profileSave" onclick="updateAdminProfile()">Save</button>
+      <button class="administrator_profile-top-button" type="button" name="administrator_profileBack" onclick="buttonJump('main.jsp')">Quit</button>
+  </div>
+  <div class="administrator_profile-div-middle">
       <h1>Review Job Post</h1>
       <div class="administrator_profile-table">
         <table border="1" cellspacing="0" frame=below rules=rows>
@@ -66,6 +69,8 @@
           </tr>
         </table>
       </div>
+  </div>
+  <div class="administrator_profile-div-right">
       <h1>Payment History</h1>
       <div class="administrator_profile-table">
         <table border="1" cellspacing="0" frame=below rules=rows>
@@ -89,6 +94,7 @@
           </tr>
         </table>
       </div>
+  </div>
 </body>
 
 <script type="text/javascript">
