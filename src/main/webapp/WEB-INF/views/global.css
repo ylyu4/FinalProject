@@ -8,7 +8,8 @@
 
 body.administrator_profile-body {
   background-size: cover;
-  background: url('images/background-transparent.jpg') no-repeat;
+  background: url('images/background-transparent(15%).jpg') no-repeat;
+  width: 1900px;
 }
 
 body.main-body,
@@ -76,15 +77,19 @@ body.freelancer_login-body, body.freelancer_sign_up-body {
 }
 
 table {
-  color: #484a46;
-  border-collapse: collapse;
+  color: white;
   margin: 0 auto;
   border-color: #14bf98;
+  overflow-y: scroll;
+  display: block;
+  height: 700px;
+  border-bottom: none;
 }
 
 th {
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   font: 700 1.25rem "Montserrat", sans-serif;
+  border-top: none;
 }
 
 td {
@@ -92,18 +97,19 @@ td {
   font: 700 1rem "Montserrat", sans-serif;
   border-width: 0.15rem;
   height: 3rem;
+  border-color: #14bf98;
 }
 
 .administrator_profile-div h1 {
   margin: 1rem 0rem 1rem 0rem;
-  color: #484a46;
+  color: white;
   font: 700 2rem "Montserrat", sans-serif;
   text-decoration: underline;
 }
 
 /* //文字颜色// */
 .administrator_profile-div p, label.administrator_profile-form-label {
-  color: #484a46;
+  color: white;
   font: 700 1rem "Montserrat", sans-serif;
   padding-bottom: 1rem;
 }
@@ -146,6 +152,18 @@ button.administrator_profile-bottom-button {
 }
 
 .administrator_profile-div-left, .administrator_profile-div-middle, .administrator_profile-div-right {
-  padding: 0rem 3rem 0rem 3rem;
+  padding: 0rem 3rem 0rem 0rem;
   float:left;
+}
+
+.administrator_profile-div-left {
+  width: 25rem;
+}
+
+.administrator_profile-div-middle {
+  width: 55rem;
+}
+
+.administrator_profile-div-right {
+  width: 27rem;
 }
