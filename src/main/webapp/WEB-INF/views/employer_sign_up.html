@@ -7,20 +7,31 @@
    <link rel="stylesheet" href="global.css" />
    <script type="text/javascript" src="functions.js"></script>
 </head>
-<body>
-
-  <!-- Title -->
-  <h1>Employer Sign Up</h1>
-  <!-- Input -->
-  <form action="" method="">
-    Account: <input type="text" name="employerAccount"><br>
-    Password: <input type="text" name="employerPassword"><br>
-    <input type="button" value="Create Account" onclick="employerSignUp()">
-  </form>
-
-  <!-- Button -->
-  <button type="button" name="employerSignUpBack" onclick="buttonJump('employer_login.html')">Back</button>
-
-
+<body class="employer_sign_up-body">
+  <div class="employer_sign_up-div">
+    <!-- Title -->
+    <h1 >Employer Sign Up</h1>
+    <!-- Input -->
+    <div>
+    <form action="employer_profile.html" method="">
+      <div>
+        <label class="employer_sign_up-form-label" for="account">Account</label>
+        </div>
+        <div>
+        <input type="text" class="employer_sign_up-form" id="account" name="employerAccount" required>
+      </div>
+      <div>
+        <label class="employer_sign_up-form-label" for="password">Password</label>
+      </div>
+      <div>
+        <input type= "text" class="employer_sign_up-form" id="password" name="employerPassword" required>
+      </div>
+      <div class="employer_sign_up-form-submit">
+        <button type="submit" class="form-control-submit-button">Create Account</button>
+      </div>
+    </form>
+    <button type="button" name="employerSignUpBack" onclick="buttonJump('employer_login.html')">Back</button>
+  </div>
+  </div>
 </body>
 </html>

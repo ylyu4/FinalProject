@@ -1,4 +1,6 @@
-.main-div, .employer_login-div {
+.main-div,
+.administrator_login-div, .employer_login-div, .freelancer_login-div,
+.administrator_sign_up-div, .employer_sign_up-div, .freelancer_sign_up-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -9,23 +11,33 @@ body {
   background:url('images/background-transparent.jpg') no-repeat;
 }
 
-body.main, body.employer_login {
+body.main-body,
+body.administrator_login-body, body.administrator_sign_up-body,
+body.employer_login-body, body.employer_sign_up-body,
+body.freelancer_login-body, body.freelancer_sign_up-body {
 	background-size: cover;
   background:url('images/main-background.jpg') no-repeat;
 }
 
-.main-div h1, .employer_login-div h1{
+.main-div h1,
+.administrator_login-div h1, .administrator_sign_up-div h1,
+.employer_login-div h1, .employer_sign_up-div h1,
+.freelancer_login-div h1, .freelancer_sign_up-div h1 {
   margin-top: 15rem;
   margin-bottom: 5rem;
   color: white;
   font: 700 3.5rem/3rem "Montserrat", sans-serif;
 }
 
-.employer_login-form-label label {
+.administrator_login-form-label label, .administrator_sign_up-label label,
+.employer_login-form-label label, .employer_sign_up-label label,
+.freelancer_login-form-label label, .freelancer_sign_up-label label {
   font: 700 1rem/0 "Montserrat", sans-serif;
 }
 
-.employer_login-form {
+.administrator_login-form, .administrator_sign_up-form,
+.employer_login-form, .employer_sign_up-form,
+.freelancer_login-form, .freelancer_sign_up-form {
   border: 4px solid #14bf98;
 	background-color: white;
 	color: #14bf98;
@@ -34,7 +46,10 @@ body.main, body.employer_login {
   height: 2rem;
 }
 
-.main-div button, .employer_login-div button {
+.main-div button,
+.administrator_login-div button, .administrator_sign_up-div button,
+.employer_login-div button, .employer_sign_up-div button,
+.freelancer_login-div button, .freelancer_sign_up-div button {
 	margin: 1.25rem 3rem 0.5rem 3rem;
 	padding: 1.375rem 2.125rem 1.375rem 2.125rem;
 	border: 0.125rem solid #14bf98;
@@ -44,17 +59,25 @@ body.main, body.employer_login {
   width: 20rem;
 }
 
-.main-div button:hover, .employer_login-div button:hover {
+.main-div button:hover,
+.administrator_login-div button:hover, .administrator_sign_up-div button:hover,
+.employer_login-div button:hover, .employer_sign_up-div button:hover,
+.freelancer_login-div button:hover, .freelancer_sign_up-div button:hover {
 	background-color: transparent;
 	color: white;
 	text-decoration: none;
 }
 
-.employer_login-div form, .employer_login-div p, .employer_login-div a {
+.administrator_login-div form, .administrator_login-div p, .administrator_login-div a,
+.administrator_sign_up-div form, .administrator_sign_up-div a,
+.employer_login-div form, .employer_login-div p, .employer_login-div a,
+.employer_sign_up-div form, .employer_sign_up-div a,
+.freelancer_login-div form, .freelancer_login-div p, .freelancer_login-div a,
+.freelancer_sign_up-div form, .freelancer_sign_up-div a {
   color: white;
   font: 700 1.125rem/1.625rem "Montserrat", sans-serif;
 }
 
-.employer_login-div p {
+.employer_login-div p, .freelancer_login-div p, .administrator_login-div p {
   margin-top: 1rem;
 }
