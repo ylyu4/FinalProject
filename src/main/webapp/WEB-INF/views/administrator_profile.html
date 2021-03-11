@@ -9,13 +9,12 @@
 </head>
 <body class="administrator_profile-body">
 <div class="administrator_profile-div">
-  <div class="administrator_profile-left">
       <h1>Administrator Profile</h1>
       <p>Account Balance: 1000000 USD</p>
       <form action="" method="">
-        <button type="button" name="administrator_profileEdit" onclick="administratorProfileEditEnable()">Edit</button>
-        <button type="button" name="administrator_profileSave" onclick="updateAdminProfile()">Save</button>
-        <button type="button" name="administrator_profileBack" onclick="buttonJump('main.jsp')">Quit</button>
+        <button class="administrator_profile-top-button" type="button" name="administrator_profileEdit" onclick="administratorProfileEditEnable()">Edit</button>
+        <button class="administrator_profile-top-button" type="button" name="administrator_profileSave" onclick="updateAdminProfile()">Save</button>
+        <button class="administrator_profile-top-button" type="button" name="administrator_profileBack" onclick="buttonJump('main.jsp')">Quit</button>
         <div>
           <label class="administrator_profile-form-label" for="name">Name</label>
         </div>
@@ -35,8 +34,6 @@
           <input id="administratorEditEmail" class="administrator_profile-form" type="text" name="administratorEmail"  disabled="disabled" value="" required>
         </div>
       </form>
-  </div>
-  <div class="administrator_profile-middle">
       <h1>Review Job Post</h1>
       <div class="administrator_profile-table">
         <table border="1" cellspacing="0" frame=below rules=rows>
@@ -56,7 +53,7 @@
             <td>1 year experience</td>
             <td>DC</td>
             <td>5000</td>
-            <td><button type="button" name="administrator_profileTableView" onclick="buttonJump('administrator_view_job.jsp?JobID=00000001&administratorID=00000001')">View</button></td>
+            <td><button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="buttonJump('administrator_view_job.jsp?JobID=00000001&administratorID=00000001')">View</button></td>
           </tr>
           <tr>
             <td>00000002</td>
@@ -65,12 +62,10 @@
             <td>5 year experience</td>
             <td>MI</td>
             <td>25000</td>
-            <td><button type="button" name="administrator_profileTableView" onclick="buttonJump('administrator_view_job.jsp?JobID=00000002&administratorID=00000001')">View</button></td>
+            <td><button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="buttonJump('administrator_view_job.jsp?JobID=00000002&administratorID=00000001')">View</button></td>
           </tr>
         </table>
       </div>
-  </div>
-  <div class="administrator_profile-right">
       <h1>Payment History</h1>
       <div class="administrator_profile-table">
         <table border="1" cellspacing="0" frame=below rules=rows>
@@ -94,7 +89,6 @@
           </tr>
         </table>
       </div>
-    </div>
 </body>
 
 <script type="text/javascript">
