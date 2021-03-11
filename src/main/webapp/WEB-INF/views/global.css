@@ -103,7 +103,7 @@ td {
 /* //文字颜色// */
 .administrator_profile-div p, label.administrator_profile-form-label {
   color: #484a46;
-  font: 700 1.25rem "Montserrat", sans-serif;
+  font: 700 1rem "Montserrat", sans-serif;
 }
 
 .administrator_profile-div button {
