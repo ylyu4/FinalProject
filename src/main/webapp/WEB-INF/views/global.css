@@ -195,3 +195,13 @@ div.administrator_view_job-body {
 	color: #14bf98;
 	text-decoration: none;
 }
+
+::-webkit-scrollbar {
+  width : 0.4rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #14bf98;
+}
+::-webkit-scrollbar-track {
+  background   : white;
+}
