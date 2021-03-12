@@ -11,7 +11,13 @@
   <div class="employer_profile-div">
     <div class="employer_profile-div-left">
       <h1>Employer Profile</h1>
-      <p>Account Balance: 10000 USD <button class="employer_profile-top-button" type="button" name="employer_profileDeposit" onclick="buttonJump('employer_deposit.html')">Deposit</button></p>
+      <p>Account Balance: 10000 USD</p>
+      <div>
+        <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('employer_deposit.html')">Deposit</button>
+      </div>
+      <div>
+        <button class="employer_profile-top-button-paymentHistory" type="button" name="employer_profilePaymentHistory" onclick="buttonJump('employer_payment_history.html')">Payment History</button>
+      </div>
       <form action="">
         <div>
           <label class="employer_profile-form-label" for="name">Name</label>
@@ -47,56 +53,151 @@
           <label class="employer_profile-form-label" for="description">Description</label>
         </div>
         <div>
-          <input id="employerEditDescription" class="employer_profile-form" type="text" name="employerDescription" disabled="disabled" value="" required>
+          <textarea id="employerEditDescription" disabled="disabled" required></textarea>
         </div>
       </form>
       <button class="employer_profile-top-button" type="button" name="employer_profileEdit" onclick="employerProfileEditEnable()">Edit</button>
       <button class="employer_profile-top-button" type="button" name="employer_profileSave" value="Save">Save</button>
+      <button class="employer_profile-top-button" type="button" name="employer_profileQuit" onclick="buttonJump('main.html')">Quit</button>
     </div>
     <div class="employer_profile-div-right">
       <h1>Job Posted</h1>
-      <button type="button" name="employer_profilePostNewJob" onclick="buttonJump('employer_write_job_description.html')">Post New Job</button>
-      <button type="button" name="employer_profileReturn"         onclick="buttonJump('main.html')">Return to main page</button>
-      <button type="button" name="employer_profilePaymentHistory" onclick="buttonJump('employer_payment_history.html')">Payment History</button>
-      <table border="1" cellspacing="0">
+      <div>
+        <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob" onclick="buttonJump('employer_write_job_description.html')">Post New Job</button>
+      </div>
+      <div>
+        <button class="employer_profile-right-button-Application" type="button" name="employer_profileTableApplicants" onclick="buttonJump('employer_applicants_list.html?JobID=00000001')">Applicants</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTableDetails"    onclick="buttonJump('employer_view_posted_job_details.html?JobID=00000001')">Details</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTablePrepay"     onclick="employerPrepay('00000001')">Prepay</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTableDelete"     onclick="employerProfileDelete('00000001')">Delete</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTableConfirm"    onclick="employerConfirmWork('00000001')">Confirm</button>
+      </div>
+      <table border="0" cellspacing="0" frame=below rules=rows>
         <tr>
+          <th></th>
           <th>Job ID</th>
           <th>Job Name</th>
           <th>Experience</th>
           <th>Location</th>
           <th>Salary</th>
           <th>Status</th>
-          <th>Actions</th>
         </tr>
         <tr>
+          <td><input id="radio" type="radio" name="job" value="00000001" checked></td>
           <td>00000001</td>
           <td>Babysitter</td>
           <td>1 year experience</td>
           <td>DC</td>
           <td>5000</td>
           <td>Admin Reviewing</td>
-          <td>
-            <button type="button" name="employer_profileTableApplicants" onclick="buttonJump('employer_applicants_list.html?JobID=00000001')">Applicants</button>
-            <button type="button" name="employer_profileTableDetails"    onclick="buttonJump('employer_view_posted_job_details.html?JobID=00000001')">Details</button>
-            <button type="button" name="employer_profileTablePrepay"     onclick="employerPrepay('00000001')">Prepay</button>
-            <button type="button" name="employer_profileTableDelete"     onclick="employerProfileDelete('00000001')">Delete</button>
-            <button type="button" name="employer_profileTableConfirm"    onclick="employerConfirmWork('00000001')">Confirm</button>
-          </td>
         </tr>
         <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
           <td>00000001</td>
           <td>Babysitter</td>
           <td>1 year experience</td>
           <td>DC</td>
           <td>5000</td>
           <td>Admin Reviewing</td>
-          <td>
-            <button type="button" name="employer_profileTableApplicants" onclick="buttonJump('employer_applicants_list.html?JobID=00000001')">Applicants</button>
-            <button type="button" name="employer_profileTableDetails"    onclick="buttonJump('employer_view_posted_job_details.html?JobID=00000001')">Details</button>
-            <button type="button" name="employer_profileTablePrepay"     onclick="employerPrepay('00000001')">Prepay</button>
-            <button type="button" name="employer_profileTableDelete"     onclick="employerProfileDelete('00000001')">Delete</button>
-            <button type="button" name="employer_profileTableConfirm"    onclick="employerConfirmWork('00000001')">Confirm</button>
-          </td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="job" value="00000001"></td>
+          <td>00000001</td>
+          <td>Babysitter</td>
+          <td>1 year experience</td>
+          <td>DC</td>
+          <td>5000</td>
+          <td>Admin Reviewing</td>
         </tr>
       </table>
     </div>

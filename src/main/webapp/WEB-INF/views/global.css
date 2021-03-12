@@ -154,7 +154,9 @@ button.administrator_profile-bottom-button {
   height: 1.25rem;
 }
 
-.administrator_profile-form:disabled, .employer_profile-form:disabled {
+.administrator_profile-form:disabled,
+.employer_profile-form:disabled,
+body.employer_profile-body textarea:disabled {
   background-color: #dddddd;
 }
 
@@ -202,13 +204,13 @@ div.administrator_view_job-body {
 }
 
 ::-webkit-scrollbar {
-  width : 0.4rem;
+  width: 0.4rem;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #14bf98;
 }
 ::-webkit-scrollbar-track {
-  background   : white;
+  background: white;
 }
 
 button.employer_profile-top-button {
@@ -217,11 +219,72 @@ button.employer_profile-top-button {
   background-color: #14bf98;
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
-  width: 6rem;
+  width: 5rem;
+}
+
+button.employer_profile-right-button {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 5.5rem;
+}
+
+button.employer_profile-right-button-Application {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 7rem;
+}
+
+button.employer_profile-top-button-paymentHistory,
+button.employer_profile-top-button-deposit {
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 15.5rem;
+}
+
+button.employer_profile-top-button-deposit {
+  margin-top: 1.5rem;
+}
+
+button.employer_profile-top-button-paymentHistory {
+  margin-bottom: 1.5rem;
+}
+
+button.employer_profile-top-button-postNewJob {
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 34.1rem;
 }
 
  .employer_profile-div-left {
-   width: 25rem;
-   float: left;
-   padding: 0rem 3rem 0rem 3rem;
+  width: 40rem;
+  float: left;
+  padding: 0rem 0rem 0rem 5rem;
+ }
+
+ .employer_profile-div-right {
+   float:right;
+   padding: 0rem 15rem 0rem 0rem;
+   width: 50rem;
+ }
+
+ body.employer_profile-body textarea{
+  width: 15.5rem;
+  height: 8rem;
+  margin: 1rem 0rem 1rem 0rem;
+  border: 0.15rem solid #14bf98;
+  background-color: white;
+  color: #14bf98;
+  font: 700 1rem "Montserrat", sans-serif;
  }
