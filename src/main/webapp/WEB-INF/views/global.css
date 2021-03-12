@@ -6,18 +6,19 @@
 	text-align: center;
 }
 
-body.administrator_profile-body {
-  background-size: cover;
-  background: url('images/background-transparent(15%).jpg') no-repeat;
-  width: 1900px;
-}
-
 body.main-body,
 body.administrator_login-body, body.administrator_sign_up-body,
 body.employer_login-body, body.employer_sign_up-body,
 body.freelancer_login-body, body.freelancer_sign_up-body {
 	background-size: cover;
   background: url('images/main-background.jpg') no-repeat;
+}
+
+/* // 背 景 图 // */
+body.administrator_profile-body, body.administrator_view_job-body {
+  background-size: cover;
+  background: url('images/background-transparent.jpg') no-repeat;
+  width: 1900px;
 }
 
 .main-div h1,
@@ -101,7 +102,7 @@ td {
   border-color: #14bf98;
 }
 
-.administrator_profile-div h1 {
+.administrator_profile-div h1, .administrator_view_job-body h1 {
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -109,7 +110,8 @@ td {
 }
 
 /* //文字颜色// */
-.administrator_profile-div p, label.administrator_profile-form-label {
+.administrator_profile-div p, label.administrator_profile-form-label,
+.administrator_view_job-body p {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
   padding-bottom: 1rem;
@@ -167,4 +169,29 @@ button.administrator_profile-bottom-button {
 
 .administrator_profile-div-right {
   width: 27rem;
+}
+
+body.administrator_view_job-body{
+  text-align: center;
+}
+
+div.administrator_view_job-body {
+  display: inline-block;
+  text-align: left;
+}
+
+.administrator_view_job-body button{
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 8rem;
+  height: 2.5rem;
+}
+
+.administrator_view_job-body button:hover {
+	background-color: transparent;
+	color: #14bf98;
+	text-decoration: none;
 }
