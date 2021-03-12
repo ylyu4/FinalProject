@@ -80,11 +80,12 @@ table {
   color: white;
   margin: 0 auto;
   border-color: #14bf98;
-  overflow-y: scroll;
   display: block;
   height: 700px;
   border-bottom: none;
+  overflow-y: scroll;
 }
+
 
 th {
   padding: 0.5rem 0.5rem 0.5rem 0.5rem;
