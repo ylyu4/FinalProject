@@ -1,6 +1,6 @@
 /* // 背 景 图 // */
 body.administrator_profile-body, body.administrator_view_job-body,
-body.employer_profile-body {
+body.employer_profile-body, body.employer_write_job_description-body {
   background-size: cover;
   background: url('images/background-transparent.jpg') no-repeat;
   width: 1900px;
@@ -8,7 +8,7 @@ body.employer_profile-body {
 
 /* //标题颜色大小// */
 .administrator_profile-div h1, .administrator_view_job-body h1,
-.employer_profile-div h1 {
+.employer_profile-div h1, .employer_write_job_description-div h1 {
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -18,16 +18,17 @@ body.employer_profile-body {
 /* //文字颜色// */
 .administrator_profile-div p, label.administrator_profile-form-label,
 .administrator_view_job-body p,
-.employer_profile-div p, label.employer_profile-form-label {
+.employer_profile-div p, label.employer_profile-form-label,
+body.employer_write_job_description-div p,
+label.employer_write_job_description-form-label {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
-  padding-bottom: 1rem;
 }
 
 .main-div, .administrator_profile-div,
 .administrator_login-div, .employer_login-div, .freelancer_login-div,
 .administrator_sign_up-div, .employer_sign_up-div, .freelancer_sign_up-div,
-.employer_profile-div {
+.employer_profile-div, .employer_write_job_description-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -59,6 +60,7 @@ body.freelancer_login-body, body.freelancer_sign_up-body {
 	font: 700 1rem "Montserrat", sans-serif;
   width: 18rem;
   height: 2rem;
+  opacity: 0.8;
 }
 
 .main-div button,
@@ -138,13 +140,15 @@ button.administrator_profile-bottom-button {
   width: 4rem;
 }
 
-.administrator_profile-div button:hover, .employer_profile-div button:hover {
+.administrator_profile-div button:hover, .employer_profile-div button:hover,
+.employer_write_job_description-div button:hover{
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
 }
 
-.administrator_profile-form, .employer_profile-form {
+.administrator_profile-form, .employer_profile-form,
+.employer_write_job_description-form {
   margin: 1rem 0rem 1rem 0rem;
   border: 0.15rem solid #14bf98;
 	background-color: white;
@@ -152,6 +156,7 @@ button.administrator_profile-bottom-button {
 	font: 700 1rem "Montserrat", sans-serif;
   width: 15rem;
   height: 1.25rem;
+  opacity: 0.8;
 }
 
 .administrator_profile-form:disabled,
@@ -276,15 +281,46 @@ button.employer_profile-top-button-postNewJob {
  .employer_profile-div-right {
    float:right;
    padding: 0rem 15rem 0rem 0rem;
-   width: 50rem;
+   width: 52.5rem;
  }
 
- body.employer_profile-body textarea{
-  width: 15.5rem;
-  height: 8rem;
+ body.employer_profile-body textarea {
+  width: 15rem;
+  height: 10rem;
   margin: 1rem 0rem 1rem 0rem;
   border: 0.15rem solid #14bf98;
   background-color: white;
   color: #14bf98;
   font: 700 1rem "Montserrat", sans-serif;
+  opacity: 0.8;
  }
+
+ body.employer_write_job_description-body textarea {
+  width: 20rem;
+  height: 37.2rem;
+  margin: 1rem 0rem 1rem 0rem;
+  border: 0.15rem solid #14bf98;
+  background-color: white;
+  color: #14bf98;
+  font: 700 1rem "Montserrat", sans-serif;
+  opacity: 0.8;
+ }
+
+.employer_write_job_description-left, .employer_write_job_description-right {
+  float: left;
+}
+.employer_write_job_description-left {
+  padding-left: 39rem;
+}
+.employer_write_job_description-right {
+  padding-left: 10rem;
+}
+
+body.employer_write_job_description-body button{
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 4rem;
+}
