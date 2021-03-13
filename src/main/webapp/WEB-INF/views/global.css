@@ -1,7 +1,8 @@
 /* // 背 景 图 // */
 body.administrator_profile-body, body.administrator_view_job-body,
 body.employer_profile-body, body.employer_write_job_description-body,
-body.employer_payment_history-body, body.employer_deposit-body {
+body.employer_payment_history-body, body.employer_deposit-body,
+body.employer_view_posted_job_details-body {
   background-size: cover;
   background: url('images/background-transparent.jpg') no-repeat;
   width: 1900px;
@@ -10,7 +11,8 @@ body.employer_payment_history-body, body.employer_deposit-body {
 /* //标题颜色大小// */
 .administrator_profile-div h1, .administrator_view_job-body h1,
 .employer_profile-div h1, .employer_write_job_description-div h1,
-.employer_payment_history-body h1, .employer_deposit-body h1 {
+.employer_payment_history-body h1, .employer_deposit-body h1,
+.employer_view_posted_job_details-body h1{
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -23,7 +25,8 @@ body.employer_payment_history-body, body.employer_deposit-body {
 .employer_profile-div p, label.employer_profile-form-label,
 body.employer_write_job_description-div p,
 label.employer_write_job_description-form-label,
-.employer_deposit-body label {
+.employer_deposit-body label,
+.employer_view_posted_job_details-body p {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
 }
@@ -148,7 +151,8 @@ button.administrator_profile-bottom-button {
 .administrator_profile-div button:hover, .employer_profile-div button:hover,
 .employer_write_job_description-div button:hover,
 .employer_payment_history-body button:hover,
-.employer_deposit-body button:hover {
+.employer_deposit-body button:hover,
+.employer_view_posted_job_details-body button:hover {
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
@@ -323,7 +327,8 @@ button.employer_profile-top-button-postNewJob {
   padding-left: 10rem;
 }
 
-body.employer_write_job_description-body button{
+body.employer_write_job_description-body button,
+body.employer_view_posted_job_details-body button {
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
   border: 0.3rem solid #14bf98;
   background-color: #14bf98;
@@ -356,3 +361,17 @@ body.employer_write_job_description-body button{
   height: 1.25rem;
   opacity: 0.8;
 }
+
+ div.employer_view_posted_job_details-body p {
+   padding-top: 0.5rem;
+   padding-bottom: 0.5rem;
+ }
+
+ body.employer_view_posted_job_details-body{
+   text-align: center;
+ }
+
+ div.employer_view_posted_job_details-body {
+   display: inline-block;
+   text-align: left;
+ }
