@@ -1,7 +1,7 @@
 /* // 背 景 图 // */
 body.administrator_profile-body, body.administrator_view_job-body,
 body.employer_profile-body, body.employer_write_job_description-body,
-body.employer_payment_history-body {
+body.employer_payment_history-body, body.employer_deposit-body {
   background-size: cover;
   background: url('images/background-transparent.jpg') no-repeat;
   width: 1900px;
@@ -10,7 +10,7 @@ body.employer_payment_history-body {
 /* //标题颜色大小// */
 .administrator_profile-div h1, .administrator_view_job-body h1,
 .employer_profile-div h1, .employer_write_job_description-div h1,
-.employer_payment_history-body h1 {
+.employer_payment_history-body h1, .employer_deposit-body h1 {
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -22,16 +22,18 @@ body.employer_payment_history-body {
 .administrator_view_job-body p,
 .employer_profile-div p, label.employer_profile-form-label,
 body.employer_write_job_description-div p,
-label.employer_write_job_description-form-label {
+label.employer_write_job_description-form-label,
+.employer_deposit-body label {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
 }
 
+/* //居中// */
 .main-div, .administrator_profile-div,
 .administrator_login-div, .employer_login-div, .freelancer_login-div,
 .administrator_sign_up-div, .employer_sign_up-div, .freelancer_sign_up-div,
 .employer_profile-div, .employer_write_job_description-div,
-.employer_payment_history-div {
+.employer_payment_history-div, .employer_deposit-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -145,7 +147,8 @@ button.administrator_profile-bottom-button {
 
 .administrator_profile-div button:hover, .employer_profile-div button:hover,
 .employer_write_job_description-div button:hover,
-.employer_payment_history-body button:hover{
+.employer_payment_history-body button:hover,
+.employer_deposit-body button:hover {
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
@@ -329,7 +332,7 @@ body.employer_write_job_description-body button{
   width: 4rem;
 }
 
-.employer_payment_history-body button {
+.employer_payment_history-body button, .employer_deposit-body button {
   margin: 1rem 0.5rem 1rem 0.5rem;
   border: 0.3rem solid #14bf98;
   background-color: #14bf98;
@@ -339,6 +342,17 @@ body.employer_write_job_description-body button{
 }
 
 .employer_payment_history-body table {
-  padding-left: 46rem;
-  margin-right: 42rem;
+  padding-left: 44rem;
+  margin-right: 44rem;
+}
+
+.employer_deposit-form {
+  margin: 1rem 0rem 1rem 0rem;
+  border: 0.15rem solid #14bf98;
+	background-color: white;
+	color: #14bf98;
+	font: 700 1rem "Montserrat", sans-serif;
+  width: 7.5rem;
+  height: 1.25rem;
+  opacity: 0.8;
 }
