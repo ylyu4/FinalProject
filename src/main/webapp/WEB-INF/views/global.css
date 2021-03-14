@@ -2,17 +2,19 @@
 body.administrator_profile-body, body.administrator_view_job-body,
 body.employer_profile-body, body.employer_write_job_description-body,
 body.employer_payment_history-body, body.employer_deposit-body,
-body.employer_view_posted_job_details-body {
+body.employer_view_posted_job_details-body,
+body.employer_applicants_list-body {
   background-size: cover;
   background: url('images/background-transparent.jpg') no-repeat;
   width: 1900px;
 }
 
-/* //标题颜色大小// */
+/* // 标题颜色大小 // */
 .administrator_profile-div h1, .administrator_view_job-body h1,
 .employer_profile-div h1, .employer_write_job_description-div h1,
 .employer_payment_history-body h1, .employer_deposit-body h1,
-.employer_view_posted_job_details-body h1{
+.employer_view_posted_job_details-body h1,
+.employer_applicants_list-body h1{
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -36,7 +38,8 @@ label.employer_write_job_description-form-label,
 .administrator_login-div, .employer_login-div, .freelancer_login-div,
 .administrator_sign_up-div, .employer_sign_up-div, .freelancer_sign_up-div,
 .employer_profile-div, .employer_write_job_description-div,
-.employer_payment_history-div, .employer_deposit-div {
+.employer_payment_history-div, .employer_deposit-div,
+.employer_applicants_list-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -213,7 +216,8 @@ div.administrator_view_job-body {
   height: 2.5rem;
 }
 
-.administrator_view_job-body button:hover {
+.administrator_view_job-body button:hover,
+.employer_applicants_list-body button:hover {
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
@@ -374,4 +378,20 @@ body.employer_view_posted_job_details-body button {
  div.employer_view_posted_job_details-body {
    display: inline-block;
    text-align: left;
+ }
+
+ .employer_applicants_list-body button {
+   margin: 1rem 0.5rem 1rem 0.5rem;
+   border: 0.3rem solid #14bf98;
+   background-color: #14bf98;
+   color: white;
+   font: 700 1rem "Montserrat", sans-serif;
+   width: 5rem;
+   height: 2.2rem;
+ }
+
+ .employer_applicants_list-body table {
+   margin-top: 2rem;
+   width: 25rem;
+   margin-right: 46rem;
  }
