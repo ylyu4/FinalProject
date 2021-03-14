@@ -11,18 +11,18 @@
   <div class="administrator_sign_up-div">
     <h1 >Administrator Sign Up</h1>
     <div>
-    <form action="administrator_profile.html" method="">
+    <form>
       <div>
         <label class="administrator_sign_up-form-label" for="account">Account</label>
         </div>
         <div>
-        <input type="text" class="administrator_sign_up-form" id="username" name="username" required>
+        <input type="text" class="administrator_sign_up-form" id="adminSignupUsername" name="username" required>
       </div>
       <div>
         <label class="administrator_sign_up-form-label" for="account">Password</label>
       </div>
       <div>
-        <input type= "text" class="administrator_sign_up-form" id="password" name="password" required>
+        <input type= "text" class="administrator_sign_up-form" id="adminSignupPassword" name="password" required>
       </div>
       <div>
         <label class="administrator_sign_up-form-label" for="secretKey">Secret Key</label>
@@ -31,20 +31,19 @@
         <input type= "text" class="administrator_sign_up-form" id="secretKey" name="secretKey" required>
       </div>
       <div class="administrator_sign_up-form-submit">
-        <button type="submit" class="form-control-submit-button" onclick="signup()">Create Account</button>
+        <button type="button" class="form-control-submit-button" onclick="signup()">Create Account</button>
       </div>
     </form>
     <!-- // -->
-    <button type="button" name="administratorSignUpBack" onclick="buttonJump('administrator_login.html')">Back</button>
-    <!-- onclick="buttonJump('http://localhost:8080/page/admin/login')">Back</button> -->
+    <button type="button" name="administratorSignUpBack" onclick="buttonJump('http://localhost:8080/page/admin/login')">Back</button>
   </div>
   </div>
 </body>
 
 <script type="text/javascript">
     function signup(){
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+        const username = document.getElementById("adminSignupUsername").value;
+        const password = document.getElementById("adminSignupPassword").value;
         const secretKey = document.getElementById("secretKey").value;
 
         console.log(username);

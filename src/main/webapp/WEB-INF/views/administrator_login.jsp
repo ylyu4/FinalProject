@@ -11,28 +11,25 @@
   <div class="administrator_login-div">
     <h1 >Administrator Login</h1>
     <div>
-    <form action="administrator_profile.html" method="">
+    <form action="administrator_profile.jsp" method="">
       <div>
         <label class="administrator_login-form-label" for="account">Account</label>
         </div>
         <div>
-        <input type="text" class="administrator_login-form" id="username" name="username" required>
+        <input type="text" class="administrator_login-form" id="adminLoginUsername" name="username" required>
       </div>
       <div>
         <label class="administrator_login-form-label" for="account">Password</label>
       </div>
       <div>
-        <input type= "text" class="administrator_login-form" id="password" name="password" required>
+        <input type= "text" class="administrator_login-form" id="adminLoginPassword" name="password" required>
       </div>
       <div class="administrator_login-form-submit">
-        <button type="submit" class="form-control-submit-button" value="login" onclick="login()">Login</button>
+        <button type="button" class="form-control-submit-button" value="login" onclick="login()">Login</button>
       </div>
     </form>
-    <!-- // -->
-    <button type="button" name="administrator_LoginBack" onclick="buttonJump('main.html')">Back</button>
-    <p>Don't have an account? <a href="administrator_sign_up.html">Sign Up!</a></p>
-    <!-- <button type="button" onclick="buttonJump('http://localhost:8080/page/homepage')">Back</button>
-    <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/admin/signup');">Sign Up!</a></p> -->
+     <button type="button" onclick="buttonJump('http://localhost:8080/page/homepage')">Back</button>
+    <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/admin/signup');">Sign Up!</a></p>
   </div>
   </div>
 </body>
@@ -40,8 +37,8 @@
 <script type="text/javascript">
 
     function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+      const username = document.getElementById("adminLoginUsername").value;
+      const password = document.getElementById("adminLoginPassword").value;
       console.log(username);
       console.log(password);
 
@@ -65,7 +62,7 @@
     }
 
     function saveAdminToken(variable) {
-      localStorage.setItem("adminToken", variable);
+      localStorage.setItem("token", variable);
     }
 </script>
 </html>

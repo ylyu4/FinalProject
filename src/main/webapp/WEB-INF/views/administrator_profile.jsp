@@ -34,7 +34,7 @@
       </form>
       <button class="administrator_profile-top-button" type="button" name="administrator_profileEdit" onclick="administratorProfileEditEnable()">Edit</button>
       <button class="administrator_profile-top-button" type="button" name="administrator_profileSave" onclick="updateAdminProfile()">Save</button>
-      <button class="administrator_profile-top-button" type="button" name="administrator_profileBack" onclick="buttonJump('main.jsp')">Quit</button>
+      <button class="administrator_profile-top-button" type="button" name="administrator_profileBack" onclick="buttonJump('http://localhost:8080/page/homepage')">Quit</button>
   </div>
   <div class="administrator_profile-div-middle">
       <h1>Review Job Post</h1>
@@ -251,6 +251,7 @@
         </table>
       </div>
   </div>
+</div>
 </body>
 
 <script type="text/javascript">
@@ -263,25 +264,25 @@
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/admin/action/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    request.setRequestHeader("Authorization", localStorage.getItem("adminToken"));
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
       const data = JSON.parse(this.response);
-      if (data.name === null) {
-        document.getElementById("administratorEditName").value = '';
-      } else {
+      if (data.name != null) {
         document.getElementById("administratorEditName").value = data.name;
+      } else {
+        document.getElementById("administratorEditName").value = '';
       }
 
-      if (data.phone === null) {
-        document.getElementById("administratorEditPhone").value = '';
-      } else {
+      if (data.phone != null) {
         document.getElementById("administratorEditPhone").value = data.phone;
+      } else {
+        document.getElementById("administratorEditPhone").value = '';
       }
 
-      if (data.email === null) {
-        document.getElementById("administratorEditEmail").value = '';
-      } else {
+      if (data.email != null) {
         document.getElementById("administratorEditEmail").value = data.email;
+      } else {
+        document.getElementById("administratorEditEmail").value = '';
       }
 
     }
@@ -304,7 +305,7 @@
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:8080/admin/action/update/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    request.setRequestHeader("Authorization", localStorage.getItem("adminToken"))
+    request.setRequestHeader("Authorization", localStorage.getItem("token"))
     request.onload = function () {
       const data = JSON.parse(this.response);
       name = data.name;

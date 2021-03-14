@@ -5,7 +5,6 @@
    <title>Freelancer Profile</title>
    <link rel="stylesheet" href="reset.css" />
    <link rel="stylesheet" href="global.css" />
-   <script type="text/javascript" src="functions.js"></script>
 </head>
 <body class="freelancer_profile-body">
   <div class="freelancer_profile-div">
@@ -65,8 +64,8 @@
         </div>
       </form>
       <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileEdit" onclick="freelancerProfileEditEnable()">Edit</button>
-      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileSave" value="Save">Save</button>
-      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileQuit" onclick="buttonJump('main.html')">Quit</button>
+      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileSave" value="Save" onclick="updateFreelancerProfile()">Save</button>
+      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileQuit" onclick="buttonJump('http://localhost:8080/page/homepage')">Quit</button>
     </div>
     <div class="freelancer_profile-div-right">
       <h1>Job Applied</h1>
@@ -182,4 +181,123 @@
     </div>
   </div>
 </body>
+
+<script type="text/javascript">
+
+  window.onload = function () {
+    loadProfile();
+  }
+
+  function loadProfile() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/freelancer/action/profile', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      if (data.name != null) {
+        document.getElementById("freelancerEditName").value = data.name;
+      } else {
+        document.getElementById("freelancerEditName").value = '';
+      }
+
+      if (data.age != null) {
+        document.getElementById("freelancerEditAge").value = data.age;
+      } else {
+        document.getElementById("freelancerEditAge").value = '';
+      }
+
+      if (data.location != null) {
+        document.getElementById("freelancerEditLocation").value = data.location;
+      } else {
+        document.getElementById("freelancerEditLocation").value = '';
+      }
+
+      if (data.phone != null) {
+        document.getElementById("freelancerEditPhone").value = data.phone;
+      } else {
+        document.getElementById("freelancerEditPhone").value = '';
+      }
+
+      if (data.email != null) {
+        document.getElementById("freelancerEditEmail").value = data.email;
+      } else {
+        document.getElementById("freelancerEditEmail").value = '';
+      }
+
+      if (data.school != null) {
+        document.getElementById("freelancerEditSchool").value = data.school;
+      } else {
+        document.getElementById("freelancerEditSchool").value = '';
+      }
+
+      if (data.card != null) {
+        document.getElementById("freelancerEditCard").value = data.card;
+      } else {
+        document.getElementById("freelancerEditCard").value = '';
+      }
+
+    }
+    request.send(null);
+  }
+
+  function freelancerProfileEditEnable(){
+    document.getElementById("freelancerEditName"). disabled = "";
+    document.getElementById("freelancerEditAge").disabled = "";
+    document.getElementById("freelancerEditLocation").disabled = "";
+    document.getElementById("freelancerEditPhone"). disabled = "";
+    document.getElementById("freelancerEditEmail").disabled = "";
+    document.getElementById("freelancerEditSchool").disabled = "";
+    document.getElementById("freelancerEditCard").disabled = "";
+  }
+
+
+  function updateFreelancerProfile() {
+    let name = document.getElementById("freelancerEditName").value
+    let age = document.getElementById("freelancerEditAge").value
+    let location = document.getElementById("freelancerEditLocation").value
+    let phone = document.getElementById("freelancerEditPhone").value
+    let email = document.getElementById("freelancerEditEmail").value
+    let school = document.getElementById("freelancerEditSchool").value
+    let card = document.getElementById("freelancerEditCard").value
+
+
+
+    const request = new XMLHttpRequest();
+    request.open('POST', 'http://localhost:8080/freelancer/action/update/profile', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"))
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      name = data.name;
+      document.getElementById('freelancerEditName').disabled = true;
+      age = data.age;
+      document.getElementById('freelancerEditAge').disabled = true;
+      location = data.location;
+      document.getElementById('freelancerEditLocation').disabled = true;
+      phone = data.phone;
+      document.getElementById('freelancerEditPhone').disabled = true;
+      email = data.email;
+      document.getElementById('freelancerEditEmail').disabled = true;
+      school = data.school;
+      document.getElementById('freelancerEditSchool').disabled = true;
+      card = data.card;
+      document.getElementById('freelancerEditCard').disabled = true;
+    }
+    request.send(JSON.stringify({
+      "name": name,
+      "age": age,
+      "location": location,
+      "phone": phone,
+      "email": email,
+      "school": school,
+      "card": card
+    }))
+  }
+
+  function buttonJump(destination){
+    window.location.href=destination;
+  }
+
+</script>
 </html>

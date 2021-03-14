@@ -29,8 +29,6 @@ public  class Employer {
 
     private String name;
 
-    private Integer age;
-
     private String location;
 
     private String phone;
@@ -38,6 +36,8 @@ public  class Employer {
     private String email;
 
     private String description;
+
+    private String type;
 
     @OneToMany
     private List<Job> postedJobs;

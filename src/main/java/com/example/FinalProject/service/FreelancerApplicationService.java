@@ -1,5 +1,6 @@
 package com.example.FinalProject.service;
 
+import com.example.FinalProject.command.FreelancerProfileCommand;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.repository.FreelancerRepository;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,24 @@ public class FreelancerApplicationService {
         } else {
             throw new RuntimeException("Can not find user by this id: " + id);
         }
+    }
+
+    @Transactional
+    public Freelancer updateFreelancerProfile(Long id, FreelancerProfileCommand command) {
+        Optional<Freelancer> optionalFreelancer = freelancerRepository.findById(id);
+        if (optionalFreelancer.isPresent()) {
+            Freelancer freelancer = optionalFreelancer.get();
+            freelancer.setName(command.getName());
+            freelancer.setAge(command.getAge());
+            freelancer.setLocation(command.getLocation());
+            freelancer.setPhone(command.getPhone());
+            freelancer.setEmail(command.getEmail());
+            freelancer.setSchool(command.getSchool());
+            freelancer.setCard(command.getCard());
+            return freelancerRepository.save(freelancer);
+        } else {
+            throw new RuntimeException("Can not find user by this id: " + id);
+        }
+
     }
 }

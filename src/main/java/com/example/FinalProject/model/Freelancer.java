@@ -37,6 +37,10 @@ public class Freelancer {
 
     private String email;
 
+    private String school;
+
+    private String card;
+
     @OneToMany
     private List<Job> appliedJobs;
 
