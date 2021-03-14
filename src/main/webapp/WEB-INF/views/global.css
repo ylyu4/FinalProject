@@ -5,7 +5,8 @@ body.employer_payment_history-body, body.employer_deposit-body,
 body.employer_view_posted_job_details-body,
 body.employer_applicants_list-body,
 body.employer_check_applicant_qualification-body,
-body.freelancer_profile-body {
+body.freelancer_profile-body,
+body.freelancer_withdraw-body {
   background-size: cover;
   background: url('images/background-transparent.jpg') no-repeat;
   width: 1900px;
@@ -18,7 +19,8 @@ body.freelancer_profile-body {
 .employer_view_posted_job_details-body h1,
 .employer_applicants_list-body h1,
 .employer_check_applicant_qualification-body h1,
-.freelancer_profile-body h1{
+.freelancer_profile-body h1,
+.freelancer_withdraw-body h1{
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -34,7 +36,8 @@ label.employer_write_job_description-form-label,
 .employer_deposit-body label,
 .employer_view_posted_job_details-body p,
 .employer_check_applicant_qualification-body p,
-.freelancer_profile-body label, .freelancer_profile-body p {
+.freelancer_profile-body label, .freelancer_profile-body p,
+.freelancer_withdraw-body label {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
 }
@@ -46,7 +49,7 @@ label.employer_write_job_description-form-label,
 .employer_profile-div, .employer_write_job_description-div,
 .employer_payment_history-div, .employer_deposit-div,
 .employer_applicants_list-div, .employer_check_applicant_qualification-div,
-.freelancer_profile-div {
+.freelancer_profile-div, .freelancer_withdraw-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -166,7 +169,8 @@ button.administrator_profile-bottom-button {
 .employer_deposit-body button:hover,
 .employer_view_posted_job_details-body button:hover,
 .employer_check_applicant_qualification-body button:hover,
-.freelancer_profile-body button:hover {
+.freelancer_profile-body button:hover,
+.freelancer_withdraw-body button:hover {
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
@@ -360,7 +364,7 @@ body.employer_view_posted_job_details-body button {
   background-color: #14bf98;
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
-  width: 5rem;
+  width: 8rem;
 }
 
 .employer_payment_history-body table {
@@ -516,4 +520,24 @@ button.freelancer_profile-top-button-browseJobs {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
   width: 45rem;
+}
+
+button.freelancer_withdraw-button {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 8rem;
+}
+
+.freelancer_withdraw-form {
+  margin: 1rem 0rem 1rem 0rem;
+  border: 0.15rem solid #14bf98;
+	background-color: white;
+	color: #14bf98;
+	font: 700 1rem "Montserrat", sans-serif;
+  width: 7.5rem;
+  height: 1.25rem;
+  opacity: 0.8;
 }

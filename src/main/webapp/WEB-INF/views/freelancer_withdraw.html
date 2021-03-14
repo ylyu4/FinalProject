@@ -7,13 +7,18 @@
    <link rel="stylesheet" href="global.css" />
    <script type="text/javascript" src="functions.js"></script>
 </head>
-<body>
+<body class="freelancer_withdraw-body">
+  <div class="freelancer_withdraw-div">
   <h1>Withdraw</h1>
   <form action="">
-    Input the amount of withdraw: <input id="freelancerWithdraw" type="text" value=""><br>
-    <input type="button" value="Withdraw" onclick="freelancerWithdrawAmount()">
+    <div>
+      <label class="freelancer_withdraw-form-label" for="amount">Amount</label>
+    </div>
+    <div>
+      <input id="freelancerWithdraw" class="freelancer_withdraw-form" type="text" name="freelancerWithdraw" value="" required>
+    </div>
+    <button class="freelancer_withdraw-button" type="button" onclick="freelancerWithdrawAmount()">Withdraw</button>
   </form>
-
-  <button type="button" name="freelancer_withdrawBack" onclick="buttonJump('freelancer_profile.html')">Back</button>
+  <button class="freelancer_withdraw-button" type="button" name="freelancer_withdrawBack" onclick="buttonJump('freelancer_profile.html')">Back</button>
 </body>
 </html>
