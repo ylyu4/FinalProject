@@ -53,6 +53,7 @@ function freelancerProfileEditEnable(){
   document.getElementById("freelancerEditLocation").disabled = "";
   document.getElementById("freelancerEditPhone"). disabled = "";
   document.getElementById("freelancerEditEmail").disabled = "";
+  document.getElementById("freelancerEditSchool").disabled = "";
   document.getElementById("freelancerEditCard").disabled = "";
 }
 
