@@ -3,7 +3,8 @@ body.administrator_profile-body, body.administrator_view_job-body,
 body.employer_profile-body, body.employer_write_job_description-body,
 body.employer_payment_history-body, body.employer_deposit-body,
 body.employer_view_posted_job_details-body,
-body.employer_applicants_list-body {
+body.employer_applicants_list-body,
+body.employer_check_applicant_qualification-body {
   background-size: cover;
   background: url('images/background-transparent.jpg') no-repeat;
   width: 1900px;
@@ -14,7 +15,8 @@ body.employer_applicants_list-body {
 .employer_profile-div h1, .employer_write_job_description-div h1,
 .employer_payment_history-body h1, .employer_deposit-body h1,
 .employer_view_posted_job_details-body h1,
-.employer_applicants_list-body h1{
+.employer_applicants_list-body h1,
+.employer_check_applicant_qualification-body h1{
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -28,7 +30,8 @@ body.employer_applicants_list-body {
 body.employer_write_job_description-div p,
 label.employer_write_job_description-form-label,
 .employer_deposit-body label,
-.employer_view_posted_job_details-body p {
+.employer_view_posted_job_details-body p,
+.employer_check_applicant_qualification-body p {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
 }
@@ -39,7 +42,7 @@ label.employer_write_job_description-form-label,
 .administrator_sign_up-div, .employer_sign_up-div, .freelancer_sign_up-div,
 .employer_profile-div, .employer_write_job_description-div,
 .employer_payment_history-div, .employer_deposit-div,
-.employer_applicants_list-div {
+.employer_applicants_list-div, .employer_check_applicant_qualification-div {
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -155,7 +158,8 @@ button.administrator_profile-bottom-button {
 .employer_write_job_description-div button:hover,
 .employer_payment_history-body button:hover,
 .employer_deposit-body button:hover,
-.employer_view_posted_job_details-body button:hover {
+.employer_view_posted_job_details-body button:hover,
+.employer_check_applicant_qualification-body button:hover {
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
@@ -225,6 +229,7 @@ div.administrator_view_job-body {
 
 ::-webkit-scrollbar {
   width: 0.4rem;
+  height: 0.4rem;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #14bf98;
@@ -312,7 +317,7 @@ button.employer_profile-top-button-postNewJob {
 
  body.employer_write_job_description-body textarea {
   width: 20rem;
-  height: 37.2rem;
+  height: 32.2rem;
   margin: 1rem 0rem 1rem 0rem;
   border: 0.15rem solid #14bf98;
   background-color: white;
@@ -366,7 +371,7 @@ body.employer_view_posted_job_details-body button {
   opacity: 0.8;
 }
 
- div.employer_view_posted_job_details-body p {
+ div.employer_view_posted_job_details-div p {
    padding-top: 0.5rem;
    padding-bottom: 0.5rem;
  }
@@ -375,12 +380,14 @@ body.employer_view_posted_job_details-body button {
    text-align: center;
  }
 
- div.employer_view_posted_job_details-body {
+ div.employer_view_posted_job_details-div {
    display: inline-block;
    text-align: left;
  }
 
- .employer_applicants_list-body button {
+
+ .employer_applicants_list-body button,
+ .employer_check_applicant_qualification-body button {
    margin: 1rem 0.5rem 1rem 0.5rem;
    border: 0.3rem solid #14bf98;
    background-color: #14bf98;
@@ -395,3 +402,53 @@ body.employer_view_posted_job_details-body button {
    width: 25rem;
    margin-right: 46rem;
  }
+
+ .employer_check_applicant_qualification-div-left,
+ .employer_check_applicant_qualification-div-middle,
+ .employer_check_applicant_qualification-div-right {
+   padding: 0rem 3rem 0rem 0rem;
+   float:left;
+ }
+
+ .employer_check_applicant_qualification-div-left {
+   width: 30rem;
+ }
+
+ .employer_check_applicant_qualification-div-middle {
+   width: 30rem;
+ }
+
+ .employer_check_applicant_qualification-div-right {
+   width: 30rem;
+ }
+
+ .employer_check_applicant_qualification-body h1 {
+   padding: 2rem 3rem 2rem 3rem;
+ }
+
+ .employer_check_applicant_qualification-block {
+   height: 20rem;
+   width: 30rem;
+   padding: 6rem 0rem 0rem 14rem;
+ }
+
+ .employer_check_applicant_qualification-block p {
+   text-align: left;
+   padding: 0.5rem 0rem 0rem 4rem;
+ }
+
+ .employer_check_applicant_qualification-select,
+  .employer_check_applicant_qualification-option {
+  width: 7.5rem;
+  height: 2.5rem;
+  font: 700 1rem "Montserrat", sans-serif;
+  color: white;
+  background-color: #14bf98;
+  text-align: center;
+  border: none;
+}
+
+.employer_check_applicant_qualification-body button {
+  margin-top: 7rem;
+  width: 6rem;
+}

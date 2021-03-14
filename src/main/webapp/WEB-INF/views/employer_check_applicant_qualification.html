@@ -7,52 +7,60 @@
    <link rel="stylesheet" href="global.css" />
    <script type="text/javascript" src="functions.js"></script>
 </head>
-<body>
-  <!-- Title Employer Check Applicant Qualification-->
-  <h1>Personal Information</h1>
-  <p>Age: </p>
-  <p>Location: </p>
-  <p>Phone: </p>
-  <p>Email: </p>
-
-  <h1>Education Experience</h1>
-  <p>From: to:</p>
-  <p>School: </p>
-  <p>Degree: </p>
-  <p>Major: </p>
-  <p>Description: </p>
-
-  <h1>Work Experience</h1>
-  <p>From: to: </p>
-  <p>Company: </p>
-  <p>Department: </p>
-  <p>Position: </p>
-  <p>Description: </p>
-
-  <h1>Languages & Skills</h1>
-  <p>Languages: </p>
-  <p>Skills: </p>
-
-  <h1>Self Reviews</h1>
-  <p>None </p>
-
-  <h1>Resume Status</h1>
-  <select>
-    <option value ="reviewing">Reviewing</option>
-    <option value ="rejected">Rejected</option>
-    <option value="approved">Approved</option>
-  </select><br>
-
-  <h1>Interview Status</h1>
-  <select>
-    <option value ="inviting">Inviting</option>
-    <option value ="rejected">Rejected</option>
-    <option value="approved">Approved</option>
-    <option value="reviewing">Reviewing</option>
-  </select><br>
-
-  <!-- Approve & Reject -->
-  <button type="button" name="employer_check_applicant_qualificationUpdate" onclick="buttonJump('employer_applicants_list.html')">Update</button>
-
+<body class="employer_check_applicant_qualification-body">
+  <div class="employer_check_applicant_qualification-div">
+  <div class="employer_check_applicant_qualification-div-left">
+    <div class="employer_check_applicant_qualification-block">
+      <h1>Personal Information</h1>
+      <p>Name: </p>
+      <p>Age: </p>
+      <p>Location: </p>
+      <p>Phone: </p>
+      <p>Email: </p>
+    </div>
+    <div class="employer_check_applicant_qualification-block">
+      <h1>Education Experience</h1>
+      <p>From: to:</p>
+      <p>School: </p>
+      <p>Degree: </p>
+      <p>Major: </p>
+      <p>Description: </p>
+    </div>
+  </div>
+  <div class="employer_check_applicant_qualification-div-middle">
+    <div class="employer_check_applicant_qualification-block">
+      <h1>Work Experience</h1>
+      <p>From: to: </p>
+      <p>Company: </p>
+      <p>Department: </p>
+      <p>Position: </p>
+      <p>Description: </p>
+    </div>
+    <div class="employer_check_applicant_qualification-block">
+      <h1>Ohters</h1>
+      <p>Languages: </p>
+      <p>Skills: </p>
+      <p>Self Reviews:</p>
+    </div>
+  </div>
+  <div class="employer_check_applicant_qualification-div-right">
+    <div class="employer_check_applicant_qualification-block">
+      <h1>Resume Status</h1>
+      <select class="employer_check_applicant_qualification-select">
+        <option class="employer_check_applicant_qualification-option" value ="reviewing">Reviewing</option>
+        <option class="employer_check_applicant_qualification-option" value ="rejected">Rejected</option>
+        <option class="employer_check_applicant_qualification-option" value="approved">Approved</option>
+      </select><br>
+      <h1>Interview Status</h1>
+      <select class="employer_check_applicant_qualification-select">
+        <option class="employer_check_applicant_qualification-option" value ="inviting">Inviting</option>
+        <option class="employer_check_applicant_qualification-option" value ="rejected">Rejected</option>
+        <option class="employer_check_applicant_qualification-option" value="approved">Approved</option>
+        <option class="employer_check_applicant_qualification-option" value="reviewing">Reviewing</option>
+      </select><br>
+      <button type="button" name="employer_check_applicant_qualificationUpdate" onclick="buttonJump('employer_applicants_list.html')">Update</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
