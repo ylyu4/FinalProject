@@ -8,7 +8,7 @@ body.employer_check_applicant_qualification-body,
 body.freelancer_profile-body,
 body.freelancer_withdraw-body {
   background-size: cover;
-  background: url('images/background-transparent.jpg') no-repeat;
+  background: url('/static/images/background-transparent.jpg') no-repeat;
   width: 1900px;
 }
 
@@ -60,7 +60,7 @@ body.administrator_login-body, body.administrator_sign_up-body,
 body.employer_login-body, body.employer_sign_up-body,
 body.freelancer_login-body, body.freelancer_sign_up-body {
 	background-size: cover;
-  background: url('images/main-background.jpg') no-repeat;
+  background: url('/static/images/main-background.jpg') no-repeat;
 }
 
 .main-div h1,

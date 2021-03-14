@@ -3,8 +3,8 @@
 <head>
    <meta charset="utf-8">
    <title>Job Search System</title>
-   <link rel="stylesheet" href="/WEB-INF/views/reset.css" />
-   <link rel="stylesheet" href="/WEB-INF/views/global.css" />
+   <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
+   <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
 </head>
 <body class="main-body">
   <!-- Title -->

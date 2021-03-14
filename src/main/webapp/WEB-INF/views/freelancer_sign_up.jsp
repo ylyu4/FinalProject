@@ -3,9 +3,8 @@
 <head>
    <meta charset="utf-8">
    <title>Freelancer Sign Up</title>
-   <link rel="stylesheet" href="reset.css" />
-   <link rel="stylesheet" href="global.css" />
-   <script type="text/javascript" src="functions.js"></script>
+   <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
+   <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
 </head>
 <body class="freelancer_sign_up-body">
   <div class="freelancer_sign_up-div">
