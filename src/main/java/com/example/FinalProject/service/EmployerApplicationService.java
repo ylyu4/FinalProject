@@ -1,12 +1,18 @@
 package com.example.FinalProject.service;
 
+import com.example.FinalProject.command.EmployerCreateJobCommand;
+import com.example.FinalProject.command.EmployerProfileCommand;
 import com.example.FinalProject.model.Employer;
+import com.example.FinalProject.model.Job;
 import com.example.FinalProject.repository.EmployerRepository;
+import com.example.FinalProject.repository.JobRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -16,6 +22,8 @@ import java.util.UUID;
 public class EmployerApplicationService {
 
     private final EmployerRepository employerRepository;
+
+    private final JobRepository jobRepository;
 
     private final RedisService redisService;
 
@@ -55,4 +63,35 @@ public class EmployerApplicationService {
     }
 
 
+    @Transactional
+    public Employer updateEmployerProfile(Long userId, EmployerProfileCommand command) {
+        log.info("The current id is " + userId);
+        Optional<Employer> optionalEmployer = employerRepository.findById(userId);
+        if (optionalEmployer.isPresent()) {
+            Employer employer = optionalEmployer.get();
+            employer.setName(command.getName());
+            employer.setLocation(command.getLocation());
+            employer.setType(command.getType());
+            employer.setPhone(command.getPhone());
+            employer.setEmail(command.getEmail());
+            employer.setDescription(command.getDescription());
+            List<Job> jobList = jobRepository.findAllByCreatedBy(userId);
+            employer.setPostedJobs(jobList);
+            return employerRepository.save(employer);
+        } else {
+            throw new RuntimeException("Can not find user by this id: " + userId);
+        }
+    }
+
+    @Transactional
+    public String createJob(EmployerCreateJobCommand command, Long userId) throws ParseException {
+        Optional<Employer> optionalEmployer = employerRepository.findById(userId);
+        if (optionalEmployer.isPresent()) {
+            Job job = new Job(command, userId);
+            jobRepository.save(job);
+            return "Created";
+        } else {
+            throw new RuntimeException("Can not find user by this id: " + userId);
+        }
+    }
 }

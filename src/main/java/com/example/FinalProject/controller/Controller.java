@@ -2,10 +2,7 @@ package com.example.FinalProject.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.example.FinalProject.command.AdminProfileCommand;
-import com.example.FinalProject.command.AdminSignupCommand;
-import com.example.FinalProject.command.EmployerSignUpCommand;
-import com.example.FinalProject.command.FreelancerSignUpCommand;
+import com.example.FinalProject.command.*;
 import com.example.FinalProject.model.Administrator;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
@@ -17,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 
 
 @RestController
@@ -80,6 +78,22 @@ public class Controller {
         return JSON.toJSONString(employer);
     }
 
+    @PostMapping("/employer/action/update/profile")
+    public String updateEmployerProfile(@RequestBody EmployerProfileCommand command, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        Employer employer = employerApplicationService.updateEmployerProfile(id, command);
+        return JSON.toJSONString(employer);
+    }
+
+    @PostMapping("/employer/action/create/job")
+    public String createJob(@RequestBody EmployerCreateJobCommand command, HttpServletRequest request) throws ParseException {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        String response = employerApplicationService.createJob(command, id);
+        return JSON.toJSONString(response);
+    }
+
     @PostMapping("/freelancer/signup")
     public String freelancerRegister(@RequestBody FreelancerSignUpCommand command) {
         String response = freelancerApplicationService.freelancerRegister(command.getUsername(), command.getPassword());
@@ -97,6 +111,15 @@ public class Controller {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         Freelancer freelancer = freelancerApplicationService.getFreelancer(id);
+        return JSON.toJSONString(freelancer);
+    }
+
+
+    @PostMapping("/freelancer/action/update/profile")
+    public String updateFreelancerProfile(@RequestBody FreelancerProfileCommand command, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        Freelancer freelancer = freelancerApplicationService.updateFreelancerProfile(id, command);
         return JSON.toJSONString(freelancer);
     }
 }

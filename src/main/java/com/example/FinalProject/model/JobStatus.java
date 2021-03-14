@@ -10,5 +10,7 @@ public enum JobStatus {
 
     WORKING,
 
-    DONE
+    DONE,
+
+    REJECTED
 }
