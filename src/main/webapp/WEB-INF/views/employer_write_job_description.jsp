@@ -3,8 +3,8 @@
 <head>
    <meta charset="utf-8">
    <title>Write Job Description</title>
-   <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
-   <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
+   <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
+   <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
 </head>
 <body class="employer_write_job_description-body">
 <div class="employer_write_job_description-div">

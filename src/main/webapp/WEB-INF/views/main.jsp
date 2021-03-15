@@ -3,14 +3,13 @@
 <head>
    <meta charset="utf-8">
    <title>Job Search System</title>
-   <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
-   <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
+   <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
+   <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
+   <script type="text/javascript" src="functions.js"></script>
 </head>
 <body class="main-body">
-  <!-- Title -->
   <div class="main-div">
     <h1 class="main">Job Search System</h1>
-    <!-- Buttons -->
     <div class="btn-top">
       <button type="button" name="forFreelancer" onclick="buttonJump('http://localhost:8080/page/freelancer/login')">For Freelancer</button>
     </div>
@@ -22,10 +21,4 @@
   </div>
   </div>
 </body>
-
-<script type="text/javascript">
-    function buttonJump(destination){
-        window.location.href=destination;
-    }
-</script>
 </html>

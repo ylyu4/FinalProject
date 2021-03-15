@@ -3,8 +3,8 @@
 <head>
    <meta charset="utf-8">
    <title>Freelancer Profile</title>
-   <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
-   <link rel="stylesheet" type="text/css" href="/static/css/global.css" />
+   <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
+   <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
 </head>
 <body class="freelancer_profile-body">
   <div class="freelancer_profile-div">
