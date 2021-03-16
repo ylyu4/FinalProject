@@ -6,10 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class Freelancer {
 
     private String card;
 
-    @OneToMany
+    @Type(type = "jsonb")
     private List<Job> appliedJobs;
 
     private Long accountBalance;
