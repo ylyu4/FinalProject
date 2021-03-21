@@ -6,6 +6,7 @@ import com.example.FinalProject.command.*;
 import com.example.FinalProject.model.Administrator;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
+import com.example.FinalProject.model.Job;
 import com.example.FinalProject.service.AdministratorApplicationService;
 import com.example.FinalProject.service.EmployerApplicationService;
 import com.example.FinalProject.service.FreelancerApplicationService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
+import java.util.List;
 
 
 @RestController
@@ -56,6 +58,24 @@ public class Controller {
         Long id = (Long) redisService.get(token);
         Administrator administrator = administratorApplicationService.updateAdminProfile(id, command.getName(), command.getPhone(), command.getEmail());
         return JSON.toJSONString(administrator);
+    }
+
+    @GetMapping("/admin/action/get/system-balance")
+    public String getSystemCurrentBalance() {
+        Long balance = administratorApplicationService.getSystemAccountBalance();
+        return JSON.toJSONString(balance);
+    }
+
+    @GetMapping("/admin/action/get/jobs")
+    public String getAllNewUnreleasedJobs() {
+        List<Job> jobList =  administratorApplicationService.getAllNewCreatedJobs();
+        return JSON.toJSONString(jobList);
+    }
+
+    @PostMapping("/admin/action/process/job")
+    public String processNewUnreleasedJob(AdminProcessJobCommand command) {
+        String result = administratorApplicationService.processNewUnreleasedJob(command.getId(), command.getAction());
+        return JSON.toJSONString(result);
     }
 
     @PostMapping("/employer/signup")

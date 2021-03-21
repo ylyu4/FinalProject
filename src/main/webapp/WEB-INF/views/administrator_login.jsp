@@ -5,7 +5,7 @@
    <title>Administrator Login</title>
    <link rel="stylesheet" href="../../static/css/reset.css" />
    <link rel="stylesheet" href="../../static/css/global.css" />
-   <script type="text/javascript" src="functions.js"></script>
+   <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="administrator_login-body">
   <div class="administrator_login-div">

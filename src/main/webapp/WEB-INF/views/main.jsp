@@ -5,7 +5,7 @@
    <title>Job Search System</title>
    <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
    <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
-   <script type="text/javascript" src="functions.js"></script>
+   <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="main-body">
   <div class="main-div">

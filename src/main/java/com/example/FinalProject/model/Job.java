@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.text.ParseException;
@@ -24,6 +25,7 @@ import java.util.Date;
 public class Job {
 
     @Id
+    @Column(name = "job_id")
     private Long id;
 
     private String name;
@@ -44,11 +46,13 @@ public class Job {
 
     private String jobDescription;
 
-    private JobStatus status;
+    private JobStatus jobStatus;
 
-    private Long applicantId;
+    private Long freelancerId;
 
     private Long createdBy;
+
+    private Long approvedBy;
 
     private Boolean paid;
 
@@ -69,7 +73,7 @@ public class Job {
         Date parsed = format.parse(command.getDeadline());
         this.deadline = parsed.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         this.jobDescription = command.getDescription();
-        this.status = JobStatus.CREATED;
+        this.jobStatus = JobStatus.CREATED;
         this.createdBy = userId;
         this.paid = false;
         LocalDateTime now = LocalDateTime.now();

@@ -1,14 +1,22 @@
 package com.example.FinalProject.service;
 
 import com.example.FinalProject.model.Administrator;
+import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.JobStatus;
+import com.example.FinalProject.model.SystemAccount;
 import com.example.FinalProject.repository.AdministratorRepository;
+import com.example.FinalProject.repository.JobRepository;
+import com.example.FinalProject.repository.SystemAccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 @Service
@@ -19,6 +27,10 @@ public class AdministratorApplicationService {
     private static final String key = "ISTM6210A";
 
     private final AdministratorRepository administratorRepository;
+
+    private final JobRepository jobRepository;
+
+    private final SystemAccountRepository systemAccountRepository;
 
     private final RedisService redisService;
 
@@ -33,7 +45,19 @@ public class AdministratorApplicationService {
         if (administrator != null) {
             return "username";
         }
-        administratorRepository.save(new Administrator(username, password));
+        List<SystemAccount> systemAccounts = StreamSupport.stream(systemAccountRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+
+        SystemAccount systemAccount;
+
+        if (systemAccounts.size() == 0) {
+            systemAccount = systemAccountRepository.save(new SystemAccount());
+        } else {
+            systemAccount = systemAccounts.get(0);
+        }
+
+
+        administratorRepository.save(new Administrator(username, password, systemAccount.getId()));
         return "true";
     }
 
@@ -73,6 +97,38 @@ public class AdministratorApplicationService {
             throw new RuntimeException("Can not find user by this id: " + userId);
         }
 
+    }
+
+    @Transactional(readOnly = true)
+    public Long getSystemAccountBalance() {
+        SystemAccount systemAccount = systemAccountRepository.findAll().iterator().next();
+
+        return systemAccount.getAccountBalance();
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<Job> getAllNewCreatedJobs() {
+        return jobRepository.findAllByJobStatus(JobStatus.CREATED);
+    }
+
+    @Transactional
+    public String processNewUnreleasedJob(Long jobId, String action) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+
+        if (optionalJob.isPresent()) {
+            Job job = optionalJob.get();
+            if (action.equals("Approve")) {
+                job.setJobStatus(JobStatus.APPROVED);
+            } else {
+                job.setJobStatus(JobStatus.REJECTED);
+            }
+
+            jobRepository.save(job);
+            return "Successfully";
+        } else {
+            throw new RuntimeException("Can not find job by this id: " + jobId);
+        }
     }
 
 }

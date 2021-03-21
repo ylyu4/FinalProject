@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
@@ -18,15 +19,19 @@ import java.time.LocalDateTime;
 public class Feedback {
 
     @Id
+    @Column(name = "feedback_id")
     private Long id;
 
     private UserType userType;
-
-    private Long userId;
 
     private Integer rate;
 
     private String content;
 
     private LocalDateTime createTime;
+
+    private Long freelancerId;
+
+    private Long employerId;
+
 }

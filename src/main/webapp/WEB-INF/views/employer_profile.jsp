@@ -10,7 +10,7 @@
   <div class="employer_profile-div">
     <div class="employer_profile-div-left">
       <h1>Employer Profile</h1>
-      <p>Account Balance: 10000 USD</p>
+      <p id="employerAccountBalance"></p>
       <div>
         <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('employer_deposit.html')">Deposit</button>
       </div>
@@ -215,6 +215,7 @@
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
       const data = JSON.parse(this.response);
+      document.getElementById("employerAccountBalance").innerText = "Account Balance: " + data.accountBalance + " USD";
       if (data.name != null) {
         document.getElementById("employerEditName").value = data.name;
       } else {

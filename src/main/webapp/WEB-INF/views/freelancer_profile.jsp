@@ -10,7 +10,7 @@
   <div class="freelancer_profile-div">
     <div class="freelancer_profile-div-left">
       <h1>Freelancer Profile</h1>
-      <p>Account Balance: 2000 USD</p>
+      <p id="freelancerAccountBalance"></p>
       <div>
         <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('freelancer_withdraw.html')">Withdraw</button>
       </div>
@@ -195,6 +195,7 @@
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
       const data = JSON.parse(this.response);
+      document.getElementById("freelancerAccountBalance").innerText = "Account Balance: " + data.accountBalance + " USD";
       if (data.name != null) {
         document.getElementById("freelancerEditName").value = data.name;
       } else {

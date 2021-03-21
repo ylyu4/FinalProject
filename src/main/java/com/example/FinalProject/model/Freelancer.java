@@ -2,12 +2,15 @@ package com.example.FinalProject.model;
 
 
 import com.example.FinalProject.utils.IdGenerator;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
@@ -18,9 +21,11 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class Freelancer {
 
     @Id
+    @Column(name = "freelancer_id")
     private Long id;
 
     private String username;

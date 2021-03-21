@@ -10,8 +10,8 @@
 <div class="administrator_profile-div">
   <div class="administrator_profile-div-left">
       <h1>Administrator Profile</h1>
-      <p>Account Balance: 1000000 USD</p>
-      <form action="" method="">
+      <p id="systemBalance"></p>
+      <form>
         <div>
           <label class="administrator_profile-form-label" for="name">Name</label>
         </div>
@@ -38,119 +38,19 @@
   <div class="administrator_profile-div-middle">
       <h1>Review Job Post</h1>
       <div class="administrator_profile-table">
-        <table border="0" cellspacing="0" frame=below rules=rows>
+        <table border="0" cellspacing="0" frame=below rules=rows id="jobList">
           <thead>
             <tr>
               <th></th>
               <th>Job ID</th>
-              <th>Administrator ID</th>
+              <th>Company</th>
               <th>Job Name</th>
               <th>Experience</th>
               <th>Location</th>
               <th>Salary</th>
+              <th>Creator ID</th>
             </tr>
           </thead>
-          <div>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000001" checked></td>
-              <td>00000001</td>
-              <td>00000001</td>
-              <td>Babysitter</td>
-              <td>1 year experience</td>
-              <td>DC</td>
-              <td>5000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-            <tr>
-              <td><input id="radio" type="radio" name="job" value="00000002" ></td>
-              <td>00000002</td>
-              <td>00000001</td>
-              <td>Piano Teacher</td>
-              <td>5 year experience</td>
-              <td>MI</td>
-              <td>25000</td>
-            </tr>
-          </div>
         </table>
         <button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="buttonJump('administrator_view_job.html?JobID=00000002&administratorID=00000001')">View</button>
       </div>
@@ -257,6 +157,45 @@
 
   window.onload = function () {
     loadProfile();
+    checkNewJobs();
+    checkCurrentBalance();
+  }
+
+  function checkCurrentBalance() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/admin/action/get/system-balance', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      const element = document.getElementById("systemBalance");
+      element.innerText = "Account Balance: " + data + " USD";
+    }
+    request.send();
+  }
+
+  function checkNewJobs() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/admin/action/get/jobs', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      const div = document.getElementById("jobList");
+      if (data != null) {
+        for (let i = 0; i < data.length; i++) {
+         div.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob'></td>"
+                                              + " <td>"+data[i].id+"</td>"
+                                              + " <td>"+data[i].company+"</td>"
+                                              + " <td>"+data[i].name+"</td>"
+                                              + " <td>"+data[i].experience+"</td>"
+                                              + " <td>"+data[i].location+"</td>"
+                                              + " <td>"+data[i].salary+"</td>"
+                                              + " <td>"+data[i].createdBy+"</td></tr> ");
+        }
+      }
+    }
+    request.send(null);
   }
 
   function loadProfile() {
@@ -320,5 +259,10 @@
       "email": email
     }))
   }
+
+  function buttonJump(destination){
+    window.location.href=destination;
+  }
+
 </script>
 </html>
