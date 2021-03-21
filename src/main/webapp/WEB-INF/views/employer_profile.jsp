@@ -71,7 +71,7 @@
         <button class="employer_profile-right-button" type="button" name="employer_profileTableDelete"     onclick="employerProfileDelete('00000001')">Delete</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableConfirm"    onclick="employerConfirmWork('00000001')">Confirm</button>
       </div>
-      <table border="0" cellspacing="0" frame=below rules=rows>
+      <table border="0" cellspacing="0" frame=below rules=rows id="createdJobs">
         <tr>
           <th></th>
           <th>Job ID</th>
@@ -80,123 +80,6 @@
           <th>Location</th>
           <th>Salary</th>
           <th>Status</th>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001" checked></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
-        </tr>
-        <tr>
-          <td><input type="radio" name="job" value="00000001"></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Admin Reviewing</td>
         </tr>
       </table>
     </div>
@@ -216,6 +99,19 @@
     request.onload = function () {
       const data = JSON.parse(this.response);
       document.getElementById("employerAccountBalance").innerText = "Account Balance: " + data.accountBalance + " USD";
+      const jobList = data.postedJobs;
+      const listTable = document.getElementById("createdJobs");
+      if (jobList != null) {
+        for (let i = 0; i < jobList.length; i++) {
+          listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob'></td>"
+                  + " <td>" + jobList[i].id + "</td>"
+                  + " <td>" + jobList[i].name + "</td>"
+                  + " <td>" + jobList[i].experience + "</td>"
+                  + " <td>" + jobList[i].location + "</td>"
+                  + " <td>" + jobList[i].salary + "</td>"
+                  + " <td>" + jobList[i].jobStatus + "</td></tr> ");
+        }
+      }
       if (data.name != null) {
         document.getElementById("employerEditName").value = data.name;
       } else {

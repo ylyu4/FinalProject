@@ -1,15 +1,16 @@
 package com.example.FinalProject.model;
 
+import com.example.FinalProject.converter.JpaConverterListJson;
 import com.example.FinalProject.utils.IdGenerator;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
@@ -44,7 +45,7 @@ public  class Employer {
 
     private String type;
 
-    @Type(type = "jsonb")
+    @Convert(converter = JpaConverterListJson.class)
     private List<Job> postedJobs;
 
     private Long accountBalance;

@@ -27,6 +27,11 @@ public class PageController {
         return "administrator_profile";
     }
 
+    @RequestMapping("/page/admin/view-job")
+    public String goToAdminViewJobPage() {
+        return "administrator_view_job";
+    }
+
     @RequestMapping("/page/employer/login")
     public String goToEmployerLoginPage() {
         return "employer_login";

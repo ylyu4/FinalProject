@@ -27,9 +27,6 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
-mybatis:
-  mapper-locations: classpath:mapper/*Mapper.xml
-
 server:
   port: 8080
 

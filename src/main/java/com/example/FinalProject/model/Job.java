@@ -10,6 +10,8 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,6 +48,7 @@ public class Job {
 
     private String jobDescription;
 
+    @Enumerated(EnumType.STRING)
     private JobStatus jobStatus;
 
     private Long freelancerId;

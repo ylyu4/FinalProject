@@ -72,6 +72,12 @@ public class Controller {
         return JSON.toJSONString(jobList);
     }
 
+    @GetMapping("/admin/action/get/job/detail")
+    public String getReviewedJobDetail(String jobId) {
+        Long parsedJobId = Long.valueOf(jobId);
+        return JSON.toJSONString(administratorApplicationService.getReviewedJobDetailById(parsedJobId));
+    }
+
     @PostMapping("/admin/action/process/job")
     public String processNewUnreleasedJob(AdminProcessJobCommand command) {
         String result = administratorApplicationService.processNewUnreleasedJob(command.getId(), command.getAction());

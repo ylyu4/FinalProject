@@ -52,7 +52,7 @@
             </tr>
           </thead>
         </table>
-        <button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="buttonJump('administrator_view_job.html?JobID=00000002&administratorID=00000001')">View</button>
+        <button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="viewJobs()">View</button>
       </div>
   </div>
   <div class="administrator_profile-div-right">
@@ -184,7 +184,7 @@
       const div = document.getElementById("jobList");
       if (data != null) {
         for (let i = 0; i < data.length; i++) {
-         div.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob'></td>"
+         div.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob' class='"+i+"'></td>"
                                               + " <td>"+data[i].id+"</td>"
                                               + " <td>"+data[i].company+"</td>"
                                               + " <td>"+data[i].name+"</td>"
@@ -196,6 +196,21 @@
       }
     }
     request.send(null);
+  }
+
+  function viewJobs() {
+    const radios = document.getElementsByName("newJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i+1];
+        const td = tr.getElementsByTagName("td")[1];
+        console.log(td.innerHTML);
+        localStorage.setItem("administratorViewJobId", td.innerHTML);
+        buttonJump('http://localhost:8080/page/admin/view-job');
+      } else {
+        alert("Please select a job from the list!")
+      }
+    }
   }
 
   function loadProfile() {

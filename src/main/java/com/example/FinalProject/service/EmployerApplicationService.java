@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -75,8 +76,6 @@ public class EmployerApplicationService {
             employer.setPhone(command.getPhone());
             employer.setEmail(command.getEmail());
             employer.setDescription(command.getDescription());
-            List<Job> jobList = jobRepository.findAllByCreatedBy(userId);
-            employer.setPostedJobs(jobList);
             return employerRepository.save(employer);
         } else {
             throw new RuntimeException("Can not find user by this id: " + userId);
@@ -89,6 +88,14 @@ public class EmployerApplicationService {
         if (optionalEmployer.isPresent()) {
             Job job = new Job(command, userId);
             jobRepository.save(job);
+            Employer employer = optionalEmployer.get();
+            List<Job> jobList = employer.getPostedJobs();
+            if (jobList == null) {
+               jobList = new ArrayList<>();
+            }
+            jobList.add(job);
+            employer.setPostedJobs(jobList);
+            employerRepository.save(employer);
             return "Created";
         } else {
             throw new RuntimeException("Can not find user by this id: " + userId);
