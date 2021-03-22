@@ -581,3 +581,21 @@ button.freelancer_withdraw-button {
   width: 30rem;
   padding-left: 44rem;
 }
+
+.freelancer_view_resume-body h2{
+  margin: 1rem 0rem 1rem 0rem;
+  color: white;
+  font: 700 1.5rem "Montserrat", sans-serif;
+  text-decoration: underline;
+}
+
+.freelancer_view_resume-form {
+  margin: 1rem 0rem 1rem 0rem;
+  border: 0.15rem solid #14bf98;
+	background-color: white;
+	color: #14bf98;
+	font: 700 1rem "Montserrat", sans-serif;
+  width: 15rem;
+  height: 1.25rem;
+  opacity: 0.8;
+}
