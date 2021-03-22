@@ -8,7 +8,10 @@ body.employer_check_applicant_qualification-body,
 body.freelancer_profile-body,
 body.freelancer_withdraw-body,
 body.freelancer_remuneration_history-body,
-body.freelancer_view_resume-body {
+body.freelancer_view_resume-body,
+body.freelancer_browse_jobs-body,
+body.freelancer_browse_jobs_details-body,
+body.freelancer_browse_applied_jobs_details-body {
   background-size: cover;
   background: url('../images/background-transparent.jpg') no-repeat;
   width: 1900px;
@@ -24,7 +27,10 @@ body.freelancer_view_resume-body {
 .freelancer_profile-body h1,
 .freelancer_withdraw-body h1,
 .freelancer_remuneration_history-body h1,
-.freelancer_view_resume-body h1{
+.freelancer_view_resume-body h1,
+.freelancer_browse_jobs-body h1,
+.freelancer_browse_jobs_details-body h1,
+.freelancer_browse_applied_jobs_details-body h1{
   margin: 1rem 0rem 1rem 0rem;
   color: white;
   font: 700 2rem "Montserrat", sans-serif;
@@ -42,7 +48,9 @@ label.employer_write_job_description-form-label,
 .employer_check_applicant_qualification-body p,
 .freelancer_profile-body label, .freelancer_profile-body p,
 .freelancer_withdraw-body label,
-.freelancer_view_resume-body label {
+.freelancer_view_resume-body label,
+.freelancer_browse_jobs_details-body p,
+.freelancer_browse_applied_jobs_details-body p {
   color: white;
   font: 700 1rem "Montserrat", sans-serif;
 }
@@ -56,7 +64,10 @@ label.employer_write_job_description-form-label,
 .employer_applicants_list-div, .employer_check_applicant_qualification-div,
 .freelancer_profile-div, .freelancer_withdraw-div,
 .freelancer_remuneration_history-div,
-.freelancer_view_resume-div{
+.freelancer_view_resume-div,
+.freelancer_browse_jobs-div,
+.freelancer_browse_jobs_details-div,
+.freelancer_browse_applied_jobs_details-div{
   height: 100%;
   width: 100%;
 	text-align: center;
@@ -73,7 +84,10 @@ label.employer_write_job_description-form-label,
 .freelancer_profile-body button:hover,
 .freelancer_withdraw-body button:hover,
 .freelancer_remuneration_history-body button:hover,
-.freelancer_view_resume-body button:hover {
+.freelancer_view_resume-body button:hover,
+.freelancer_browse_jobs-body button:hover,
+.freelancer_browse_jobs_details-body button:hover,
+.freelancer_browse_applied_jobs_details-body button:hover {
 	background-color: transparent;
 	color: #14bf98;
 	text-decoration: none;
@@ -614,4 +628,19 @@ button.freelancer_withdraw-button {
 .freelancer_view_resume-body textarea:disabled,
 .freelancer_view_resume-form:disabled {
   background-color: #dddddd;
+}
+
+.freelancer_browse_jobs-body table {
+  width: 58rem;
+}
+
+.freelancer_browse_jobs-body button,
+.freelancer_browse_jobs_details-body button,
+.freelancer_browse_applied_jobs_details-body button {
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  border: 0.3rem solid #14bf98;
+  background-color: #14bf98;
+  color: white;
+  font: 700 1rem "Montserrat", sans-serif;
+  width: 8rem;
 }
