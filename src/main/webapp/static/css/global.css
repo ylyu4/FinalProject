@@ -578,8 +578,8 @@ button.freelancer_withdraw-button {
 .freelancer_view_resume-form-content {
   overflow-y: scroll;
   height: 48rem;
-  width: 30rem;
-  padding-left: 44rem;
+  width: 40rem;
+  padding-left: 39.5rem;
 }
 
 .freelancer_view_resume-body h2{
@@ -598,4 +598,20 @@ button.freelancer_withdraw-button {
   width: 15rem;
   height: 1.25rem;
   opacity: 0.8;
+}
+
+.freelancer_view_resume-body textarea {
+  width: 30rem;
+  height: 10rem;
+  margin: 1rem 0rem 1rem 0rem;
+  border: 0.15rem solid #14bf98;
+  background-color: white;
+  color: #14bf98;
+  font: 700 1rem "Montserrat", sans-serif;
+  opacity: 0.8;
+}
+
+.freelancer_view_resume-body textarea:disabled,
+.freelancer_view_resume-form:disabled {
+  background-color: #dddddd;
 }

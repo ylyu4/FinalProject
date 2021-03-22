@@ -9,4 +9,15 @@ function freelancerViewResumeEditEnable(){
   document.getElementById("freelancerEditEEDegree"). disabled = "";
   document.getElementById("freelancerEditEEMajor").disabled = "";
   document.getElementById("freelancerEditEEDescription").disabled = "";
+
+  document.getElementById("freelancerEditWEFrom"). disabled = "";
+  document.getElementById("freelancerEditWETo"). disabled = "";
+  document.getElementById("freelancerEditWESchool"). disabled = "";
+  document.getElementById("freelancerEditWEDegree"). disabled = "";
+  document.getElementById("freelancerEditWEMajor"). disabled = "";
+  document.getElementById("freelancerEditWEDescription"). disabled = "";
+
+  document.getElementById("freelancerEditLanguages"). disabled = "";
+  document.getElementById("freelancerEditSkills"). disabled = "";
+  document.getElementById("freelancerEditSelfReviews"). disabled = "";
 }
