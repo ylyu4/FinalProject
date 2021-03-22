@@ -7,35 +7,107 @@
    <link rel="stylesheet" href="../../static/css/global.css" />
    <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
-<body>
-  <!-- Big Title Freelancer Check Applicant Qualification-->
-
-  <form action="">
-    <h1>Education Experience</h1>
-    From:        <input id="freelancerEditEEFrom"        type="text" name="freelancerFrom"        disabled="disabled" value="">
-    to:          <input id="freelancerEditEETo"          type="text" name="freelancerTo"          disabled="disabled" value=""><br>
-    School:      <input id="freelancerEditEESchool"      type="text" name="freelancerSchool"      disabled="disabled" value=""><br>
-    Degree:      <input id="freelancerEditEEDegree"      type="text" name="freelancerDegree"      disabled="disabled" value=""><br>
-    Major:       <input id="freelancerEditEEMajor"       type="text" name="freelancerMajor"       disabled="disabled" value=""><br>
-    Description: <input id="freelancerEditEEDescription" type="text" name="freelancerDescription" disabled="disabled" value=""><br>
-    <h1>Work Experience</h1>
-    From:        <input id="freelancerEditWEFrom"        type="text" name="freelancerFrom"        disabled="disabled" value="">
-    to:          <input id="freelancerEditWETo"          type="text" name="freelancerTo"          disabled="disabled" value=""><br>
-    Company:     <input id="freelancerEditWESchool"      type="text" name="freelancerSchool"      disabled="disabled" value=""><br>
-    Department:  <input id="freelancerEditWEDegree"      type="text" name="freelancerDegree"      disabled="disabled" value=""><br>
-    Position:    <input id="freelancerEditWEMajor"       type="text" name="freelancerMajor"       disabled="disabled" value=""><br>
-    Description: <input id="freelancerEditWEDescription" type="text" name="freelancerDescription" disabled="disabled" value=""><br>
-    <h1>Languages & Skills</h1>
-    Languages:   <input id="freelancerEditLanguages"     type="text" name="freelancerLanguages"   disabled="disabled" value=""><br>
-    Skills:      <input id="freelancerEditSkills"        type="text" name="freelancerSkills"      disabled="disabled" value=""><br>
-    <h1>Self Reviews</h1>
-    <input id="freelancerEditSelfReviews" type="text" name="freelancerSelfReviews" disabled="disabled" value=""><br>
-    <button type="button" name="freelancer_view_resumeEdit"   onclick="freelancerViewResumeEditEnable()">Edit</button>
-    <input  type="submit" name="freelancer_view_resumeSave"   value="Save"><br>
-    <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('freelancer_profile.html')">Back</button>
-  </form>
-
-
-
+<body class="freelancer_view_resume-body">
+  <div class="freelancer_view_resume-div">
+    <h1>My Resume</h1>
+    <form action="">
+      <div class="freelancer_view_resume-form-content">
+        <h1>Education Experience</h1>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="from">From</label>
+        </div>
+        <div>
+          <input id="freelancerEditEEFrom" class="freelancer_view_resume-form" type="text" name="freelancerFrom" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="to">To</label>
+        </div>
+        <div>
+          <input id="freelancerEditEETo" class="freelancer_view_resume-form" type="text" name="freelancerTo" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="school">School</label>
+        </div>
+        <div>
+          <input id="freelancerEditEESchool" class="freelancer_view_resume-form" type="text" name="freelancerSchool" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="degree">Degree</label>
+        </div>
+        <div>
+          <input id="freelancerEditEEDegree" class="freelancer_view_resume-form" type="text" name="freelancerDegree" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="major">Major</label>
+        </div>
+        <div>
+          <input id="freelancerEditEEMajor" class="freelancer_view_resume-form" type="text" name="freelancerMajor" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="description">Description</label>
+        </div>
+        <div>
+          <textarea id="freelancerEditEEDescription" disabled="disabled" required></textarea>
+        </div>
+        <h1>Work Experience</h1>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="from">From</label>
+        </div>
+        <div>
+          <input id="freelancerEditWEFrom" class="freelancer_view_resume-form" type="text" name="freelancerFrom" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="to">To</label>
+        </div>
+        <div>
+          <input id="freelancerEditWETo" class="freelancer_view_resume-form" type="text" name="freelancerTo" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="company">Company</label>
+        </div>
+        <div>
+          <input id="freelancerEditWESchool" class="freelancer_view_resume-form" type="text" name="freelancerSchool" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="department">Department</label>
+        </div>
+        <div>
+          <input id="freelancerEditWEDegree" class="freelancer_view_resume-form" type="text" name="freelancerDegree" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="position">Position</label>
+        </div>
+        <div>
+          <input id="freelancerEditWEMajor" class="freelancer_view_resume-form" type="text" name="freelancerMajor" disabled="disabled" value="" required>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="description">Description</label>
+        </div>
+        <div>
+          <textarea id="freelancerEditWEDescription" disabled="disabled" required></textarea>
+        </div>
+        <h1>Languages & Skills</h1>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="languages">Languages</label>
+        </div>
+        <div>
+          <textarea id="freelancerEditLanguages" disabled="disabled" required></textarea>
+        </div>
+        <div>
+          <label class="freelancer_view_resume-form-label" for="skills">Skills</label>
+        </div>
+        <div>
+          <textarea id="freelancerEditSkills" disabled="disabled" required></textarea>
+        </div>
+        <h1>Self Reviews</h1>
+        <div>
+          <textarea id="freelancerEditSelfReviews" disabled="disabled" required></textarea>
+        </div>
+      </div>
+        <button type="button" name="freelancer_view_resumeEdit"   onclick="freelancerViewResumeEditEnable()">Edit</button>
+        <button type="button" name="freelancer_view_resumeSave"   onclick="">Save</button>
+        <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('freelancer_profile.html')">Back</button>
+      </form>
+    </div>
 </body>
 </html>
