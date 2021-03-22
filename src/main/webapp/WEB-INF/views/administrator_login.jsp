@@ -22,7 +22,7 @@
         <label class="administrator_login-form-label" for="account">Password</label>
       </div>
       <div>
-        <input type= "text" class="administrator_login-form" id="adminLoginPassword" name="password" required>
+        <input type= "password" class="administrator_login-form" id="adminLoginPassword" name="password" required>
       </div>
       <div class="administrator_login-form-submit">
         <button type="button" class="form-control-submit-button" value="login" onclick="login()">Login</button>

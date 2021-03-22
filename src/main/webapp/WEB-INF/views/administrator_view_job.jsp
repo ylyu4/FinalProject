@@ -9,6 +9,7 @@
 <body class="administrator_view_job-body">
   <h1>Review Job Description</h1>
   <div class="administrator_view_job-body">
+      <p id="reviewedJobId"></p>
     <p id="reviewedJobName"></p>
     <p id="reviewedJobCompany"></p>
     <p id="reviewedJobExperience"></p>
@@ -20,8 +21,8 @@
     <p id="reviewedJobCreatorId"></p>
   </div>
   <br>
-  <button type="button" name="administrator_view_jobApprove" onclick="buttonJump('administrator_profile.jsp')">Approve</button>
-  <button type="button" name="administrator_view_jobReject" onclick="buttonJump('administrator_profile.jsp')">Reject</button>
+  <button type="button" name="administrator_view_jobApprove" onclick="processNewJob('Approve')">Approve</button>
+  <button type="button" name="administrator_view_jobReject" onclick="processNewJob('Reject')">Reject</button>
 </body>
 <script type="text/javascript">
     window.onload = function () {
@@ -35,6 +36,8 @@
         request.setRequestHeader("Authorization", localStorage.getItem("token"));
         request.onload = function () {
             const data = JSON.parse(this.response);
+            const id = document.getElementById("reviewedJobId");
+            id.innerText = "Job Id: " + data.id;
             const name = document.getElementById("reviewedJobName");
             name.innerText = "Job Name: " + data.name;
             const company = document.getElementById("reviewedJobCompany");
@@ -55,6 +58,29 @@
             createdBy.innerText = "Creator ID: " + data.createdBy;
         }
         request.send();
+    }
+
+    function processNewJob(action) {
+        const request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:8080/admin/action/process/job', true);
+        request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+        request.setRequestHeader("Authorization", localStorage.getItem("token"));
+        request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === "Successfully") {
+                buttonJump("http://localhost:8080/page/admin/profile");
+            } else {
+                alert("System Error!")
+            }
+        }
+        request.send(JSON.stringify({
+            "id": localStorage.getItem("administratorViewJobId"),
+            "action": action
+        }));
+    }
+
+    function buttonJump(destination){
+        window.location.href=destination;
     }
 </script>
 </html>

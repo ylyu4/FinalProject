@@ -57,7 +57,10 @@ public class EmployerApplicationService {
     public Employer getEmployer(Long id) {
         Optional<Employer> optionalEmployer = employerRepository.findById(id);
         if (optionalEmployer.isPresent()) {
-            return optionalEmployer.get();
+            List<Job> jobList = jobRepository.findAllByCreatedBy(id);
+            Employer employer = optionalEmployer.get();
+            employer.setPostedJobs(jobList);
+            return employerRepository.save(employer);
         } else {
             throw new RuntimeException("Can not find user by this id: " + id);
         }

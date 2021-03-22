@@ -23,7 +23,7 @@
         <label class="employer_login-form-label" for="account">Password</label>
       </div>
       <div>
-        <input type= "text" class="employer_login-form" id="employerLoginPassword" name="password" required>
+        <input type= "password" class="employer_login-form" id="employerLoginPassword" name="password" required>
       </div>
       <div class="employer_login-form-submit">
         <button type="button" class="form-control-submit-button" onclick="login()">Login</button>

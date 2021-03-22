@@ -47,7 +47,7 @@ public class PageController {
         return "employer_profile";
     }
 
-    @RequestMapping("/page/employer/create/job")
+    @RequestMapping("/page/employer/create-job")
     public String goToEmployerCreateJobPage() {
         return "employer_write_job_description";
     }

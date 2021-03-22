@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AdminProcessJobCommand {
 
-    private Long id;
+    private String id;
 
     private String action;
 

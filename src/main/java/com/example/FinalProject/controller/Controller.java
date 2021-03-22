@@ -79,8 +79,10 @@ public class Controller {
     }
 
     @PostMapping("/admin/action/process/job")
-    public String processNewUnreleasedJob(AdminProcessJobCommand command) {
-        String result = administratorApplicationService.processNewUnreleasedJob(command.getId(), command.getAction());
+    public String processNewUnreleasedJob(@RequestBody AdminProcessJobCommand command, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        String result = administratorApplicationService.processNewUnreleasedJob(Long.parseLong(command.getId()), command.getAction(), id);
         return JSON.toJSONString(result);
     }
 
