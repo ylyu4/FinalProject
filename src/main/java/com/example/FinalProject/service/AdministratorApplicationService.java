@@ -123,13 +123,14 @@ public class AdministratorApplicationService {
     }
 
     @Transactional
-    public String processNewUnreleasedJob(Long jobId, String action) {
+    public String processNewUnreleasedJob(Long jobId, String action, Long adminId) {
         Optional<Job> optionalJob = jobRepository.findById(jobId);
 
         if (optionalJob.isPresent()) {
             Job job = optionalJob.get();
             if (action.equals("Approve")) {
                 job.setJobStatus(JobStatus.APPROVED);
+                job.setApprovedBy(adminId);
             } else {
                 job.setJobStatus(JobStatus.REJECTED);
             }

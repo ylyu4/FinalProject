@@ -62,7 +62,7 @@
     <div class="employer_profile-div-right">
       <h1>Job Posted</h1>
       <div>
-        <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob" onclick="buttonJump('http://localhost:8080/page/employer/create/job')">Post New Job</button>
+        <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob" onclick="buttonJump('http://localhost:8080/page/employer/create-job')">Post New Job</button>
       </div>
       <div>
         <button class="employer_profile-right-button-Application" type="button" name="employer_profileTableApplicants" onclick="buttonJump('employer_applicants_list.html?JobID=00000001')">Applicants</button>

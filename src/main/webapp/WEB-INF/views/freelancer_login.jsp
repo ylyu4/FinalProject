@@ -23,7 +23,7 @@
         <label class="freelancer_login-form-label" for="account">Password</label>
       </div>
       <div>
-        <input type= "text" class="freelancer_login-form" id="freelancerLoginPassword" name="password" required>
+        <input type= "password" class="freelancer_login-form" id="freelancerLoginPassword" name="password" required>
       </div>
       <div class="freelancer_login-form-submit">
         <button type="button" class="form-control-submit-button" onclick="login()">Login</button>
