@@ -166,6 +166,11 @@ table {
   height: 700px;
   border-bottom: none;
   overflow-y: scroll;
+  table-layout: fixed;
+}
+
+tr {
+    height: 4rem;
 }
 
 th {
@@ -178,8 +183,9 @@ td {
   padding: 1rem 0.5rem 1rem 0.5rem;
   font: 700 1rem "Montserrat", sans-serif;
   border-width: 0.15rem;
-  height: 3rem;
+  height: 100%;
   border-color: #14bf98;
+  overflow: hidden;
 }
 
 button.administrator_profile-top-button {

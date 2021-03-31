@@ -207,10 +207,10 @@
         console.log(td.innerHTML);
         localStorage.setItem("administratorViewJobId", td.innerHTML);
         buttonJump('http://localhost:8080/page/admin/view-job');
-      } else {
-        alert("Please select a job from the list!")
+        return;
       }
     }
+    alert("Please select a job from the list!");
   }
 
   function loadProfile() {
