@@ -57,13 +57,16 @@ public class EmployerApplicationService {
     public Employer getEmployer(Long id) {
         Optional<Employer> optionalEmployer = employerRepository.findById(id);
         if (optionalEmployer.isPresent()) {
-            List<Job> jobList = jobRepository.findAllByCreatedBy(id);
             Employer employer = optionalEmployer.get();
-            employer.setPostedJobs(jobList);
             return employerRepository.save(employer);
         } else {
             throw new RuntimeException("Can not find user by this id: " + id);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Job> getPostedJobs(Long id) {
+        return jobRepository.findAllByCreatedBy(id);
     }
 
 
@@ -91,14 +94,6 @@ public class EmployerApplicationService {
         if (optionalEmployer.isPresent()) {
             Job job = new Job(command, userId);
             jobRepository.save(job);
-            Employer employer = optionalEmployer.get();
-            List<Job> jobList = employer.getPostedJobs();
-            if (jobList == null) {
-               jobList = new ArrayList<>();
-            }
-            jobList.add(job);
-            employer.setPostedJobs(jobList);
-            employerRepository.save(employer);
             return "Created";
         } else {
             throw new RuntimeException("Can not find user by this id: " + userId);

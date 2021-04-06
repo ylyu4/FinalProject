@@ -40,9 +40,6 @@ public class Administrator {
 
     private String email;
 
-    @Type(type = "jsonb")
-    private List<Job> reviewedJobs;
-
     private LocalDateTime accountCreateTime;
 
     private Long accountId;

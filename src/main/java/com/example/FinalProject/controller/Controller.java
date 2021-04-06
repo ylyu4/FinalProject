@@ -107,6 +107,14 @@ public class Controller {
         return JSON.toJSONString(employer);
     }
 
+    @GetMapping("/employer/action/posted-jobs")
+    public String employerPostedJobs(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        List<Job> jobList = employerApplicationService.getPostedJobs(id);
+        return JSON.toJSONString(jobList);
+    }
+
     @PostMapping("/employer/action/update/profile")
     public String updateEmployerProfile(@RequestBody EmployerProfileCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");

@@ -89,17 +89,16 @@
 
   window.onload = function () {
     loadProfile();
+    loadPostedJobs();
   }
 
-  function loadProfile() {
+  function loadPostedJobs() {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/profile', true);
+    request.open('GET', 'http://localhost:8080/employer/action/posted-jobs', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
-      const data = JSON.parse(this.response);
-      document.getElementById("employerAccountBalance").innerText = "Account Balance: " + data.accountBalance + " USD";
-      const jobList = data.postedJobs;
+      const jobList = JSON.parse(this.response);
       const listTable = document.getElementById("createdJobs");
       if (jobList != null) {
         for (let i = 0; i < jobList.length; i++) {
@@ -112,6 +111,18 @@
                   + " <td>" + jobList[i].jobStatus + "</td></tr> ");
         }
       }
+    }
+    request.send(null);
+  }
+
+  function loadProfile() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/employer/action/profile', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      document.getElementById("employerAccountBalance").innerText = "Account Balance: " + data.accountBalance + " USD";
       if (data.name != null) {
         document.getElementById("employerEditName").value = data.name;
       } else {

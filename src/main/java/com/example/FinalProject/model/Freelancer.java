@@ -46,9 +46,6 @@ public class Freelancer {
 
     private String card;
 
-    @Type(type = "jsonb")
-    private List<Job> appliedJobs;
-
     private Long accountBalance;
 
     private Double rate;

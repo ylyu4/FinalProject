@@ -45,9 +45,6 @@ public  class Employer {
 
     private String type;
 
-    @Convert(converter = JpaConverterListJson.class)
-    private List<Job> postedJobs;
-
     private Long accountBalance;
 
     private Double rate;
