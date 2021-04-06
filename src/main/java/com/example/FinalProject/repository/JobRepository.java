@@ -13,4 +13,6 @@ public interface JobRepository extends CrudRepository<Job, Long> {
     List<Job> findAllByCreatedBy(Long userId);
 
     List<Job> findAllByJobStatus(JobStatus status);
+
+    List<Job> findAllByFreelancerId(Long id);
 }

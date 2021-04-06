@@ -174,4 +174,18 @@ public class Controller {
         Resume resume = freelancerApplicationService.updateResume(id, command);
         return JSON.toJSONString(resume);
     }
+
+    @GetMapping("/freelancer/action/get/applied-jobs")
+    public String freelancerGetAppliedJobs(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        List<Job> jobList = freelancerApplicationService.getAppliedJobs(id);
+        return JSON.toJSONString(jobList);
+    }
+
+    @GetMapping("/freelancer/action/get/available-jobs")
+    public String freelancerGetAvailableJobs() {
+        List<Job> jobList = freelancerApplicationService.getAvailableJobs();
+        return JSON.toJSONString(jobList);
+    }
 }

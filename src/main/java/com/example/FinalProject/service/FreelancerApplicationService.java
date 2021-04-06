@@ -3,8 +3,11 @@ package com.example.FinalProject.service;
 import com.example.FinalProject.command.FreelancerProfileCommand;
 import com.example.FinalProject.command.FreelancerResumeCommand;
 import com.example.FinalProject.model.Freelancer;
+import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.JobStatus;
 import com.example.FinalProject.model.Resume;
 import com.example.FinalProject.repository.FreelancerRepository;
+import com.example.FinalProject.repository.JobRepository;
 import com.example.FinalProject.repository.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -23,6 +27,8 @@ public class FreelancerApplicationService {
     private final FreelancerRepository freelancerRepository;
 
     private final ResumeRepository resumeRepository;
+
+    private final JobRepository jobRepository;
 
     private final RedisService redisService;
 
@@ -113,5 +119,13 @@ public class FreelancerApplicationService {
         }
 
         return resume;
+    }
+
+    public List<Job> getAppliedJobs(Long id) {
+        return jobRepository.findAllByFreelancerId(id);
+    }
+
+    public List<Job> getAvailableJobs() {
+        return jobRepository.findAllByJobStatus(JobStatus.APPROVED);
     }
 }

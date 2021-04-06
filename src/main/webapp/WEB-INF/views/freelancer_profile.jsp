@@ -76,7 +76,7 @@
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="freelancerProfileStartWork('00000001')">Start Work</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableComplete" onclick="freelancerProfileCompleteWork('00000001')">Complete Work</button>
       </div>
-      <table border="0" cellspacing="0" frame=below rules=rows>
+      <table border="0" cellspacing="0" frame=below rules=rows id="appliedJobs">
         <tr>
           <th></th>
           <th>Job ID</th>
@@ -85,97 +85,7 @@
           <th>Location</th>
           <th>Salary</th>
           <th>Status</th>
-          <th>Prepay</th>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001" checked></td>
-          <td>00000001</td>
-          <td>Babysitter</td>
-          <td>1 year experience</td>
-          <td>DC</td>
-          <td>5000</td>
-          <td>Reviewing Resume</td>
-          <td>Unpaid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
-        </tr>
-        <tr>
-          <td><input id="radio" type="radio" name="job" value="00000001"></td>
-          <td>00000002</td>
-          <td>Piano Teacher</td>
-          <td>5 year experience</td>
-          <td>MI</td>
-          <td>25000</td>
-          <td>Completed</td>
-          <td>Paid</td>
+          <th>Paid</th>
         </tr>
       </table>
     </div>
@@ -186,6 +96,35 @@
 
   window.onload = function () {
     loadProfile();
+    loadAppliedJobs();
+  }
+
+  function loadAppliedJobs() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/freelancer/action/get/applied-jobs', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const jobList = JSON.parse(this.response);
+      const listTable = document.getElementById("createdJobs");
+      if (jobList != null) {
+        for (let i = 0; i < jobList.length; i++) {
+          let paidFlag = 'No';
+          if (jobList[i].paid === true) {
+            paidFlag = 'Yes';
+          }
+          listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob'></td>"
+                  + " <td>" + jobList[i].id + "</td>"
+                  + " <td>" + jobList[i].name + "</td>"
+                  + " <td>" + jobList[i].experience + "</td>"
+                  + " <td>" + jobList[i].location + "</td>"
+                  + " <td>" + jobList[i].salary + "</td>"
+                  + " <td>" + jobList[i].jobStatus + "</td>"
+                  + " <td>" + paidFlag + "</td></tr> ");
+        }
+      }
+    }
+    request.send(null);
   }
 
   function loadProfile() {
