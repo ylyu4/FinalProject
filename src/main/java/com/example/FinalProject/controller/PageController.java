@@ -66,4 +66,9 @@ public class PageController {
     public String goToFreelancerProfilePage() {
         return "freelancer_profile";
     }
+
+    @RequestMapping("/page/freelancer/view-resume")
+    public String goToFreelancerResumePage() {
+        return "freelancer_view_resume";
+    }
 }

@@ -7,6 +7,7 @@ import com.example.FinalProject.model.Administrator;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.Resume;
 import com.example.FinalProject.service.AdministratorApplicationService;
 import com.example.FinalProject.service.EmployerApplicationService;
 import com.example.FinalProject.service.FreelancerApplicationService;
@@ -149,5 +150,20 @@ public class Controller {
         Long id = (Long) redisService.get(token);
         Freelancer freelancer = freelancerApplicationService.updateFreelancerProfile(id, command);
         return JSON.toJSONString(freelancer);
+    }
+
+    @GetMapping("/freelancer/action/get/resume")
+    public Resume getFreelancerResume(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return freelancerApplicationService.getFreelancerResumeByFreelancerId(id);
+    }
+
+    @PostMapping("/freelancer/action/update/resume")
+    public String updateFreelancerResume(@RequestBody FreelancerResumeCommand command, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        Resume resume = freelancerApplicationService.updateResume(id, command);
+        return JSON.toJSONString(resume);
     }
 }

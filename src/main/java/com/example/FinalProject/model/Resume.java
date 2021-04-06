@@ -1,6 +1,8 @@
 package com.example.FinalProject.model;
 
 
+import com.example.FinalProject.command.FreelancerResumeCommand;
+import com.example.FinalProject.utils.IdGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -57,4 +59,25 @@ public class Resume {
     private String selfReviews;
 
     private LocalDateTime lastUpdateTime;
+
+    public Resume(FreelancerResumeCommand command, Long id) {
+        this.id = IdGenerator.generateId();
+        this.freelancerId = id;
+        this.educationStartTime = command.getEducationStartTime();
+        this.educationEndTime = command.getEducationEndTime();
+        this.school = command.getSchool();
+        this.degree = command.getDegree();
+        this.major = command.getMajor();
+        this.educationDescription = command.getEducationDescription();
+        this.workExperienceStartTime = command.getWorkExperienceStartTime();
+        this.workExperienceEndTime = command.getWorkExperienceEndTime();
+        this.company = command.getCompany();
+        this.department = command.getDepartment();
+        this.position = command.getPosition();
+        this.workExperienceDescription = command.getWorkExperienceDescription();
+        this.language = command.getLanguage();
+        this.skill = command.getSkill();
+        this.selfReviews = command.getSelfReviews();
+        this.lastUpdateTime = LocalDateTime.now();
+    }
 }
