@@ -31,7 +31,7 @@
 
     function loadReviewedJobDetail() {
         const request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:8080/admin/action/get/job/detail?jobId='+localStorage.getItem("administratorViewJobId"), true);
+        request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId='+localStorage.getItem("administratorViewJobId"), true);
         request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
         request.setRequestHeader("Authorization", localStorage.getItem("token"));
         request.onload = function () {

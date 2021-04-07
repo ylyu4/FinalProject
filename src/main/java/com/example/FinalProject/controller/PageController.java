@@ -71,4 +71,14 @@ public class PageController {
     public String goToFreelancerResumePage() {
         return "freelancer_view_resume";
     }
+
+    @RequestMapping("/page/freelancer/browse-jobs")
+    public String goToFreelancerBrowseJobPage() {
+        return "freelancer_browse_jobs";
+    }
+
+    @RequestMapping("/page/freelancer/browse-job-details")
+    public String goToFreelancerBrowseJobDetailPage() {
+        return "freelancer_browse_jobs_details";
+    }
 }

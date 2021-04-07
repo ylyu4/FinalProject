@@ -17,7 +17,11 @@ public class AuthConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 //        String[] excludePathPatterns = {"/admin/signup", "/admin/login", "/page/**"};
-        registry.addInterceptor(initAuthInterceptor()).addPathPatterns("/admin/action/**");
+        registry.addInterceptor(initAuthInterceptor())
+                .addPathPatterns("/admin/action/**")
+                .addPathPatterns("/employer/action/**")
+                .addPathPatterns("/freelancer/action/**")
+                .addPathPatterns("/user/action/**");
     }
 
 }

@@ -112,16 +112,6 @@ public class AdministratorApplicationService {
         return jobRepository.findAllByJobStatus(JobStatus.CREATED);
     }
 
-    @Transactional(readOnly = true)
-    public Job getReviewedJobDetailById(Long id) {
-        Optional<Job> optionalJob = jobRepository.findById(id);
-        if (optionalJob.isPresent()) {
-            return optionalJob.get();
-        } else {
-            throw new RuntimeException("Can not find job by this id: " + id);
-        }
-    }
-
     @Transactional
     public String processNewUnreleasedJob(Long jobId, String action, Long adminId) {
         Optional<Job> optionalJob = jobRepository.findById(jobId);

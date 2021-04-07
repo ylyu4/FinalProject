@@ -52,7 +52,7 @@
             </tr>
           </thead>
         </table>
-        <button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="viewJobs()">View</button>
+        <button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView" onclick="viewNewJob()">View</button>
       </div>
   </div>
   <div class="administrator_profile-div-right">
@@ -198,7 +198,7 @@
     request.send(null);
   }
 
-  function viewJobs() {
+  function viewNewJob() {
     const radios = document.getElementsByName("newJob");
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {

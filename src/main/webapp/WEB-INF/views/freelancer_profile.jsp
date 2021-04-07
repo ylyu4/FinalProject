@@ -69,7 +69,7 @@
     </div>
     <div class="freelancer_profile-div-right">
       <h1>Job Applied</h1>
-      <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('freelancer_browse_jobs.html')">Browse Jobs</button>
+      <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Browse Jobs</button>
       <div>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="buttonJump('freelancer_browse_applied_jobs_details.html')">Details</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDelete"   onclick="freelancerProfileDelete('00000001')">Delete</button>
@@ -113,7 +113,7 @@
           if (jobList[i].paid === true) {
             paidFlag = 'Yes';
           }
-          listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob'></td>"
+          listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='appliedJob'></td>"
                   + " <td>" + jobList[i].id + "</td>"
                   + " <td>" + jobList[i].name + "</td>"
                   + " <td>" + jobList[i].experience + "</td>"

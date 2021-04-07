@@ -12,6 +12,7 @@ import com.example.FinalProject.service.AdministratorApplicationService;
 import com.example.FinalProject.service.EmployerApplicationService;
 import com.example.FinalProject.service.FreelancerApplicationService;
 import com.example.FinalProject.service.RedisService;
+import com.example.FinalProject.service.UserApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,8 @@ public class Controller {
     private final EmployerApplicationService employerApplicationService;
 
     private final FreelancerApplicationService freelancerApplicationService;
+
+    private final UserApplicationService userApplicationService;
 
     private final RedisService redisService;
 
@@ -73,10 +76,10 @@ public class Controller {
         return JSON.toJSONString(jobList);
     }
 
-    @GetMapping("/admin/action/get/job/detail")
+    @GetMapping("/user/action/get/job/detail")
     public String getReviewedJobDetail(String jobId) {
         Long parsedJobId = Long.valueOf(jobId);
-        return JSON.toJSONString(administratorApplicationService.getReviewedJobDetailById(parsedJobId));
+        return JSON.toJSONString(userApplicationService.getReviewedJobDetailById(parsedJobId));
     }
 
     @PostMapping("/admin/action/process/job")
