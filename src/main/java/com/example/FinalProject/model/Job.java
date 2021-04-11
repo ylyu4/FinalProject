@@ -15,6 +15,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -44,7 +45,7 @@ public class Job {
 
     private String contact;
 
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
     private String jobDescription;
 
@@ -63,7 +64,7 @@ public class Job {
 
     private LocalDateTime lastUpdateTime;
 
-    public Job(EmployerCreateJobCommand command, Long userId) throws ParseException {
+    public Job(EmployerCreateJobCommand command, Long userId) {
         this.id = IdGenerator.generateId();
         this.name = command.getName();
         this.company = command.getCompany();
@@ -72,9 +73,7 @@ public class Job {
         this.field = command.getField();
         this.salary = command.getSalary();
         this.contact = command.getContact();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsed = format.parse(command.getDeadline());
-        this.deadline = parsed.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        this.deadline = command.getDeadline();
         this.jobDescription = command.getDescription();
         this.jobStatus = JobStatus.CREATED;
         this.createdBy = userId;

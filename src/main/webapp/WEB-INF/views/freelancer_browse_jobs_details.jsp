@@ -18,7 +18,7 @@
   <p id="availableJobDetailSalary"></p>
   <p id="availableJobDetailContact"></p>
   <p id="availableJobDetailDescription"></p>
-  <button type="button" name="freelancer_browse_jobs_detailsApply" onclick="freelancerApplyJob('0000001')">Apply</button>
+  <button type="button" name="freelancer_browse_jobs_detailsApply" onclick="applyJob()">Apply</button>
   <button type="button" name="freelancer_browse_jobs_detailsBack"  onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Back</button>
   </div>
 </body>
@@ -52,6 +52,24 @@
       contact.innerText = "Contact: " + data.contact;
       const jobDescription = document.getElementById("availableJobDetailDescription");
       jobDescription.innerText = "Job Description: " + data.jobDescription;
+    }
+    request.send();
+  }
+
+  function applyJob() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/freelancer/action/apply/job?jobId='+localStorage.getItem("freelancerViewAvailableJobId"), true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      if (data === 'successfully') {
+        alert("Apply job successfully!");
+      } else if (data === 'existed') {
+        alert("You have applied this job at before");
+      } else {
+        alert("System Error");
+      }
     }
     request.send();
   }

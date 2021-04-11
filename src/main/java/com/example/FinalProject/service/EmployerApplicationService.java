@@ -89,7 +89,7 @@ public class EmployerApplicationService {
     }
 
     @Transactional
-    public String createJob(EmployerCreateJobCommand command, Long userId) throws ParseException {
+    public String createJob(EmployerCreateJobCommand command, Long userId) {
         Optional<Employer> optionalEmployer = employerRepository.findById(userId);
         if (optionalEmployer.isPresent()) {
             Job job = new Job(command, userId);

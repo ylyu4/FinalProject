@@ -16,13 +16,13 @@
           <label class="freelancer_view_resume-form-label" for="from">From</label>
         </div>
         <div>
-          <input id="freelancerEditEEFrom" class="freelancer_view_resume-form" type="text" name="freelancerFrom" disabled="disabled" value="" required>
+          <input id="freelancerEditEEFrom" class="freelancer_view_resume-form" type="date" name="freelancerFrom" disabled="disabled" value="" required>
         </div>
         <div>
           <label class="freelancer_view_resume-form-label" for="to">To</label>
         </div>
         <div>
-          <input id="freelancerEditEETo" class="freelancer_view_resume-form" type="text" name="freelancerTo" disabled="disabled" value="" required>
+          <input id="freelancerEditEETo" class="freelancer_view_resume-form" type="date" name="freelancerTo" disabled="disabled" value="" required>
         </div>
         <div>
           <label class="freelancer_view_resume-form-label" for="school">School</label>
@@ -53,13 +53,13 @@
           <label class="freelancer_view_resume-form-label" for="from">From</label>
         </div>
         <div>
-          <input id="freelancerEditWEFrom" class="freelancer_view_resume-form" type="text" name="freelancerFrom" disabled="disabled" value="" required>
+          <input id="freelancerEditWEFrom" class="freelancer_view_resume-form" type="date" name="freelancerFrom" disabled="disabled" value="" required>
         </div>
         <div>
           <label class="freelancer_view_resume-form-label" for="to">To</label>
         </div>
         <div>
-          <input id="freelancerEditWETo" class="freelancer_view_resume-form" type="text" name="freelancerTo" disabled="disabled" value="" required>
+          <input id="freelancerEditWETo" class="freelancer_view_resume-form" type="date" name="freelancerTo" disabled="disabled" value="" required>
         </div>
         <div>
           <label class="freelancer_view_resume-form-label" for="company">Company</label>
@@ -98,15 +98,17 @@
           <textarea id="freelancerEditSelfReviews" disabled="disabled" required></textarea>
         </div>
       </div>
-        <button type="button" name="freelancer_view_resumeEdit"   onclick="freelancerViewResumeEditEnable()">Edit</button>
-        <button type="button" name="freelancer_view_resumeSave"   onclick="">Save</button>
-        <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('freelancer_profile.jsp')">Back</button>
+        <button type="button" name="freelancer_view_resumeEdit"  onclick="freelancerResumeEditEnable()">Edit</button>
+        <button type="button" name="freelancer_view_resumeSave"  onclick="updateFreelancerResume()">Save</button>
+        <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back</button>
       </form>
     </div>
 </body>
 
 <script type="text/javascript">
-  window.load = function () {
+
+
+  window.onload = function () {
     loadResume();
   }
 
@@ -207,20 +209,21 @@
         document.getElementById("freelancerEditSelfReviews").value = '';
       }
     }
+    request.send();
   }
 
-  function freelancerResumeEditEnable(){
-    document.getElementById("freelancerEditEEFrom"). disabled = "";
+  function freelancerResumeEditEnable() {
+    document.getElementById("freelancerEditEEFrom").disabled = "";
     document.getElementById("freelancerEditEETo").disabled = "";
     document.getElementById("freelancerEditEESchool").disabled = "";
-    document.getElementById("freelancerEditEEDegree"). disabled = "";
+    document.getElementById("freelancerEditEEDegree").disabled = "";
     document.getElementById("freelancerEditEEMajor").disabled = "";
     document.getElementById("freelancerEditEEDescription").disabled = "";
     document.getElementById("freelancerEditWEFrom").disabled = "";
-    document.getElementById("freelancerEditWETo"). disabled = "";
+    document.getElementById("freelancerEditWETo").disabled = "";
     document.getElementById("freelancerEditWECompany").disabled = "";
     document.getElementById("freelancerEditWEDepartment").disabled = "";
-    document.getElementById("freelancerEditWEPosition"). disabled = "";
+    document.getElementById("freelancerEditWEPosition").disabled = "";
     document.getElementById("freelancerEditWEDescription").disabled = "";
     document.getElementById("freelancerEditLanguage").disabled = "";
     document.getElementById("freelancerEditSkill").disabled = "";
@@ -300,5 +303,10 @@
     }))
 
   }
+
+  function buttonJump(destination){
+    window.location.href=destination;
+  }
+
 </script>
 </html>

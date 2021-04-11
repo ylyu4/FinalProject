@@ -1,6 +1,7 @@
 package com.example.FinalProject.model;
 
 
+import com.example.FinalProject.utils.IdGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,4 +35,14 @@ public class Application {
     private LocalDateTime createTime;
 
     private LocalDateTime lastUpdateTime;
+
+    public Application(Long userId, Long jobId) {
+        this.id = IdGenerator.generateId();
+        this.jobId = jobId;
+        this.freelancerId = userId;
+        this.applicationStatus = ApplicationStatus.WAITED;
+        LocalDateTime now = LocalDateTime.now();
+        this.createTime = now;
+        this.lastUpdateTime = now;
+    }
 }

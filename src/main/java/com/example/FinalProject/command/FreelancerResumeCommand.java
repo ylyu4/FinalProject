@@ -1,5 +1,6 @@
 package com.example.FinalProject.command;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class FreelancerResumeCommand {
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate educationStartTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate educationEndTime;
 
     private String school;
@@ -25,8 +28,10 @@ public class FreelancerResumeCommand {
 
     private String educationDescription;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate workExperienceStartTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate workExperienceEndTime;
 
     private String company;

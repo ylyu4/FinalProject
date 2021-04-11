@@ -15,10 +15,10 @@
         <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('freelancer_withdraw.html')">Withdraw</button>
       </div>
       <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('freelancer_remuneration_history.html')">Remuneration History</button>
+        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('')">Remuneration History</button>
       </div>
       <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profileViewResume" onclick="buttonJump('freelancer_view_resume.html')">View Resume</button>
+        <button class="freelancer_profile-top-button" type="button" name="freelancer_profileViewResume" onclick="buttonJump('http://localhost:8080/page/freelancer/view-resume')">View Resume</button>
       </div>
       <form action="">
         <div>
@@ -182,10 +182,10 @@
   }
 
   function freelancerProfileEditEnable(){
-    document.getElementById("freelancerEditName"). disabled = "";
+    document.getElementById("freelancerEditName").disabled = "";
     document.getElementById("freelancerEditAge").disabled = "";
     document.getElementById("freelancerEditLocation").disabled = "";
-    document.getElementById("freelancerEditPhone"). disabled = "";
+    document.getElementById("freelancerEditPhone").disabled = "";
     document.getElementById("freelancerEditEmail").disabled = "";
     document.getElementById("freelancerEditSchool").disabled = "";
     document.getElementById("freelancerEditCard").disabled = "";

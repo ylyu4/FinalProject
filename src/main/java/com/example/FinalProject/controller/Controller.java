@@ -127,7 +127,7 @@ public class Controller {
     }
 
     @PostMapping("/employer/action/create/job")
-    public String createJob(@RequestBody EmployerCreateJobCommand command, HttpServletRequest request) throws ParseException {
+    public String createJob(@RequestBody EmployerCreateJobCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         String response = employerApplicationService.createJob(command, id);
@@ -164,10 +164,10 @@ public class Controller {
     }
 
     @GetMapping("/freelancer/action/get/resume")
-    public Resume getFreelancerResume(HttpServletRequest request) {
+    public String getFreelancerResume(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
-        return freelancerApplicationService.getFreelancerResumeByFreelancerId(id);
+        return JSON.toJSONString(freelancerApplicationService.getFreelancerResumeByFreelancerId(id));
     }
 
     @PostMapping("/freelancer/action/update/resume")
@@ -190,5 +190,12 @@ public class Controller {
     public String freelancerGetAvailableJobs() {
         List<Job> jobList = freelancerApplicationService.getAvailableJobs();
         return JSON.toJSONString(jobList);
+    }
+
+    @GetMapping("/freelancer/action/apply/job")
+    public String freelancerApplyJob(HttpServletRequest request, Long jobId) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(freelancerApplicationService.applyJob(id, jobId));
     }
 }

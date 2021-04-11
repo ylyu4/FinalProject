@@ -23,7 +23,7 @@
       </table>
       <button type="button" name="freelancer_browse_jobsDetails" onclick="viewAvailableJob()">Details</button>
     </div>
-    <button type="button" name="freelancer_browse_jobsBack" onclick="buttonJump('freelancer_profile.html')">Back</button>
+    <button type="button" name="freelancer_browse_jobsBack" onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back</button>
   </div>
 </body>
 

@@ -2,10 +2,12 @@ package com.example.FinalProject.service;
 
 import com.example.FinalProject.command.FreelancerProfileCommand;
 import com.example.FinalProject.command.FreelancerResumeCommand;
+import com.example.FinalProject.model.Application;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
 import com.example.FinalProject.model.JobStatus;
 import com.example.FinalProject.model.Resume;
+import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
 import com.example.FinalProject.repository.ResumeRepository;
@@ -14,7 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,6 +35,8 @@ public class FreelancerApplicationService {
     private final ResumeRepository resumeRepository;
 
     private final JobRepository jobRepository;
+
+    private final ApplicationRepository applicationRepository;
 
     private final RedisService redisService;
 
@@ -98,7 +106,7 @@ public class FreelancerApplicationService {
         Resume resume;
         if (optionalResume.isPresent()) {
             resume = optionalResume.get();
-            resume.setEducationStartTime(command.getEducationStartTime());
+            resume.setEducationStartTime(command.getEducationEndTime());
             resume.setEducationEndTime(command.getEducationEndTime());
             resume.setSchool(command.getSchool());
             resume.setDegree(command.getDegree());
@@ -117,15 +125,27 @@ public class FreelancerApplicationService {
         } else {
             resume = new Resume(command, id);
         }
-
-        return resume;
+        return resumeRepository.save(resume);
     }
 
+    @Transactional(readOnly = true)
     public List<Job> getAppliedJobs(Long id) {
         return jobRepository.findAllByFreelancerId(id);
     }
 
+    @Transactional(readOnly = true)
     public List<Job> getAvailableJobs() {
         return jobRepository.findAllByJobStatus(JobStatus.APPROVED);
+    }
+
+    @Transactional
+    public String applyJob(Long userId, Long jobId) {
+        Optional<Application> optionalApplication = applicationRepository.findByFreelancerIdAndAndJobId(userId, jobId);
+        if (optionalApplication.isPresent()) {
+            return "existed";
+        }
+        Application application = new Application(userId, jobId);
+        applicationRepository.save(application);
+        return "successfully";
     }
 }
