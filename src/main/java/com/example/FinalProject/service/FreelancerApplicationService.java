@@ -11,6 +11,7 @@ import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
 import com.example.FinalProject.repository.ResumeRepository;
+import com.example.FinalProject.response.FreelancerAppliedJobListResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -129,8 +132,18 @@ public class FreelancerApplicationService {
     }
 
     @Transactional(readOnly = true)
-    public List<Job> getAppliedJobs(Long id) {
-        return jobRepository.findAllByFreelancerId(id);
+    public List<FreelancerAppliedJobListResponse> getAppliedJobs(Long id) {
+        List<Application> applicationList = applicationRepository.findAllByFreelancerId(id);
+        List<Long> jobIds = applicationList.stream().map(Application::getJobId).collect(Collectors.toList());
+        List<FreelancerAppliedJobListResponse> responses = new ArrayList<>();
+        jobIds.forEach(jobId -> {
+            Optional<Job> optionalJob = jobRepository.findById(jobId);
+            Optional<Application> optionalApplication = applicationRepository.findByJobId(jobId);
+            if (optionalApplication.isPresent() && optionalJob.isPresent()) {
+                responses.add(new FreelancerAppliedJobListResponse(optionalApplication.get(), optionalJob.get()));
+            }
+        });
+        return responses;
     }
 
     @Transactional(readOnly = true)

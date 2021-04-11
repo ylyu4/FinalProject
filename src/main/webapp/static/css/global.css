@@ -543,6 +543,15 @@ button.freelancer_profile-right-button {
   width: 10rem;
 }
 
+button.freelancer_profile-bottom-button-completeWork {
+    margin: 1rem 0.7rem 1rem 0.7rem;
+    border: 0.3rem solid #14bf98;
+    background-color: #14bf98;
+    color: white;
+    font: 700 1rem "Montserrat", sans-serif;
+    width: 45rem;
+}
+
 button.freelancer_profile-top-button-browseJobs {
   margin: 1rem 0.7rem 1rem 0.7rem;
   border: 0.3rem solid #14bf98;

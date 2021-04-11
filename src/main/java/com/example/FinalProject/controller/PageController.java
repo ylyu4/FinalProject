@@ -52,6 +52,11 @@ public class PageController {
         return "employer_write_job_description";
     }
 
+    @RequestMapping("/page/employer/check-applicants-list")
+    public String goToEmployerApplicantsListPage() {
+        return "employer_applicants_list";
+    }
+
     @RequestMapping("/page/freelancer/login")
     public String goToFreelancerLoginPage() {
         return "freelancer_login";

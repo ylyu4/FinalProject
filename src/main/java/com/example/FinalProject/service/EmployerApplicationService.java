@@ -1,9 +1,12 @@
 package com.example.FinalProject.service;
 
+
 import com.example.FinalProject.command.EmployerCreateJobCommand;
 import com.example.FinalProject.command.EmployerProfileCommand;
+import com.example.FinalProject.model.Application;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Job;
+import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.EmployerRepository;
 import com.example.FinalProject.repository.JobRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,6 +26,8 @@ public class EmployerApplicationService {
     private final EmployerRepository employerRepository;
 
     private final JobRepository jobRepository;
+
+    private final ApplicationRepository applicationRepository;
 
     private final RedisService redisService;
 
@@ -98,5 +101,10 @@ public class EmployerApplicationService {
         } else {
             throw new RuntimeException("Can not find user by this id: " + userId);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Application> checkApplicantsList(Long jobId) {
+        return applicationRepository.findAllByJobId(jobId);
     }
 }

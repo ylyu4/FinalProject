@@ -8,6 +8,7 @@ import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
 import com.example.FinalProject.model.Resume;
+import com.example.FinalProject.response.FreelancerAppliedJobListResponse;
 import com.example.FinalProject.service.AdministratorApplicationService;
 import com.example.FinalProject.service.EmployerApplicationService;
 import com.example.FinalProject.service.FreelancerApplicationService;
@@ -134,6 +135,11 @@ public class Controller {
         return JSON.toJSONString(response);
     }
 
+    @GetMapping("/employer/action/check/job/applicants")
+    public String checkJobApplicants(Long jobId) {
+        return JSON.toJSONString(employerApplicationService.checkApplicantsList(jobId));
+    }
+
     @PostMapping("/freelancer/signup")
     public String freelancerRegister(@RequestBody FreelancerSignUpCommand command) {
         String response = freelancerApplicationService.freelancerRegister(command.getUsername(), command.getPassword());
@@ -182,7 +188,7 @@ public class Controller {
     public String freelancerGetAppliedJobs(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
-        List<Job> jobList = freelancerApplicationService.getAppliedJobs(id);
+        List<FreelancerAppliedJobListResponse> jobList = freelancerApplicationService.getAppliedJobs(id);
         return JSON.toJSONString(jobList);
     }
 

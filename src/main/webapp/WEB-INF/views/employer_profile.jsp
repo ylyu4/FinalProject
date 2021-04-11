@@ -65,7 +65,7 @@
         <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob" onclick="buttonJump('http://localhost:8080/page/employer/create-job')">Post New Job</button>
       </div>
       <div>
-        <button class="employer_profile-right-button-Application" type="button" name="employer_profileTableApplicants" onclick="buttonJump('employer_applicants_list.html?JobID=00000001')">Applicants</button>
+        <button class="employer_profile-right-button-Application" type="button" name="employer_profileTableApplicants" onclick="checkApplicants()">Applicants</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableDetails"    onclick="buttonJump('employer_view_posted_job_details.html?JobID=00000001')">Details</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTablePrepay"     onclick="employerPrepay('00000001')">Prepay</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableDelete"     onclick="employerProfileDelete('00000001')">Delete</button>
@@ -102,7 +102,7 @@
       const listTable = document.getElementById("createdJobs");
       if (jobList != null) {
         for (let i = 0; i < jobList.length; i++) {
-          listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob'></td>"
+          listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='postedJob'></td>"
                   + " <td>" + jobList[i].id + "</td>"
                   + " <td>" + jobList[i].name + "</td>"
                   + " <td>" + jobList[i].experience + "</td>"
@@ -210,6 +210,21 @@
       "email": email,
       "description": description
     }))
+  }
+
+  function checkApplicants() {
+    const radios = document.getElementsByName("postedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i+1];
+        const td = tr.getElementsByTagName("td")[1];
+        console.log(td.innerHTML);
+        localStorage.setItem("employerViewJobId", td.innerHTML);
+        buttonJump('http://localhost:8080/page/employer/check-applicants-list');
+        return;
+      }
+    }
+    alert("Please select a job from the list!");
   }
 
   function buttonJump(destination){
