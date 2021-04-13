@@ -159,33 +159,27 @@ body.freelancer_login-body, body.freelancer_sign_up-body {
 }
 
 table {
-  color: white;
-  margin: 0 auto;
-  border-color: #14bf98;
-  display: block;
-  height: 700px;
-  border-bottom: none;
-  overflow-y: scroll;
-  table-layout: fixed;
-}
-
-tr {
-    height: 4rem;
+    color: white;
+    margin: 0 auto;
+    border-color: #14bf98;
+    display: block;
+    height: 700px;
+    border-bottom: none;
+    overflow-y: scroll;
 }
 
 th {
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-  font: 700 1.25rem "Montserrat", sans-serif;
-  border-top: none;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font: 700 1.25rem "Montserrat", sans-serif;
+    border-top: none;
 }
 
 td {
-  padding: 1rem 0.5rem 1rem 0.5rem;
-  font: 700 1rem "Montserrat", sans-serif;
-  border-width: 0.15rem;
-  height: 100%;
-  border-color: #14bf98;
-  overflow: hidden;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    font: 700 1rem "Montserrat", sans-serif;
+    border-width: 0.15rem;
+    height: 3rem;
+    border-color: #14bf98;
 }
 
 button.administrator_profile-top-button {
