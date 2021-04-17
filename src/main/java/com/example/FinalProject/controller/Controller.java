@@ -4,6 +4,7 @@ package com.example.FinalProject.controller;
 import com.alibaba.fastjson.JSON;
 import com.example.FinalProject.command.*;
 import com.example.FinalProject.model.Administrator;
+import com.example.FinalProject.model.ApplicationStatus;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
@@ -140,6 +141,26 @@ public class Controller {
         return JSON.toJSONString(employerApplicationService.checkApplicantsList(jobId));
     }
 
+    @GetMapping("/employer/action/get/applicant/information")
+    public String getApplicantInformation(Long applicantId) {
+        return JSON.toJSONString(employerApplicationService.getApplicantInformation(applicantId));
+    }
+
+    @GetMapping("/employer/action/get/applicant/resume")
+    public String getApplicantResume(Long applicantId) {
+        return JSON.toJSONString(employerApplicationService.getApplicantResume(applicantId));
+    }
+
+    @GetMapping("/employer/action/get/applicant/application")
+    public String getApplication(Long applicationId) {
+        return JSON.toJSONString(employerApplicationService.getApplication(applicationId));
+    }
+
+    @PostMapping("/employer/action/update/application")
+    public String updateApplication(@RequestBody EmployerUpdateApplicationCommand command) {
+        return JSON.toJSONString(employerApplicationService.updateApplication(Long.parseLong(command.getApplicationId()),  ApplicationStatus.valueOf(command.getStatus())));
+    }
+
     @PostMapping("/freelancer/signup")
     public String freelancerRegister(@RequestBody FreelancerSignUpCommand command) {
         String response = freelancerApplicationService.freelancerRegister(command.getUsername(), command.getPassword());
@@ -203,5 +224,20 @@ public class Controller {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         return JSON.toJSONString(freelancerApplicationService.applyJob(id, jobId));
+    }
+
+    @PostMapping("/freelancer/action/accept/interview-offer")
+    public String freelancerAcceptInterviewOrOffer(HttpServletRequest request, @RequestBody FreelancerProcessApplicationCommand command) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(freelancerApplicationService.acceptInterviewOrOffer(id, Long.parseLong(command.getJobId())));
+    }
+
+
+    @PostMapping("/freelancer/action/decline/interview-offer")
+    public String freelancerDeclineInterviewOrOffer(HttpServletRequest request, @RequestBody FreelancerProcessApplicationCommand command) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(freelancerApplicationService.declineInterviewOrOffer(id, Long.parseLong(command.getJobId())));
     }
 }

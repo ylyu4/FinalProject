@@ -12,11 +12,12 @@
     <table border="0" cellspacing="0" frame=below rules=rows id="applicantsList">
         <tr>
             <th></th>
+            <th>Application ID</th>
             <th>Applicant ID</th>
             <th>Status</th>
         </tr>
     </table>
-    <button class="employer_applicants_list-button" type="button" name="employer_applicants_listViewApplicant" onclick="buttonJump('')">View</button>
+    <button class="employer_applicants_list-button" type="button" name="employer_applicants_listViewApplicant" onclick="checkApplicantInformation()">View</button>
     <button class="employer_applicants_list-button" type="button" name="employer_payment_historyBack" onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back</button>
     </div>
 </body>
@@ -39,12 +40,29 @@
       if (data != null) {
         for (let i = 0; i < data.length; i++) {
           div.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='applicant' class='" + i + "'></td>"
+            + " <td>" + data[i].id + "</td>"
             + " <td>" + data[i].freelancerId + "</td>"
             + " <td>" + data[i].applicationStatus + "</td></tr>");
         }
       }
     }
     request.send();
+  }
+
+  function checkApplicantInformation() {
+    const radios = document.getElementsByName("applicant");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i+1];
+        const applicationId = tr.getElementsByTagName("td")[1];
+        localStorage.setItem("applicationId", applicationId.innerHTML)
+        const applicantId = tr.getElementsByTagName("td")[2];
+        localStorage.setItem("applicantId", applicantId.innerHTML);
+        buttonJump('http://localhost:8080/page/employer/check-applicant-qualification');
+        return;
+      }
+    }
+    alert("Please select a applicant from the list!");
   }
 
     function buttonJump(destination){

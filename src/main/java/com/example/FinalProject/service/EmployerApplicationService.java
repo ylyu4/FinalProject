@@ -4,16 +4,22 @@ package com.example.FinalProject.service;
 import com.example.FinalProject.command.EmployerCreateJobCommand;
 import com.example.FinalProject.command.EmployerProfileCommand;
 import com.example.FinalProject.model.Application;
+import com.example.FinalProject.model.ApplicationStatus;
 import com.example.FinalProject.model.Employer;
+import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.Resume;
 import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.EmployerRepository;
+import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
+import com.example.FinalProject.repository.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,9 +31,13 @@ public class EmployerApplicationService {
 
     private final EmployerRepository employerRepository;
 
+    private final FreelancerRepository freelancerRepository;
+
     private final JobRepository jobRepository;
 
     private final ApplicationRepository applicationRepository;
+
+    private final ResumeRepository resumeRepository;
 
     private final RedisService redisService;
 
@@ -106,5 +116,35 @@ public class EmployerApplicationService {
     @Transactional(readOnly = true)
     public List<Application> checkApplicantsList(Long jobId) {
         return applicationRepository.findAllByJobId(jobId);
+    }
+
+    @Transactional(readOnly = true)
+    public Freelancer getApplicantInformation(Long applicantId) {
+        Optional<Freelancer> freelancer = freelancerRepository.findById(applicantId);
+        return freelancer.orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    public Resume getApplicantResume(Long applicantId) {
+        Optional<Resume> resume = resumeRepository.getResumeByFreelancerId(applicantId);
+        return resume.orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    public Application getApplication(Long applicationId) {
+        Optional<Application> application = applicationRepository.findById(applicationId);
+        return application.orElse(null);
+    }
+
+    @Transactional
+    public String updateApplication(Long applicationId, ApplicationStatus status) {
+        Optional<Application> optionalApplication = applicationRepository.findById(applicationId);
+        if (optionalApplication.isPresent()) {
+            Application application = optionalApplication.get();
+            application.updateStatus(status);
+            applicationRepository.save(application);
+            return "successfully";
+        }
+        return "error";
     }
 }

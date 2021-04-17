@@ -236,6 +236,64 @@
     }))
   }
 
+  function acceptOfferOrInterview() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i+1];
+        const status = tr.getElementsByTagName("td")[6];
+        if (status === 'INVITING' || status === 'APPROVED') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/freelancer/action/accept/interview-offer', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Accept Successfully!');
+              buttonJump('http://localhost:8080/page/freelancer/profile');
+            } else {
+              alert('System Error');
+            }
+          }
+        } else {
+          alert("You cannot accept this job right now!")
+        }
+
+      }
+    }
+    alert("Please select a job from the list!");
+  }
+
+  function rejectOfferOrInterview() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i+1];
+        const status = tr.getElementsByTagName("td")[6];
+        if (status === 'INVITING' || status === 'APPROVED') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/freelancer/action/decline/interview-offer', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Decline Successfully!');
+              buttonJump('http://localhost:8080/page/freelancer/profile');
+            } else {
+              alert('System Error');
+            }
+          }
+        } else {
+          alert("You cannot decline this job right now!")
+        }
+
+      }
+    }
+    alert("Please select a job from the list!");
+  }
+
   function buttonJump(destination){
     window.location.href=destination;
   }

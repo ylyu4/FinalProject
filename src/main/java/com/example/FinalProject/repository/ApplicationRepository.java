@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ApplicationRepository extends CrudRepository<Application, Long> {
 
-    Optional<Application> findByFreelancerIdAndAndJobId(Long freelancerId, Long jobId);
+    Optional<Application> findByFreelancerIdAndJobId(Long freelancerId, Long jobId);
 
     Optional<Application> findByJobId(Long jobId);
 

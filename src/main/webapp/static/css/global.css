@@ -160,12 +160,17 @@ body.freelancer_login-body, body.freelancer_sign_up-body {
 
 table {
     color: white;
-    margin: 0 auto;
+    margin: 0 5%;
     border-color: #14bf98;
     display: block;
     height: 700px;
     border-bottom: none;
     overflow-y: scroll;
+    table-layout: fixed;
+}
+
+tr {
+    height: 4rem;
 }
 
 th {
@@ -178,8 +183,9 @@ td {
     padding: 1rem 0.5rem 1rem 0.5rem;
     font: 700 1rem "Montserrat", sans-serif;
     border-width: 0.15rem;
-    height: 3rem;
+    height: 100%;
     border-color: #14bf98;
+    overflow: hidden;
 }
 
 button.administrator_profile-top-button {
@@ -435,8 +441,9 @@ body.employer_view_posted_job_details-body button {
 
  .employer_applicants_list-body table {
    margin-top: 2rem;
-   width: 25rem;
-   margin-right: 46rem;
+   width: 25%;
+   margin-left: auto;
+     margin-right: auto;
  }
 
  .employer_check_applicant_qualification-div-left,

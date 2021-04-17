@@ -57,6 +57,12 @@ public class PageController {
         return "employer_applicants_list";
     }
 
+
+    @RequestMapping("/page/employer/check-applicant-qualification")
+    public String goToEmployerCheckApplicantQualificationPage() {
+        return "employer_check_applicant_qualification";
+    }
+
     @RequestMapping("/page/freelancer/login")
     public String goToFreelancerLoginPage() {
         return "freelancer_login";

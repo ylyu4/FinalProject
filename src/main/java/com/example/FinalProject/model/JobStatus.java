@@ -6,7 +6,7 @@ public enum JobStatus {
 
     APPROVED,
 
-    PROCESSED,
+    ALLOCATED,
 
     WORKING,
 

@@ -40,9 +40,14 @@ public class Application {
         this.id = IdGenerator.generateId();
         this.jobId = jobId;
         this.freelancerId = userId;
-        this.applicationStatus = ApplicationStatus.WAITED;
+        this.applicationStatus = ApplicationStatus.PENDING;
         LocalDateTime now = LocalDateTime.now();
         this.createTime = now;
         this.lastUpdateTime = now;
+    }
+
+    public void updateStatus(ApplicationStatus status) {
+        this.applicationStatus = status;
+        this.lastUpdateTime = LocalDateTime.now();
     }
 }

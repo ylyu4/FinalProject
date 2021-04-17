@@ -2,11 +2,15 @@ package com.example.FinalProject.model;
 
 public enum ApplicationStatus {
 
-    WAITED,
+    PENDING,
+
+    INVITING,
+
+    INTERVIEWING,
 
     REJECTED,
 
-    INTERVIEWED,
+    APPROVED,
 
-    ACCEPTED
+    DONE
 }

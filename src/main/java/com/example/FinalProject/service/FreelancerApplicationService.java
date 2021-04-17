@@ -3,6 +3,7 @@ package com.example.FinalProject.service;
 import com.example.FinalProject.command.FreelancerProfileCommand;
 import com.example.FinalProject.command.FreelancerResumeCommand;
 import com.example.FinalProject.model.Application;
+import com.example.FinalProject.model.ApplicationStatus;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
 import com.example.FinalProject.model.JobStatus;
@@ -153,12 +154,46 @@ public class FreelancerApplicationService {
 
     @Transactional
     public String applyJob(Long userId, Long jobId) {
-        Optional<Application> optionalApplication = applicationRepository.findByFreelancerIdAndAndJobId(userId, jobId);
+        Optional<Application> optionalApplication = applicationRepository.findByFreelancerIdAndJobId(userId, jobId);
         if (optionalApplication.isPresent()) {
             return "existed";
         }
         Application application = new Application(userId, jobId);
         applicationRepository.save(application);
+        return "successfully";
+    }
+
+    @Transactional
+    public String acceptInterviewOrOffer(Long userId, Long jobId) {
+        Optional<Application> optionalApplication = applicationRepository.findByFreelancerIdAndJobId(userId, jobId);
+        if (optionalApplication.isPresent()) {
+            Application application = optionalApplication.get();
+            if (application.getApplicationStatus() == ApplicationStatus.INVITING) {
+                application.setApplicationStatus(ApplicationStatus.INTERVIEWING);
+            } else {
+                application.setApplicationStatus(ApplicationStatus.DONE);
+                Optional<Job> optionalJob = jobRepository.findById(jobId);
+                if (optionalJob.isPresent()) {
+                    Job job = optionalJob.get();
+                    job.setJobStatus(JobStatus.ALLOCATED);
+                    jobRepository.save(job);
+                }
+                List<Application> applicationList = applicationRepository.findAllByJobId(jobId);
+                applicationRepository.saveAll(applicationList.stream().peek(application1 -> application1.setApplicationStatus(ApplicationStatus.REJECTED)).collect(Collectors.toList()));
+            }
+            applicationRepository.save(application);
+        }
+        return "successfully";
+    }
+
+    @Transactional
+    public String declineInterviewOrOffer(Long userId, Long jobId) {
+        Optional<Application> optionalApplication = applicationRepository.findByFreelancerIdAndJobId(userId, jobId);
+        if (optionalApplication.isPresent()) {
+            Application application = optionalApplication.get();
+            application.setApplicationStatus(ApplicationStatus.REJECTED);
+            applicationRepository.save(application);
+        }
         return "successfully";
     }
 }
