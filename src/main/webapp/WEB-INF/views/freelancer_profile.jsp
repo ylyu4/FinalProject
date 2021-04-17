@@ -71,9 +71,9 @@
       <h1>Job Applied</h1>
       <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Browse Jobs</button>
       <div>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="buttonJump('freelancer_browse_applied_jobs_details.html')">Details</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="freelancerProfileDelete('00000001')">Accept</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="freelancerProfileDecline('00000001')">Decline</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="">Details</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="acceptOfferOrInterview()">Accept</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="rejectOfferOrInterview()">Decline</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="freelancerProfileStartWork('00000001')">Start Work</button>
         <button class="freelancer_profile-bottom-button-completeWork" type="button" name="freelancer_profileTableComplete" onclick="freelancerProfileCompleteWork('00000001')">Complete Work</button>
       </div>
@@ -289,6 +289,22 @@
           alert("You cannot decline this job right now!")
         }
 
+      }
+    }
+    alert("Please select a job from the list!");
+  }
+
+
+  function viewAppliedJobDetail() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i+1];
+        const td = tr.getElementsByTagName("td")[1];
+        console.log(td.innerHTML);
+        localStorage.setItem("freelancerViewAppliedJobId", td.innerHTML);
+        buttonJump('http://localhost:8080/page/employer/view/job/details');
+        return;
       }
     }
     alert("Please select a job from the list!");

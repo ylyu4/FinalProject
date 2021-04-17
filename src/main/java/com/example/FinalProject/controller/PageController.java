@@ -57,6 +57,11 @@ public class PageController {
         return "employer_applicants_list";
     }
 
+    @RequestMapping("/page/employer/view/job/details")
+    public String goToEmployerViewJobDetailsPage() {
+        return "employer_view_posted_job_details";
+    }
+
 
     @RequestMapping("/page/employer/check-applicant-qualification")
     public String goToEmployerCheckApplicantQualificationPage() {
@@ -91,5 +96,10 @@ public class PageController {
     @RequestMapping("/page/freelancer/browse-job-details")
     public String goToFreelancerBrowseJobDetailPage() {
         return "freelancer_browse_jobs_details";
+    }
+
+    @RequestMapping("/page/freelancer/view/applied-job-details")
+    public String goToFreelancerViewAppliedJobDetailsPage() {
+        return "freelancer_browse_applied_jobs_details";
     }
 }

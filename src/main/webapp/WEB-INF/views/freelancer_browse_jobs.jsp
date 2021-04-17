@@ -64,7 +64,7 @@
         const td = tr.getElementsByTagName("td")[1];
         console.log(td.innerHTML);
         localStorage.setItem("freelancerViewAvailableJobId", td.innerHTML);
-        buttonJump('http://localhost:8080/page/freelancer/browse-job-details');
+        buttonJump('http://localhost:8080/page/freelancer/view/applied-job-details');
         return;
       }
     }
