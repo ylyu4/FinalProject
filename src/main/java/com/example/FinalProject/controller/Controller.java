@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
 import java.util.List;
 
 
@@ -159,6 +158,13 @@ public class Controller {
     @PostMapping("/employer/action/update/application")
     public String updateApplication(@RequestBody EmployerUpdateApplicationCommand command) {
         return JSON.toJSONString(employerApplicationService.updateApplication(Long.parseLong(command.getApplicationId()),  ApplicationStatus.valueOf(command.getStatus())));
+    }
+
+    @PostMapping("/employer/action/deposit")
+    public String employerDepositMoney(@RequestBody UserMoneyCommand command, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(employerApplicationService.depositMoneyToAccount(id, Long.parseLong(command.getAmount())));
     }
 
     @PostMapping("/freelancer/signup")

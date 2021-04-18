@@ -1,6 +1,7 @@
 package com.example.FinalProject.model;
 
 
+import com.example.FinalProject.utils.IdGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,10 @@ public class PaymentHistory {
     private Long transactionAmount;
 
     private LocalDateTime transactionTime;
+
+    public PaymentHistory(Long transactionAmount) {
+        this.id = IdGenerator.generateId();
+        this.transactionAmount = transactionAmount;
+        this.transactionTime = LocalDateTime.now();
+    }
 }

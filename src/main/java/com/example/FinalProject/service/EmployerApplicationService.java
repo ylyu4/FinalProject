@@ -8,11 +8,13 @@ import com.example.FinalProject.model.ApplicationStatus;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.PaymentHistory;
 import com.example.FinalProject.model.Resume;
 import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.EmployerRepository;
 import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
+import com.example.FinalProject.repository.PaymentHistoryRepository;
 import com.example.FinalProject.repository.ResumeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,8 @@ public class EmployerApplicationService {
     private final ApplicationRepository applicationRepository;
 
     private final ResumeRepository resumeRepository;
+
+    private final PaymentHistoryRepository paymentHistoryRepository;
 
     private final RedisService redisService;
 
@@ -143,6 +147,26 @@ public class EmployerApplicationService {
             Application application = optionalApplication.get();
             application.updateStatus(status);
             applicationRepository.save(application);
+            return "successfully";
+        }
+        return "error";
+    }
+
+    @Transactional
+    public String depositMoneyToAccount(Long userId, Long amount) {
+        Optional<Employer> optionalEmployer = employerRepository.findById(userId);
+        if (optionalEmployer.isPresent()) {
+            Employer employer = optionalEmployer.get();
+            if (employer.getCard() == null) {
+                return "card";
+            }
+            Long currentAmount = employer.getAccountBalance();
+            currentAmount += amount;
+            employer.setAccountBalance(currentAmount);
+            employerRepository.save(employer);
+            PaymentHistory paymentHistory = new PaymentHistory(amount);
+            paymentHistory.setEmployerId(userId);
+            paymentHistoryRepository.save(paymentHistory);
             return "successfully";
         }
         return "error";
