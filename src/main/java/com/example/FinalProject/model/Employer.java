@@ -45,6 +45,8 @@ public  class Employer {
 
     private String type;
 
+    private Long card;
+
     private Long accountBalance;
 
     private Double rate;

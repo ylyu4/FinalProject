@@ -22,6 +22,8 @@ public class EmployerProfileCommand {
 
     private String email;
 
+    private String card;
+
     private String description;
 
 }

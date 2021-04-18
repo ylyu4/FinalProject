@@ -49,6 +49,12 @@
           <input id="employerEditEmail" class="employer_profile-form" type="text" name="employerEmail" disabled="disabled" value="" required>
         </div>
         <div>
+          <label class="employer_profile-form-label" for="card">Card</label>
+        </div>
+        <div>
+          <input id="employerEditCard" class="employer_profile-form" type="text" name="employerCard" disabled="disabled" value="" required>
+        </div>
+        <div>
           <label class="employer_profile-form-label" for="description">Description</label>
         </div>
         <div>
@@ -153,6 +159,12 @@
         document.getElementById("employerEditEmail").value = '';
       }
 
+      if (data.card != null) {
+        document.getElementById("employerEditCard").value = data.card;
+      } else {
+        document.getElementById("employerEditCard").value = '';
+      }
+
       if (data.description != null) {
         document.getElementById("employerEditDescription").value = data.description;
       } else {
@@ -169,6 +181,7 @@
     document.getElementById("employerEditType").disabled = "";
     document.getElementById("employerEditPhone"). disabled = "";
     document.getElementById("employerEditEmail").disabled = "";
+    document.getElementById("employerEditCard").disabled = "";
     document.getElementById("employerEditDescription").disabled = "";
   }
 
@@ -179,6 +192,7 @@
     let type = document.getElementById("employerEditType").value
     let phone = document.getElementById("employerEditPhone").value
     let email = document.getElementById("employerEditEmail").value
+    let card = document.getElementById("employerEditCard").value
     let description = document.getElementById("employerEditDescription").value
 
 
@@ -199,6 +213,8 @@
       document.getElementById('employerEditPhone').disabled = true;
       email = data.email;
       document.getElementById('employerEditEmail').disabled = true;
+      card = data.card;
+      document.getElementById('employerEditCard').disabled = true;
       description = data.description;
       document.getElementById('employerEditDescription').disabled = true;
     }
@@ -208,6 +224,7 @@
       "type": type,
       "phone": phone,
       "email": email,
+      "card": card,
       "description": description
     }))
   }
