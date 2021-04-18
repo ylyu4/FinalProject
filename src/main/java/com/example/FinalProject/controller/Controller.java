@@ -156,15 +156,17 @@ public class Controller {
     }
 
     @PostMapping("/employer/action/update/application")
-    public String updateApplication(@RequestBody EmployerUpdateApplicationCommand command) {
-        return JSON.toJSONString(employerApplicationService.updateApplication(Long.parseLong(command.getApplicationId()),  ApplicationStatus.valueOf(command.getStatus())));
+    public String updateApplication(@RequestBody EmployerUpdateApplicationCommand command, HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(employerApplicationService.updateApplication(Long.parseLong(command.getApplicationId()), ApplicationStatus.valueOf(command.getStatus()), id));
     }
 
     @PostMapping("/employer/action/deposit")
-    public String employerDepositMoney(@RequestBody UserMoneyCommand command, HttpServletRequest request) {
+    public String employerRechargeMoney(@RequestBody UserMoneyCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
-        return JSON.toJSONString(employerApplicationService.depositMoneyToAccount(id, Long.parseLong(command.getAmount())));
+        return JSON.toJSONString(employerApplicationService.rechargeMoneyToAccount(id, Long.parseLong(command.getAmount())));
     }
 
     @PostMapping("/freelancer/signup")

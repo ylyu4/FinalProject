@@ -233,6 +233,8 @@
       if (data === 'successfully') {
         alert("Update Application Successfully!")
         buttonJump('http://localhost:8080/page/employer/check-applicants-list')
+      } else if (data === 'recharge') {
+        alert("Your account balance is not enough! Please recharge at first!")
       } else {
         alert("System Error!")
       }

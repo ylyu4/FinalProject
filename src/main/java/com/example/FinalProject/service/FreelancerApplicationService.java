@@ -4,26 +4,26 @@ import com.example.FinalProject.command.FreelancerProfileCommand;
 import com.example.FinalProject.command.FreelancerResumeCommand;
 import com.example.FinalProject.model.Application;
 import com.example.FinalProject.model.ApplicationStatus;
+import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
 import com.example.FinalProject.model.JobStatus;
 import com.example.FinalProject.model.Resume;
+import com.example.FinalProject.model.SystemAccount;
 import com.example.FinalProject.repository.ApplicationRepository;
+import com.example.FinalProject.repository.EmployerRepository;
 import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
 import com.example.FinalProject.repository.ResumeRepository;
+import com.example.FinalProject.repository.SystemAccountRepository;
 import com.example.FinalProject.response.FreelancerAppliedJobListResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -35,6 +35,10 @@ import java.util.stream.Collectors;
 public class FreelancerApplicationService {
 
     private final FreelancerRepository freelancerRepository;
+
+    private final EmployerRepository employerRepository;
+
+    private final SystemAccountRepository systemAccountRepository;
 
     private final ResumeRepository resumeRepository;
 
@@ -170,20 +174,40 @@ public class FreelancerApplicationService {
             Application application = optionalApplication.get();
             if (application.getApplicationStatus() == ApplicationStatus.INVITING) {
                 application.setApplicationStatus(ApplicationStatus.INTERVIEWING);
+                application.setLastUpdateTime(LocalDateTime.now());
             } else {
                 application.setApplicationStatus(ApplicationStatus.DONE);
+                application.setLastUpdateTime(LocalDateTime.now());
                 Optional<Job> optionalJob = jobRepository.findById(jobId);
                 if (optionalJob.isPresent()) {
                     Job job = optionalJob.get();
                     job.setJobStatus(JobStatus.ALLOCATED);
                     jobRepository.save(job);
+                    Long employerId = job.getCreatedBy();
+                    Optional<Employer> optionalEmployer = employerRepository.findById(employerId);
+                    if (optionalEmployer.isPresent()) {
+                        Employer employer = optionalEmployer.get();
+                        Long remainingBalance = employer.getAccountBalance() - job.getSalary();
+                        employer.setAccountBalance(remainingBalance);
+                        SystemAccount systemAccount = systemAccountRepository.findAll().iterator().next();
+                        Long newBalance = systemAccount.getAccountBalance() + job.getSalary();
+                        systemAccount.setAccountBalance(newBalance);
+                        employerRepository.save(employer);
+                        systemAccountRepository.save(systemAccount);
+                    } else {
+                        return "error";
+                    }
+                } else {
+                    return "error";
                 }
                 List<Application> applicationList = applicationRepository.findAllByJobId(jobId);
                 applicationRepository.saveAll(applicationList.stream().peek(application1 -> application1.setApplicationStatus(ApplicationStatus.REJECTED)).collect(Collectors.toList()));
             }
             applicationRepository.save(application);
+            return "successfully";
+        } else {
+            return "error";
         }
-        return "successfully";
     }
 
     @Transactional
@@ -192,8 +216,12 @@ public class FreelancerApplicationService {
         if (optionalApplication.isPresent()) {
             Application application = optionalApplication.get();
             application.setApplicationStatus(ApplicationStatus.REJECTED);
+            application.setLastUpdateTime(LocalDateTime.now());
             applicationRepository.save(application);
+            return "successfully";
+        } else {
+            return "error";
         }
-        return "successfully";
+
     }
 }

@@ -21,10 +21,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -141,10 +141,31 @@ public class EmployerApplicationService {
     }
 
     @Transactional
-    public String updateApplication(Long applicationId, ApplicationStatus status) {
+    public String updateApplication(Long applicationId, ApplicationStatus status, Long userId) {
         Optional<Application> optionalApplication = applicationRepository.findById(applicationId);
         if (optionalApplication.isPresent()) {
             Application application = optionalApplication.get();
+            if (status == ApplicationStatus.APPROVED) {
+                List<Application> applicationLists = applicationRepository.findAllByApplicationStatus(status);
+                List<Long> jobIds = applicationLists.stream().map(Application::getJobId).collect(Collectors.toList());
+                Long totalCost = jobIds.stream().mapToLong(id -> {
+                    Optional<Job> job = jobRepository.findById(id);
+                    if (job.isPresent()) {
+                        return job.get().getSalary();
+                    }
+                    return 0;
+                }).sum();
+                Optional<Employer> optionalEmployer = employerRepository.findById(userId);
+                if (optionalEmployer.isPresent()) {
+                    Employer employer = optionalEmployer.get();
+                    Long currentBalance = employer.getAccountBalance();
+                    if (currentBalance < totalCost) {
+                        return "recharge";
+                    }
+                } else {
+                    return "error";
+                }
+            }
             application.updateStatus(status);
             applicationRepository.save(application);
             return "successfully";
@@ -153,7 +174,7 @@ public class EmployerApplicationService {
     }
 
     @Transactional
-    public String depositMoneyToAccount(Long userId, Long amount) {
+    public String rechargeMoneyToAccount(Long userId, Long amount) {
         Optional<Employer> optionalEmployer = employerRepository.findById(userId);
         if (optionalEmployer.isPresent()) {
             Employer employer = optionalEmployer.get();

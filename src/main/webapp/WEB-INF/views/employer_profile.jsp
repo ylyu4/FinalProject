@@ -12,7 +12,7 @@
       <h1>Employer Profile</h1>
       <p id="employerAccountBalance"></p>
       <div>
-        <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('')">Deposit</button>
+        <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Deposit</button>
       </div>
       <div>
         <button class="employer_profile-top-button-paymentHistory" type="button" name="employer_profilePaymentHistory" onclick="buttonJump('employer_payment_history.html')">Payment History</button>

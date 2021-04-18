@@ -1,6 +1,7 @@
 package com.example.FinalProject.repository;
 
 import com.example.FinalProject.model.Application;
+import com.example.FinalProject.model.ApplicationStatus;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,4 +18,6 @@ public interface ApplicationRepository extends CrudRepository<Application, Long>
     List<Application> findAllByJobId(Long jobId);
 
     List<Application> findAllByFreelancerId(Long freelancerId);
+
+    List<Application> findAllByApplicationStatus(ApplicationStatus status);
 }
