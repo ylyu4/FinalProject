@@ -74,7 +74,7 @@
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="">Details</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="acceptOfferOrInterview()">Accept</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="rejectOfferOrInterview()">Decline</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="freelancerProfileStartWork('00000001')">Start Work</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="startWork()">Start Work</button>
         <button class="freelancer_profile-bottom-button-completeWork" type="button" name="freelancer_profileTableComplete" onclick="freelancerProfileCompleteWork('00000001')">Complete Work</button>
       </div>
       <table border="0" cellspacing="0" frame=below rules=rows id="appliedJobs">
@@ -288,7 +288,6 @@
         } else {
           alert("You cannot decline this job right now!")
         }
-
       }
     }
     alert("Please select a job from the list!");
@@ -308,6 +307,68 @@
       }
     }
     alert("Please select a job from the list!");
+  }
+
+  function startWork() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i + 1];
+        const status = tr.getElementsByTagName("td")[6];
+        if (status === 'ASSIGNED') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/freelancer/action/start/work', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Start work successfully!')
+            } else {
+              alert('System Error!')
+            }
+          }
+          request.send(JSON.stringify({
+            'jobId': tr,
+            'status': status
+          }));
+        } else {
+          alert('You can not start this job!')
+        }
+      }
+      alert("Please select a job from the list!");
+    }
+  }
+
+  function completeWork() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i + 1];
+        const status = tr.getElementsByTagName("td")[6];
+        if (status === 'WORKING') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/freelancer/action/complete/work', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Update job working progress successfully!')
+            } else {
+              alert('System Error!')
+            }
+          }
+          request.send(JSON.stringify({
+            'jobId': tr,
+            'status': status
+          }));
+        } else {
+          alert('You can not complete this job!')
+        }
+      }
+      alert("Please select a job from the list!");
+    }
   }
 
   function buttonJump(destination){

@@ -6,11 +6,13 @@ public enum JobStatus {
 
     APPROVED,
 
-    ALLOCATED,
+    ASSIGNED,
 
     WORKING,
 
-    DONE,
+    FINISHED,
+
+    QUALIFIED,
 
     REJECTED
 }

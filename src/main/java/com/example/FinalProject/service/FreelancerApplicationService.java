@@ -181,7 +181,7 @@ public class FreelancerApplicationService {
                 Optional<Job> optionalJob = jobRepository.findById(jobId);
                 if (optionalJob.isPresent()) {
                     Job job = optionalJob.get();
-                    job.setJobStatus(JobStatus.ALLOCATED);
+                    job.setJobStatus(JobStatus.ASSIGNED);
                     jobRepository.save(job);
                     Long employerId = job.getCreatedBy();
                     Optional<Employer> optionalEmployer = employerRepository.findById(employerId);
@@ -222,6 +222,41 @@ public class FreelancerApplicationService {
         } else {
             return "error";
         }
+    }
 
+    @Transactional
+    public String startWork(Long jobId, JobStatus status) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+        if (optionalJob.isPresent()) {
+            Job job = optionalJob.get();
+            if (status == JobStatus.ASSIGNED) {
+                job.setJobStatus(JobStatus.WORKING);
+            } else {
+                return "error";
+            }
+            job.setLastUpdateTime(LocalDateTime.now());
+            jobRepository.save(job);
+            return "successfully";
+        } else {
+            return "error";
+        }
+    }
+
+    @Transactional
+    public String completeWork(Long jobId, JobStatus status) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+        if (optionalJob.isPresent()) {
+            Job job = optionalJob.get();
+            if (status == JobStatus.WORKING) {
+                job.setJobStatus(JobStatus.FINISHED);
+            } else {
+                return "error";
+            }
+            job.setLastUpdateTime(LocalDateTime.now());
+            jobRepository.save(job);
+            return "successfully";
+        } else {
+            return "error";
+        }
     }
 }

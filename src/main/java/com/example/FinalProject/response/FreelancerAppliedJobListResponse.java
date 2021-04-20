@@ -33,7 +33,11 @@ public class FreelancerAppliedJobListResponse {
         this.experience = job.getExperience();
         this.location = job.getLocation();
         this.salary = job.getSalary();
-        this.status = application.getApplicationStatus().name();
+        if (application.getApplicationStatus().name().equals("DONE")) {
+            this.status = job.getJobStatus().name();
+        } else {
+            this.status = application.getApplicationStatus().name();
+        }
         this.paid = this.status.equals("COMPLETED");
     }
 }

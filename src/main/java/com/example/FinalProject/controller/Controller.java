@@ -8,6 +8,7 @@ import com.example.FinalProject.model.ApplicationStatus;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.JobStatus;
 import com.example.FinalProject.model.Resume;
 import com.example.FinalProject.response.FreelancerAppliedJobListResponse;
 import com.example.FinalProject.service.AdministratorApplicationService;
@@ -241,11 +242,20 @@ public class Controller {
         return JSON.toJSONString(freelancerApplicationService.acceptInterviewOrOffer(id, Long.parseLong(command.getJobId())));
     }
 
-
     @PostMapping("/freelancer/action/decline/interview-offer")
     public String freelancerDeclineInterviewOrOffer(HttpServletRequest request, @RequestBody FreelancerProcessApplicationCommand command) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         return JSON.toJSONString(freelancerApplicationService.declineInterviewOrOffer(id, Long.parseLong(command.getJobId())));
+    }
+
+    @PostMapping("/freelancer/action/start/work")
+    public String freelancerStartWork(@RequestBody JobStatusCommand command) {
+        return freelancerApplicationService.startWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus()));
+    }
+
+    @PostMapping("/freelancer/action/complete/work")
+    public String freelancerCompleteWork(@RequestBody JobStatusCommand command) {
+        return freelancerApplicationService.completeWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus()));
     }
 }
