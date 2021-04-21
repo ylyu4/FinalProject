@@ -24,7 +24,7 @@
 <script type="text/javascript">
 
   window.onload = function () {
-    loadAvailableJobDetails();
+    loadPostedJobDetails();
   }
 
   function loadPostedJobDetails() {

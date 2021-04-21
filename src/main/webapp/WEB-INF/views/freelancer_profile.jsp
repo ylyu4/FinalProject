@@ -71,7 +71,7 @@
       <h1>Job Applied</h1>
       <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Browse Jobs</button>
       <div>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="buttonJump('http://localhost:8080/page/freelancer/view/applied-job-details')">Details</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="viewAppliedJobDetail()">Details</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="acceptOfferOrInterview()">Accept</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="rejectOfferOrInterview()">Decline</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="startWork()">Start Work</button>
@@ -238,11 +238,14 @@
 
   function acceptOfferOrInterview() {
     const radios = document.getElementsByName("appliedJob");
+    let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
+        flag = true;
         const tr = document.getElementsByTagName("tr")[i+1];
-        const status = tr.getElementsByTagName("td")[6];
-        if (status === 'INVITING' || status === 'APPROVED') {
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
+        if (status === 'INVITING' || status === 'OFFER') {
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/freelancer/action/accept/interview-offer', true);
           request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -255,22 +258,31 @@
             } else {
               alert('System Error');
             }
+            return;
           }
+          request.send(JSON.stringify({
+            'jobId': jobId
+          }));
         } else {
           alert("You cannot accept this job right now!")
+          return;
         }
-
       }
     }
-    alert("Please select a job from the list!");
+    if (flag === false) {
+      alert("Please select a job from the list!");
+    }
   }
 
   function rejectOfferOrInterview() {
     const radios = document.getElementsByName("appliedJob");
+    let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
+        flag = true;
         const tr = document.getElementsByTagName("tr")[i+1];
-        const status = tr.getElementsByTagName("td")[6];
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'INVITING' || status === 'APPROVED') {
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/freelancer/action/decline/interview-offer', true);
@@ -284,13 +296,20 @@
             } else {
               alert('System Error');
             }
+            return;
           }
+          request.send(JSON.stringify({
+            'jobId': jobId
+          }));
         } else {
           alert("You cannot decline this job right now!")
+          return;
         }
       }
     }
-    alert("Please select a job from the list!");
+    if (flag === false) {
+      alert("Please select a job from the list!");
+    }
   }
 
 
@@ -302,7 +321,7 @@
         const td = tr.getElementsByTagName("td")[1];
         console.log(td.innerHTML);
         localStorage.setItem("freelancerViewAppliedJobId", td.innerHTML);
-        buttonJump('http://localhost:8080/page/employer/view/job/details');
+        buttonJump('http://localhost:8080/page/freelancer/applied-job-details');
         return;
       }
     }
@@ -311,10 +330,13 @@
 
   function startWork() {
     const radios = document.getElementsByName("appliedJob");
+    let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
+        flag = true;
         const tr = document.getElementsByTagName("tr")[i + 1];
-        const status = tr.getElementsByTagName("td")[6];
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'ASSIGNED') {
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/freelancer/action/start/work', true);
@@ -324,28 +346,35 @@
             const data = JSON.parse(this.response);
             if (data === 'successfully') {
               alert('Start work successfully!')
+              buttonJump('http://localhost:8080/page/freelancer/profile');
             } else {
               alert('System Error!')
             }
           }
           request.send(JSON.stringify({
-            'jobId': tr,
+            'jobId': jobId,
             'status': status
           }));
         } else {
           alert('You can not start this job!')
+          return;
         }
       }
+    }
+    if (flag === false) {
       alert("Please select a job from the list!");
     }
   }
 
   function completeWork() {
     const radios = document.getElementsByName("appliedJob");
+    let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
+        flag = true;
         const tr = document.getElementsByTagName("tr")[i + 1];
-        const status = tr.getElementsByTagName("td")[6];
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'WORKING') {
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/freelancer/action/complete/work', true);
@@ -355,18 +384,22 @@
             const data = JSON.parse(this.response);
             if (data === 'successfully') {
               alert('Update job working progress successfully!')
+              buttonJump('http://localhost:8080/page/freelancer/profile');
             } else {
               alert('System Error!')
             }
           }
           request.send(JSON.stringify({
-            'jobId': tr,
+            'jobId': jobId,
             'status': status
           }));
         } else {
           alert('You can not complete this job!')
+          return;
         }
       }
+    }
+    if (flag === false) {
       alert("Please select a job from the list!");
     }
   }

@@ -10,7 +10,7 @@ public enum ApplicationStatus {
 
     REJECTED,
 
-    APPROVED,
+    OFFER,
 
-    DONE
+    ACCEPTED
 }

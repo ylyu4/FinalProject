@@ -26,12 +26,12 @@
 <script type="text/javascript">
 
   function depositMoney() {
-    const amount = document.getElementById('employerRecharge');
-    if (!Number.isInteger(amount)) {
+    const amount = document.getElementById('employerRecharge').value;
+    if (!isNumeric(amount)) {
       alert('The amount should be a number!');
       return;
     }
-    const sign = Math.sign(amount);
+    const sign = Math.sign(parseInt(amount));
     if (sign !== 1) {
       alert('The amount should be positive!');
       return;
@@ -58,6 +58,10 @@
 
   function buttonJump(destination){
     window.location.href=destination;
+  }
+
+  function isNumeric(num){
+    return !isNaN(num)
   }
 </script>
 </html>

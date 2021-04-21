@@ -12,7 +12,7 @@ public enum JobStatus {
 
     FINISHED,
 
-    QUALIFIED,
+    DONE,
 
     REJECTED
 }

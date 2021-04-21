@@ -52,9 +52,9 @@
         <option class="employer_check_applicant_qualification-option" value ="PENDING">PENDING</option>
         <option class="employer_check_applicant_qualification-option" value ="INVITING">INVITING</option>
         <option class="employer_check_applicant_qualification-option" value ="INTERVIEWING">INTERVIEWING</option>
-        <option class="employer_check_applicant_qualification-option" value="REVIEWING">REVIEWING</option>
-        <option class="employer_check_applicant_qualification-option" value="APPROVED">APPROVED</option>
+        <option class="employer_check_applicant_qualification-option" value="APPROVED">OFFER</option>
         <option class="employer_check_applicant_qualification-option" value ="REJECTED">REJECTED</option>
+        <option class="employer_check_applicant_qualification-option" value="DONE">ACCEPTED</option>
       </select><br>
       <button type="button" name="employer_check_applicant_qualificationUpdate" onclick="updateApplication()">Update</button>
       </div>
@@ -67,6 +67,7 @@
   window.onload = function () {
     checkApplicantInformation();
     checkApplicantResume();
+    displayApplicationStatus();
   }
 
   function checkApplicantInformation() {
@@ -76,27 +77,27 @@
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
       const data = JSON.parse(this.response);
-      if (data.name != null) {
+      if (data.name != null || data.length > 0) {
         document.getElementById("applicantName").textContent = 'Name: ' + data.name;
       } else {
         document.getElementById("applicantName").textContent = 'Name: Unavailable';
       }
-      if (data.age != null) {
+      if (data.age != null || data.length > 0) {
         document.getElementById("applicantAge").textContent = 'Age: ' + data.age;
       } else {
         document.getElementById("applicantAge").textContent = 'Age: Unavailable';
       }
-      if (data.location != null) {
+      if (data.location != null || data.length > 0) {
         document.getElementById("applicantLocation").textContent = 'Location: ' + data.location;
       } else {
         document.getElementById("applicantLocation").textContent = 'Location: Unavailable';
       }
-      if (data.phone != null) {
+      if (data.phone != null || data.length > 0) {
         document.getElementById("applicantPhone").textContent = 'Phone: ' + data.phone;
       } else {
         document.getElementById("applicantPhone").textContent = 'Phone: Unavailable';
       }
-      if (data.email != null) {
+      if (data.email != null || data.length > 0) {
         document.getElementById("applicantEmail").textContent = 'Email: ' + data.email;
       } else {
         document.getElementById("applicantEmail").textContent = 'Email: Unavailable';

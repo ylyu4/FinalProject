@@ -10,11 +10,9 @@ import lombok.Setter;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Setter
@@ -45,7 +43,7 @@ public class Employer {
 
     private String type;
 
-    private Long card;
+    private String card;
 
     private Long accountBalance;
 

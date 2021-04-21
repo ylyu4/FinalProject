@@ -105,6 +105,7 @@ public class EmployerApplicationService {
             employer.setType(command.getType());
             employer.setPhone(command.getPhone());
             employer.setEmail(command.getEmail());
+            employer.setCard(command.getCard());
             employer.setDescription(command.getDescription());
             return employerRepository.save(employer);
         } else {
@@ -152,22 +153,19 @@ public class EmployerApplicationService {
         Optional<Application> optionalApplication = applicationRepository.findById(applicationId);
         if (optionalApplication.isPresent()) {
             Application application = optionalApplication.get();
-            if (status == ApplicationStatus.APPROVED) {
-                List<Application> applicationLists = applicationRepository.findAllByApplicationStatus(status);
-                List<Long> jobIds = applicationLists.stream().map(Application::getJobId).collect(Collectors.toList());
-                Long totalCost = jobIds.stream().mapToLong(id -> {
-                    Optional<Job> job = jobRepository.findById(id);
-                    if (job.isPresent()) {
-                        return job.get().getSalary();
-                    }
-                    return 0;
-                }).sum();
-                Optional<Employer> optionalEmployer = employerRepository.findById(userId);
-                if (optionalEmployer.isPresent()) {
-                    Employer employer = optionalEmployer.get();
-                    Long currentBalance = employer.getAccountBalance();
-                    if (currentBalance < totalCost) {
-                        return "recharge";
+            if (status == ApplicationStatus.OFFER) {
+                Optional<Job> optionalJob = jobRepository.findById(application.getJobId());
+                if (optionalJob.isPresent()) {
+                    Long cost = optionalJob.get().getSalary();
+                    Optional<Employer> optionalEmployer = employerRepository.findById(userId);
+                    if (optionalEmployer.isPresent()) {
+                        Employer employer = optionalEmployer.get();
+                        Long currentBalance = employer.getAccountBalance();
+                        if (currentBalance < cost) {
+                            return "recharge";
+                        }
+                    } else {
+                        return "error";
                     }
                 } else {
                     return "error";
@@ -206,11 +204,12 @@ public class EmployerApplicationService {
         if (optionalJob.isPresent()) {
             Job job = optionalJob.get();
             if (status == JobStatus.FINISHED) {
-                job.setJobStatus(JobStatus.QUALIFIED);
+                job.setJobStatus(JobStatus.DONE);
             } else {
                 return "error";
             }
             job.setLastUpdateTime(LocalDateTime.now());
+            job.setPaid(true);
             jobRepository.save(job);
             SystemAccount systemAccount = systemAccountRepository.findAll().iterator().next();
             Long amount = job.getSalary();
@@ -248,7 +247,7 @@ public class EmployerApplicationService {
 
     @Transactional(readOnly = true)
     public List<PaymentHistoryResponse> getAllPaymentHistory(Long userId) {
-        List<PaymentHistory> paymentHistories = paymentHistoryRepository.findAllByFreelancerId(userId);
+        List<PaymentHistory> paymentHistories = paymentHistoryRepository.findAllByEmployerId(userId);
         return paymentHistories.stream().map(PaymentHistoryResponse::new).collect(Collectors.toList());
     }
 }

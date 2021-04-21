@@ -182,7 +182,7 @@ public class FreelancerApplicationService {
                 application.setApplicationStatus(ApplicationStatus.INTERVIEWING);
                 application.setLastUpdateTime(LocalDateTime.now());
             } else {
-                application.setApplicationStatus(ApplicationStatus.DONE);
+                application.setApplicationStatus(ApplicationStatus.ACCEPTED);
                 application.setLastUpdateTime(LocalDateTime.now());
                 Optional<Job> optionalJob = jobRepository.findById(jobId);
                 if (optionalJob.isPresent()) {
@@ -213,7 +213,8 @@ public class FreelancerApplicationService {
                     return "error";
                 }
                 List<Application> applicationList = applicationRepository.findAllByJobId(jobId);
-                applicationRepository.saveAll(applicationList.stream().peek(application1 -> application1.setApplicationStatus(ApplicationStatus.REJECTED)).collect(Collectors.toList()));
+                applicationRepository.saveAll(applicationList.stream().filter(application1 -> !application1.getId().equals(application.getId()))
+                        .peek(application1 -> application1.setApplicationStatus(ApplicationStatus.REJECTED)).collect(Collectors.toList()));
             }
             applicationRepository.save(application);
             return "successfully";

@@ -62,7 +62,6 @@
           <thead>
             <tr>
               <th>Payment ID</th>
-              <th>User ID</th>
               <th>Amount</th>
               <th>Date</th>
             </tr>
@@ -134,7 +133,6 @@
             amount = '+' + amount;
           }
           div.insertAdjacentHTML("beforeend", "<tr><td>"+data[i].paymentHistoryId+"</td>"
-                  + " <td>"+data[i].userId+"</td>"
                   + " <td>"+amount+"</td>"
                   + " <td>"+data[i].transactionTime+"</td></tr> ");
         }

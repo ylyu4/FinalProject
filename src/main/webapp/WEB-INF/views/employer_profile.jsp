@@ -259,42 +259,51 @@
   }
 
   function approveCompleteWork() {
-    const radios = document.getElementsByName("appliedJob");
+    const radios = document.getElementsByName("postedJob");
+    let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
+        flag = true;
         const tr = document.getElementsByTagName("tr")[i + 1];
-        const status = tr.getElementsByTagName("td")[6];
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'FINISHED') {
           const request = new XMLHttpRequest();
-          request.open('POST', 'http://localhost:8080/employer/action/reject/completed-work', true);
+          request.open('POST', 'http://localhost:8080/employer/action/confirm/completed-work', true);
           request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
           request.setRequestHeader("Authorization", localStorage.getItem("token"))
           request.onload = function () {
             const data = JSON.parse(this.response);
             if (data === 'successfully') {
-              alert('Approve the qualified job successfully!')
+              alert('Confirm the qualified job successfully!')
+              buttonJump('http://localhost:8080/page/employer/profile');
             } else {
               alert('System Error!')
             }
           }
           request.send(JSON.stringify({
-            'jobId': tr,
+            'jobId': jobId,
             'status': status
           }));
         } else {
           alert('You can not confirm this job!')
         }
       }
+    }
+    if (flag === false) {
       alert("Please select a job from the list!");
     }
   }
 
   function rejectCompleteWork() {
-    const radios = document.getElementsByName("appliedJob");
+    const radios = document.getElementsByName("postedJob");
+    let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
+        flag = true;
         const tr = document.getElementsByTagName("tr")[i + 1];
-        const status = tr.getElementsByTagName("td")[6];
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'FINISHED') {
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/employer/action/reject/completed-work', true);
@@ -304,18 +313,21 @@
             const data = JSON.parse(this.response);
             if (data === 'successfully') {
               alert('Reject the unqualified job successfully!')
+              buttonJump('http://localhost:8080/page/employer/profile');
             } else {
               alert('System Error!')
             }
           }
           request.send(JSON.stringify({
-            'jobId': tr,
+            'jobId': jobId,
             'status': status
           }));
         } else {
           alert('You can not complete this job!')
         }
       }
+    }
+    if (flag === false) {
       alert("Please select a job from the list!");
     }
   }

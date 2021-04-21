@@ -108,7 +108,7 @@ public class PageController {
         return "freelancer_browse_jobs_details";
     }
 
-    @RequestMapping("/page/freelancer/view/applied-job-details")
+    @RequestMapping("/page/freelancer/applied-job-details")
     public String goToFreelancerViewAppliedJobDetailsPage() {
         return "freelancer_browse_applied_jobs_details";
     }

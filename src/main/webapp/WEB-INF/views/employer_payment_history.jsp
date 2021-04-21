@@ -13,8 +13,7 @@
   <div class="employer_payment_history-table">
   <table border="0" cellspacing="0" frame=below rules=rows id="employerPaymentList">
     <tr>
-      <th>Job ID</th>
-      <th>Job Name</th>
+      <th>Payment ID</th>
       <th>Amount</th>
       <th>Date</th>
     </tr>

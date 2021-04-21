@@ -168,20 +168,20 @@ public class Controller {
         return JSON.toJSONString(employerApplicationService.updateApplication(Long.parseLong(command.getApplicationId()), ApplicationStatus.valueOf(command.getStatus()), id));
     }
 
-    @PostMapping("/employer/action/deposit")
+    @PostMapping("/employer/action/recharge")
     public String employerRechargeMoney(@RequestBody UserMoneyCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         return JSON.toJSONString(employerApplicationService.rechargeMoneyToAccount(id, Long.parseLong(command.getAmount())));
     }
 
-    @PostMapping("/employer/action/approve/completed-work")
-    public String employerApproveCompletedWork(JobStatusCommand command) {
+    @PostMapping("/employer/action/confirm/completed-work")
+    public String employerConfirmCompletedWork(@RequestBody JobStatusCommand command) {
         return JSON.toJSONString(employerApplicationService.approveCompleteWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
     }
 
     @PostMapping("/employer/action/reject/completed-work")
-    public String employerRejectCompletedWork(JobStatusCommand command) {
+    public String employerRejectCompletedWork(@RequestBody JobStatusCommand command) {
         return JSON.toJSONString(employerApplicationService.rejectCompleteWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
     }
 
@@ -278,7 +278,7 @@ public class Controller {
 
     @PostMapping("/freelancer/action/complete/work")
     public String freelancerCompleteWork(@RequestBody JobStatusCommand command) {
-        return freelancerApplicationService.completeWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus()));
+        return JSON.toJSONString(freelancerApplicationService.completeWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
     }
 
     @GetMapping("/freelancer/action/get/all/payment/history")
