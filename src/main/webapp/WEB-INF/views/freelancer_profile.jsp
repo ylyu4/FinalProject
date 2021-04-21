@@ -12,10 +12,10 @@
       <h1>Freelancer Profile</h1>
       <p id="freelancerAccountBalance"></p>
       <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('freelancer_withdraw.html')">Withdraw</button>
+        <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw</button>
       </div>
       <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('')">Remuneration History</button>
+        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration/history')">Remuneration History</button>
       </div>
       <div>
         <button class="freelancer_profile-top-button" type="button" name="freelancer_profileViewResume" onclick="buttonJump('http://localhost:8080/page/freelancer/view-resume')">View Resume</button>
@@ -71,11 +71,11 @@
       <h1>Job Applied</h1>
       <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Browse Jobs</button>
       <div>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="">Details</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="buttonJump('http://localhost:8080/page/freelancer/view/applied-job-details')">Details</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="acceptOfferOrInterview()">Accept</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="rejectOfferOrInterview()">Decline</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="startWork()">Start Work</button>
-        <button class="freelancer_profile-bottom-button-completeWork" type="button" name="freelancer_profileTableComplete" onclick="freelancerProfileCompleteWork('00000001')">Complete Work</button>
+        <button class="freelancer_profile-bottom-button-completeWork" type="button" name="freelancer_profileTableComplete" onclick="completeWork()">Complete Work</button>
       </div>
       <table border="0" cellspacing="0" frame=below rules=rows id="appliedJobs">
         <tr>

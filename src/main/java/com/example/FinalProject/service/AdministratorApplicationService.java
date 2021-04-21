@@ -3,10 +3,13 @@ package com.example.FinalProject.service;
 import com.example.FinalProject.model.Administrator;
 import com.example.FinalProject.model.Job;
 import com.example.FinalProject.model.JobStatus;
+import com.example.FinalProject.model.PaymentHistory;
 import com.example.FinalProject.model.SystemAccount;
 import com.example.FinalProject.repository.AdministratorRepository;
 import com.example.FinalProject.repository.JobRepository;
+import com.example.FinalProject.repository.PaymentHistoryRepository;
 import com.example.FinalProject.repository.SystemAccountRepository;
+import com.example.FinalProject.response.PaymentHistoryResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,8 @@ public class AdministratorApplicationService {
     private final JobRepository jobRepository;
 
     private final SystemAccountRepository systemAccountRepository;
+
+    private final PaymentHistoryRepository paymentHistoryRepository;
 
     private final RedisService redisService;
 
@@ -130,6 +135,14 @@ public class AdministratorApplicationService {
         } else {
             throw new RuntimeException("Can not find job by this id: " + jobId);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<PaymentHistoryResponse> getAllPaymentHistory() {
+        SystemAccount systemAccount = systemAccountRepository.findAll().iterator().next();
+        Long accountId = systemAccount.getId();
+        List<PaymentHistory> paymentHistories = paymentHistoryRepository.findAllByAccountId(accountId);
+        return paymentHistories.stream().map(PaymentHistoryResponse::new).collect(Collectors.toList());
     }
 
 }

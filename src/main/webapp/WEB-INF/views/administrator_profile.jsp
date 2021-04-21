@@ -58,95 +58,15 @@
   <div class="administrator_profile-div-right">
       <h1>Payment History</h1>
       <div class="administrator_profile-table">
-        <table border="1" cellspacing="0" frame=below rules=rows>
+        <table border="1" cellspacing="0" frame=below rules=rows id="adminPaymentList">
           <thead>
             <tr>
-              <th>Job ID</th>
+              <th>Payment ID</th>
               <th>User ID</th>
               <th>Amount</th>
               <th>Date</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>00000001</td>
-              <td>00000001</td>
-              <td>-5000</td>
-              <td>2020.02.17</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-            <tr>
-              <td>00000002</td>
-              <td>00000002</td>
-              <td>+10000</td>
-              <td>2020.02.19</td>
-            </tr>
-          </tbody>
         </table>
       </div>
   </div>
@@ -159,6 +79,7 @@
     loadProfile();
     checkNewJobs();
     checkCurrentBalance();
+    loadPaymentHistory();
   }
 
   function checkCurrentBalance() {
@@ -192,6 +113,30 @@
                                               + " <td>"+data[i].location+"</td>"
                                               + " <td>"+data[i].salary+"</td>"
                                               + " <td>"+data[i].createdBy+"</td></tr> ");
+        }
+      }
+    }
+    request.send(null);
+  }
+
+  function loadPaymentHistory() {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/admin/action/get/all/payment/history', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      const div = document.getElementById("adminPaymentList");
+      if (data != null) {
+        for (let i = 0; i < data.length; i++) {
+          let amount = data[i].amount;
+          if (amount > 0) {
+            amount = '+' + amount;
+          }
+          div.insertAdjacentHTML("beforeend", "<tr><td>"+data[i].paymentHistoryId+"</td>"
+                  + " <td>"+data[i].userId+"</td>"
+                  + " <td>"+amount+"</td>"
+                  + " <td>"+data[i].transactionTime+"</td></tr> ");
         }
       }
     }

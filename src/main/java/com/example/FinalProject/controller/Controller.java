@@ -59,7 +59,7 @@ public class Controller {
     }
 
     @PostMapping("/admin/action/update/profile")
-    public String updateAdminProfile(@RequestBody AdminProfileCommand command, HttpServletRequest request) {
+    public String adminUpdateAdminProfile(@RequestBody AdminProfileCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         Administrator administrator = administratorApplicationService.updateAdminProfile(id, command.getName(), command.getPhone(), command.getEmail());
@@ -67,29 +67,34 @@ public class Controller {
     }
 
     @GetMapping("/admin/action/get/system-balance")
-    public String getSystemCurrentBalance() {
+    public String adminGetSystemCurrentBalance() {
         Long balance = administratorApplicationService.getSystemAccountBalance();
         return JSON.toJSONString(balance);
     }
 
     @GetMapping("/admin/action/get/jobs")
-    public String getAllNewUnreleasedJobs() {
+    public String adminGetAllNewUnreleasedJobs() {
         List<Job> jobList =  administratorApplicationService.getAllNewCreatedJobs();
         return JSON.toJSONString(jobList);
     }
 
     @GetMapping("/user/action/get/job/detail")
-    public String getReviewedJobDetail(String jobId) {
+    public String userGetReviewedJobDetail(String jobId) {
         Long parsedJobId = Long.valueOf(jobId);
         return JSON.toJSONString(userApplicationService.getReviewedJobDetailById(parsedJobId));
     }
 
     @PostMapping("/admin/action/process/job")
-    public String processNewUnreleasedJob(@RequestBody AdminProcessJobCommand command, HttpServletRequest request) {
+    public String adminProcessNewUnreleasedJob(@RequestBody AdminProcessJobCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         String result = administratorApplicationService.processNewUnreleasedJob(Long.parseLong(command.getId()), command.getAction(), id);
         return JSON.toJSONString(result);
+    }
+
+    @GetMapping("/admin/action/get/all/payment/history")
+    public String adminGetAllPaymentHistory() {
+        return JSON.toJSONString(administratorApplicationService.getAllPaymentHistory());
     }
 
     @PostMapping("/employer/signup")
@@ -121,7 +126,7 @@ public class Controller {
     }
 
     @PostMapping("/employer/action/update/profile")
-    public String updateEmployerProfile(@RequestBody EmployerProfileCommand command, HttpServletRequest request) {
+    public String employerUpdateEmployerProfile(@RequestBody EmployerProfileCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         Employer employer = employerApplicationService.updateEmployerProfile(id, command);
@@ -129,7 +134,7 @@ public class Controller {
     }
 
     @PostMapping("/employer/action/create/job")
-    public String createJob(@RequestBody EmployerCreateJobCommand command, HttpServletRequest request) {
+    public String employerCreateJob(@RequestBody EmployerCreateJobCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         String response = employerApplicationService.createJob(command, id);
@@ -137,27 +142,27 @@ public class Controller {
     }
 
     @GetMapping("/employer/action/check/job/applicants")
-    public String checkJobApplicants(Long jobId) {
+    public String employerCheckJobApplicants(Long jobId) {
         return JSON.toJSONString(employerApplicationService.checkApplicantsList(jobId));
     }
 
     @GetMapping("/employer/action/get/applicant/information")
-    public String getApplicantInformation(Long applicantId) {
+    public String employerGetApplicantInformation(Long applicantId) {
         return JSON.toJSONString(employerApplicationService.getApplicantInformation(applicantId));
     }
 
     @GetMapping("/employer/action/get/applicant/resume")
-    public String getApplicantResume(Long applicantId) {
+    public String employerGetApplicantResume(Long applicantId) {
         return JSON.toJSONString(employerApplicationService.getApplicantResume(applicantId));
     }
 
     @GetMapping("/employer/action/get/applicant/application")
-    public String getApplication(Long applicationId) {
+    public String employerGetApplication(Long applicationId) {
         return JSON.toJSONString(employerApplicationService.getApplication(applicationId));
     }
 
     @PostMapping("/employer/action/update/application")
-    public String updateApplication(@RequestBody EmployerUpdateApplicationCommand command, HttpServletRequest request) {
+    public String employerUpdateApplication(@RequestBody EmployerUpdateApplicationCommand command, HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         return JSON.toJSONString(employerApplicationService.updateApplication(Long.parseLong(command.getApplicationId()), ApplicationStatus.valueOf(command.getStatus()), id));
@@ -168,6 +173,23 @@ public class Controller {
         String token = request.getHeader("Authorization");
         Long id = (Long) redisService.get(token);
         return JSON.toJSONString(employerApplicationService.rechargeMoneyToAccount(id, Long.parseLong(command.getAmount())));
+    }
+
+    @PostMapping("/employer/action/approve/completed-work")
+    public String employerApproveCompletedWork(JobStatusCommand command) {
+        return JSON.toJSONString(employerApplicationService.approveCompleteWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
+    }
+
+    @PostMapping("/employer/action/reject/completed-work")
+    public String employerRejectCompletedWork(JobStatusCommand command) {
+        return JSON.toJSONString(employerApplicationService.rejectCompleteWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
+    }
+
+    @GetMapping("/employer/action/get/all/payment/history")
+    public String employerGetAllPaymentHistory(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(employerApplicationService.getAllPaymentHistory(id));
     }
 
     @PostMapping("/freelancer/signup")
@@ -257,5 +279,19 @@ public class Controller {
     @PostMapping("/freelancer/action/complete/work")
     public String freelancerCompleteWork(@RequestBody JobStatusCommand command) {
         return freelancerApplicationService.completeWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus()));
+    }
+
+    @GetMapping("/freelancer/action/get/all/payment/history")
+    public String freelancerGetAllPaymentHistory(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(freelancerApplicationService.getAllPaymentHistory(id));
+    }
+
+    @PostMapping("/freelancer/action/withdraw/money")
+    public String freelancerWithDrawMoney(HttpServletRequest request, @RequestBody UserMoneyCommand command) {
+        String token = request.getHeader("Authorization");
+        Long id = (Long) redisService.get(token);
+        return JSON.toJSONString(freelancerApplicationService.withdrawMoney(id, Long.parseLong(command.getAmount())));
     }
 }

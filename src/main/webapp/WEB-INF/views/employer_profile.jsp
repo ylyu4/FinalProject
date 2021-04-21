@@ -15,7 +15,7 @@
         <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Deposit</button>
       </div>
       <div>
-        <button class="employer_profile-top-button-paymentHistory" type="button" name="employer_profilePaymentHistory" onclick="buttonJump('employer_payment_history.html')">Payment History</button>
+        <button class="employer_profile-top-button-paymentHistory" type="button" name="employer_profilePaymentHistory" onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Payment History</button>
       </div>
       <form action="">
         <div>
@@ -73,9 +73,8 @@
       <div>
         <button class="employer_profile-right-button-Application" type="button" name="employer_profileTableApplicants" onclick="checkApplicants()">Applicants</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableDetails"    onclick="viewPostedJobDetail()">Details</button>
-        <button class="employer_profile-right-button" type="button" name="employer_profileTablePrepay"     onclick="employerPrepay('00000001')">Prepay</button>
-        <button class="employer_profile-right-button" type="button" name="employer_profileTableDelete"     onclick="employerProfileDelete('00000001')">Delete</button>
-        <button class="employer_profile-right-button" type="button" name="employer_profileTableConfirm"    onclick="employerConfirmWork('00000001')">Confirm</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTableConfirm"    onclick="approveCompleteWork()">Confirm</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTableDelete"     onclick="rejectCompleteWork()">Reject</button>
       </div>
       <table border="0" cellspacing="0" frame=below rules=rows id="createdJobs">
         <tr>
@@ -257,6 +256,68 @@
       }
     }
     alert("Please select a job from the list!");
+  }
+
+  function approveCompleteWork() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i + 1];
+        const status = tr.getElementsByTagName("td")[6];
+        if (status === 'FINISHED') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/employer/action/reject/completed-work', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Approve the qualified job successfully!')
+            } else {
+              alert('System Error!')
+            }
+          }
+          request.send(JSON.stringify({
+            'jobId': tr,
+            'status': status
+          }));
+        } else {
+          alert('You can not confirm this job!')
+        }
+      }
+      alert("Please select a job from the list!");
+    }
+  }
+
+  function rejectCompleteWork() {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i + 1];
+        const status = tr.getElementsByTagName("td")[6];
+        if (status === 'FINISHED') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/employer/action/reject/completed-work', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Reject the unqualified job successfully!')
+            } else {
+              alert('System Error!')
+            }
+          }
+          request.send(JSON.stringify({
+            'jobId': tr,
+            'status': status
+          }));
+        } else {
+          alert('You can not complete this job!')
+        }
+      }
+      alert("Please select a job from the list!");
+    }
   }
 
   function buttonJump(destination){

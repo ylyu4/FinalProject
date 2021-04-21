@@ -73,6 +73,11 @@ public class PageController {
         return "employer_check_applicant_qualification";
     }
 
+    @RequestMapping("/page/employer/payment-history")
+    public String goToEmployerPaymentHistoryPage() {
+        return "employer_payment_history";
+    }
+
     @RequestMapping("/page/freelancer/login")
     public String goToFreelancerLoginPage() {
         return "freelancer_login";
@@ -106,5 +111,15 @@ public class PageController {
     @RequestMapping("/page/freelancer/view/applied-job-details")
     public String goToFreelancerViewAppliedJobDetailsPage() {
         return "freelancer_browse_applied_jobs_details";
+    }
+
+    @RequestMapping("/page/freelancer/remuneration/history")
+    public String goToFreelancerRemunerationHistoryPage() {
+        return "freelancer_remuneration_history";
+    }
+
+    @RequestMapping("/page/freelancer/withdraw")
+    public String goToFreelancerWithdrawPage() {
+        return "freelancer_withdraw";
     }
 }

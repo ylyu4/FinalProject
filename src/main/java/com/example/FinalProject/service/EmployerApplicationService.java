@@ -8,19 +8,24 @@ import com.example.FinalProject.model.ApplicationStatus;
 import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
+import com.example.FinalProject.model.JobStatus;
 import com.example.FinalProject.model.PaymentHistory;
 import com.example.FinalProject.model.Resume;
+import com.example.FinalProject.model.SystemAccount;
 import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.EmployerRepository;
 import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
 import com.example.FinalProject.repository.PaymentHistoryRepository;
 import com.example.FinalProject.repository.ResumeRepository;
+import com.example.FinalProject.repository.SystemAccountRepository;
+import com.example.FinalProject.response.PaymentHistoryResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -42,6 +47,8 @@ public class EmployerApplicationService {
     private final ResumeRepository resumeRepository;
 
     private final PaymentHistoryRepository paymentHistoryRepository;
+
+    private final SystemAccountRepository systemAccountRepository;
 
     private final RedisService redisService;
 
@@ -191,5 +198,57 @@ public class EmployerApplicationService {
             return "successfully";
         }
         return "error";
+    }
+
+    @Transactional
+    public String approveCompleteWork(Long jobId, JobStatus status) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+        if (optionalJob.isPresent()) {
+            Job job = optionalJob.get();
+            if (status == JobStatus.FINISHED) {
+                job.setJobStatus(JobStatus.QUALIFIED);
+            } else {
+                return "error";
+            }
+            job.setLastUpdateTime(LocalDateTime.now());
+            jobRepository.save(job);
+            SystemAccount systemAccount = systemAccountRepository.findAll().iterator().next();
+            Long amount = job.getSalary();
+            systemAccount.setAccountBalance(systemAccount.getAccountBalance() - amount);
+            systemAccountRepository.save(systemAccount);
+            PaymentHistory systemPaymentHistory = new PaymentHistory(amount * -1);
+            systemPaymentHistory.setAccountId(systemAccount.getId());
+            PaymentHistory freelancerPaymentHistory = new PaymentHistory(amount);
+            freelancerPaymentHistory.setFreelancerId(job.getFreelancerId());
+            paymentHistoryRepository.save(systemPaymentHistory);
+            paymentHistoryRepository.save(freelancerPaymentHistory);
+            return "successfully";
+        } else {
+            return "error";
+        }
+    }
+
+    @Transactional
+    public String rejectCompleteWork(Long jobId, JobStatus status) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+        if (optionalJob.isPresent()) {
+            Job job = optionalJob.get();
+            if (status == JobStatus.FINISHED) {
+                job.setJobStatus(JobStatus.WORKING);
+            } else {
+                return "error";
+            }
+            job.setLastUpdateTime(LocalDateTime.now());
+            jobRepository.save(job);
+            return "successfully";
+        } else {
+            return "error";
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<PaymentHistoryResponse> getAllPaymentHistory(Long userId) {
+        List<PaymentHistory> paymentHistories = paymentHistoryRepository.findAllByFreelancerId(userId);
+        return paymentHistories.stream().map(PaymentHistoryResponse::new).collect(Collectors.toList());
     }
 }

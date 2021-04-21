@@ -8,17 +8,21 @@ import com.example.FinalProject.model.Employer;
 import com.example.FinalProject.model.Freelancer;
 import com.example.FinalProject.model.Job;
 import com.example.FinalProject.model.JobStatus;
+import com.example.FinalProject.model.PaymentHistory;
 import com.example.FinalProject.model.Resume;
 import com.example.FinalProject.model.SystemAccount;
 import com.example.FinalProject.repository.ApplicationRepository;
 import com.example.FinalProject.repository.EmployerRepository;
 import com.example.FinalProject.repository.FreelancerRepository;
 import com.example.FinalProject.repository.JobRepository;
+import com.example.FinalProject.repository.PaymentHistoryRepository;
 import com.example.FinalProject.repository.ResumeRepository;
 import com.example.FinalProject.repository.SystemAccountRepository;
 import com.example.FinalProject.response.FreelancerAppliedJobListResponse;
+import com.example.FinalProject.response.PaymentHistoryResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +49,8 @@ public class FreelancerApplicationService {
     private final JobRepository jobRepository;
 
     private final ApplicationRepository applicationRepository;
+
+    private final PaymentHistoryRepository paymentHistoryRepository;
 
     private final RedisService redisService;
 
@@ -190,6 +196,12 @@ public class FreelancerApplicationService {
                         Long remainingBalance = employer.getAccountBalance() - job.getSalary();
                         employer.setAccountBalance(remainingBalance);
                         SystemAccount systemAccount = systemAccountRepository.findAll().iterator().next();
+                        PaymentHistory employerPaymentHistory = new PaymentHistory(job.getSalary() * -1);
+                        employerPaymentHistory.setEmployerId(employerId);
+                        PaymentHistory systemPaymentHistory = new PaymentHistory(job.getSalary());
+                        systemPaymentHistory.setAccountId(systemAccount.getId());
+                        paymentHistoryRepository.save(employerPaymentHistory);
+                        paymentHistoryRepository.save(systemPaymentHistory);
                         Long newBalance = systemAccount.getAccountBalance() + job.getSalary();
                         systemAccount.setAccountBalance(newBalance);
                         employerRepository.save(employer);
@@ -258,5 +270,33 @@ public class FreelancerApplicationService {
         } else {
             return "error";
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<PaymentHistoryResponse> getAllPaymentHistory(Long userId) {
+        List<PaymentHistory> paymentHistories = paymentHistoryRepository.findAllByFreelancerId(userId);
+        return paymentHistories.stream().map(PaymentHistoryResponse::new).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public String withdrawMoney(Long userId, Long amount) {
+        Optional<Freelancer> optionalFreelancer = freelancerRepository.findById(userId);
+        if (optionalFreelancer.isPresent()) {
+            Freelancer freelancer = optionalFreelancer.get();
+            if (freelancer.getCard() == null) {
+                return "card";
+            }
+            Long currentBalance = freelancer.getAccountBalance();
+            if (amount > currentBalance) {
+                return "shortage";
+            }
+            freelancer.setAccountBalance(currentBalance - amount);
+            PaymentHistory paymentHistory = new PaymentHistory(amount * -1);
+            paymentHistory.setFreelancerId(userId);
+            paymentHistoryRepository.save(paymentHistory);
+            freelancerRepository.save(freelancer);
+            return "successfully";
+        }
+        return "error";
     }
 }
