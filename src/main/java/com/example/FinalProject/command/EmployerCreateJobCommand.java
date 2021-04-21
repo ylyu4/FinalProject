@@ -29,7 +29,7 @@ public class EmployerCreateJobCommand {
 
     private String contact;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate deadline;
 
     private String description;

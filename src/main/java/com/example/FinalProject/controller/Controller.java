@@ -74,7 +74,7 @@ public class Controller {
 
     @GetMapping("/admin/action/get/jobs")
     public String adminGetAllNewUnreleasedJobs() {
-        List<Job> jobList =  administratorApplicationService.getAllNewCreatedJobs();
+        List<Job> jobList = administratorApplicationService.getAllNewCreatedJobs();
         return JSON.toJSONString(jobList);
     }
 

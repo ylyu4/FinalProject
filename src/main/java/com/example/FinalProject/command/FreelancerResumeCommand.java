@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class FreelancerResumeCommand {
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate educationStartTime;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate educationEndTime;
 
     private String school;
@@ -28,10 +28,10 @@ public class FreelancerResumeCommand {
 
     private String educationDescription;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate workExperienceStartTime;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate workExperienceEndTime;
 
     private String company;

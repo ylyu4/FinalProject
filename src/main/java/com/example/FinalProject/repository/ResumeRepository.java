@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ResumeRepository extends CrudRepository<Resume, Long>  {
+public interface ResumeRepository extends CrudRepository<Resume, Long> {
 
     Optional<Resume> getResumeByFreelancerId(Long freelancerId);
 }

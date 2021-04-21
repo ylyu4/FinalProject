@@ -23,7 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-public  class Employer {
+public class Employer {
 
     @Id
     @Column(name = "employer_id")

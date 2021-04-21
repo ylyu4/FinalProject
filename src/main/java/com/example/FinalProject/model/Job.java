@@ -37,7 +37,7 @@ public class Job {
 
     private String experience;
 
-    private String  location;
+    private String location;
 
     private String field;
 
