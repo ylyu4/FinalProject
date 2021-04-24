@@ -159,7 +159,7 @@ public class FreelancerApplicationService {
 
     @Transactional(readOnly = true)
     public List<Job> getAvailableJobs() {
-        return jobRepository.findAllByJobStatus(JobStatus.APPROVED);
+        return jobRepository.findAllByJobStatus(JobStatus.POSTED);
     }
 
     @Transactional

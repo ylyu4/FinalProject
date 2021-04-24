@@ -125,6 +125,21 @@ public class EmployerApplicationService {
         }
     }
 
+    @Transactional
+    public String postJob(Long jobId, JobStatus status) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+        if (optionalJob.isPresent()) {
+            Job job = optionalJob.get();
+            if (status == JobStatus.APPROVED) {
+                job.setJobStatus(JobStatus.POSTED);
+                job.setLastUpdateTime(LocalDateTime.now());
+                jobRepository.save(job);
+                return "successfully";
+            }
+        }
+        return "error";
+    }
+
     @Transactional(readOnly = true)
     public List<Application> checkApplicantsList(Long jobId) {
         return applicationRepository.findAllByJobId(jobId);

@@ -141,6 +141,11 @@ public class Controller {
         return JSON.toJSONString(response);
     }
 
+    @PostMapping("employer/action/post/job")
+    public String employerPostJob(@RequestBody JobStatusCommand command) {
+        return JSON.toJSONString(employerApplicationService.postJob(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
+    }
+
     @GetMapping("/employer/action/check/job/applicants")
     public String employerCheckJobApplicants(Long jobId) {
         return JSON.toJSONString(employerApplicationService.checkApplicantsList(jobId));

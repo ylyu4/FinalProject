@@ -73,6 +73,7 @@
       <div>
         <button class="employer_profile-right-button-Application" type="button" name="employer_profileTableApplicants" onclick="checkApplicants()">Applicants</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableDetails"    onclick="viewPostedJobDetail()">Details</button>
+        <button class="employer_profile-right-button" type="button" name="employer_profileTablePost"    onclick="postNewReleasedJob()">Post</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableConfirm"    onclick="approveCompleteWork()">Confirm</button>
         <button class="employer_profile-right-button" type="button" name="employer_profileTableDelete"     onclick="rejectCompleteWork()">Reject</button>
       </div>
@@ -256,6 +257,44 @@
       }
     }
     alert("Please select a job from the list!");
+  }
+
+  function postNewReleasedJob() {
+    const radios = document.getElementsByName("postedJob");
+    let flag = false;
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        flag = true;
+        const tr = document.getElementsByTagName("tr")[i + 1];
+        const jobId = tr.getElementsByTagName("td")[1].innerHTML;
+        const status = tr.getElementsByTagName("td")[6].innerHTML;
+        if (status === 'APPROVED') {
+          const request = new XMLHttpRequest();
+          request.open('POST', 'http://localhost:8080/employer/action/post/job', true);
+          request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.onload = function () {
+            const data = JSON.parse(this.response);
+            if (data === 'successfully') {
+              alert('Post the job successfully!')
+              buttonJump('http://localhost:8080/page/employer/profile');
+            } else {
+              alert('System Error!')
+            }
+          }
+          request.send(JSON.stringify({
+            'jobId': jobId,
+            'status': status
+          }));
+        } else {
+          alert('You can not post this job!')
+        }
+      }
+    }
+    if (flag === false) {
+      alert("Please select a job from the list!");
+    }
+
   }
 
   function approveCompleteWork() {

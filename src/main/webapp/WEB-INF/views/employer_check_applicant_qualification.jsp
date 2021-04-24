@@ -57,6 +57,7 @@
         <option class="employer_check_applicant_qualification-option" value="DONE">ACCEPTED</option>
       </select><br>
       <button type="button" name="employer_check_applicant_qualificationUpdate" onclick="updateApplication()">Update</button>
+      <button type="button" name="employer_back_to_previous_page" onclick="buttonJump('http://localhost:8080/page/employer/check-applicants-list')">Back</button>
       </div>
     </div>
   </div>
