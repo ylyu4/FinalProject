@@ -12,7 +12,7 @@
       <h1>Employer Profile</h1>
       <p id="employerAccountBalance"></p>
       <div>
-        <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Deposit</button>
+        <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit" onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Recharge</button>
       </div>
       <div>
         <button class="employer_profile-top-button-paymentHistory" type="button" name="employer_profilePaymentHistory" onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Payment History</button>
@@ -252,7 +252,7 @@
         const td = tr.getElementsByTagName("td")[1];
         console.log(td.innerHTML);
         localStorage.setItem("employerViewDetailsJobId", td.innerHTML);
-        buttonJump('http://localhost:8080/page/employer/view/job/details');
+        buttonJump('http://localhost:8080/page/employer/view-post-job-details');
         return;
       }
     }

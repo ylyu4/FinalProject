@@ -8,19 +8,20 @@
    <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="freelancer_browse_jobs_details-body">
-  <div class="freelancer_browse_jobs_details-div">
-  <h1>Browse Job Details</h1>
-  <p id="availableJobDetailName"></p>
-  <p id="availableJobDetailCompany"></p>
-  <p id="availableJobDetailExperience"></p>
-  <p id="availableJobDetailLocation"></p>
-  <p id="availableJobDetailField"></p>
-  <p id="availableJobDetailSalary"></p>
-  <p id="availableJobDetailContact"></p>
-  <p id="availableJobDetailDescription"></p>
-  <button type="button" name="freelancer_browse_jobs_detailsApply" onclick="applyJob()">Apply</button>
-  <button type="button" name="freelancer_browse_jobs_detailsBack"  onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Back</button>
-  </div>
+    <h1>Browse Job Details</h1>
+    <div class="freelancer_browse_jobs_details-div">
+          <p id="availableJobDetailName"></p>
+          <p id="availableJobDetailCompany"></p>
+          <p id="availableJobDetailExperience"></p>
+          <p id="availableJobDetailLocation"></p>
+          <p id="availableJobDetailField"></p>
+          <p id="availableJobDetailSalary"></p>
+          <p id="availableJobDetailContact"></p>
+          <p id="availableJobDetailDescription"></p>
+    </div>
+    <br>
+    <button type="button" name="freelancer_browse_jobs_detailsApply" onclick="applyJob()">Apply</button>
+    <button type="button" name="freelancer_browse_jobs_detailsBack"  onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Back</button>
 </body>
 
 <script type="text/javascript">
@@ -37,7 +38,7 @@
     request.onload = function () {
       const data = JSON.parse(this.response);
       const name = document.getElementById("availableJobDetailName");
-      name.innerText = "Job Id: " + data.name;
+      name.innerText = "Job Name: " + data.name;
       const company = document.getElementById("availableJobDetailCompany");
       company.innerText = "Company: " + data.company;
       const experience = document.getElementById("availableJobDetailExperience");

@@ -15,7 +15,7 @@
         <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw</button>
       </div>
       <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration/history')">Remuneration History</button>
+        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Remuneration History</button>
       </div>
       <div>
         <button class="freelancer_profile-top-button" type="button" name="freelancer_profileViewResume" onclick="buttonJump('http://localhost:8080/page/freelancer/view-resume')">View Resume</button>
@@ -74,7 +74,7 @@
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="viewAppliedJobDetail()">Details</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="acceptOfferOrInterview()">Accept</button>
         <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="rejectOfferOrInterview()">Decline</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="startWork()">Start Work</button>
+        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="startWork()">Start</button>
         <button class="freelancer_profile-bottom-button-completeWork" type="button" name="freelancer_profileTableComplete" onclick="completeWork()">Complete Work</button>
       </div>
       <table border="0" cellspacing="0" frame=below rules=rows id="appliedJobs">

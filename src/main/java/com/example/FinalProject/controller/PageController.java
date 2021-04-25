@@ -62,7 +62,7 @@ public class PageController {
         return "employer_applicants_list";
     }
 
-    @RequestMapping("/page/employer/view/job/details")
+    @RequestMapping("/page/employer/view-post-job-details")
     public String goToEmployerViewJobDetailsPage() {
         return "employer_view_posted_job_details";
     }
@@ -113,7 +113,7 @@ public class PageController {
         return "freelancer_browse_applied_jobs_details";
     }
 
-    @RequestMapping("/page/freelancer/remuneration/history")
+    @RequestMapping("/page/freelancer/remuneration-history")
     public String goToFreelancerRemunerationHistoryPage() {
         return "freelancer_remuneration_history";
     }

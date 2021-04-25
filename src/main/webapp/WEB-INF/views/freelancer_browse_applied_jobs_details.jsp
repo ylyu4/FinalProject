@@ -8,6 +8,7 @@
    <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="freelancer_browse_applied_jobs_details-body">
+    <h1>Applied Job Details</h1>
   <div class="freelancer_browse_applied_jobs_details-div">
       <p id="appliedJobDetailName"></p>
       <p id="appliedJobDetailCompany"></p>
@@ -17,8 +18,8 @@
       <p id="appliedJobDetailSalary"></p>
       <p id="appliedJobDetailContact"></p>
       <p id="appliedJobDetailDescription"></p>
-    <button type="button" name="freelancer_browse_applied_jobs_detailsBack"  onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back</button>
   </div>
+    <button type="button" name="freelancer_browse_applied_jobs_detailsBack"  onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back</button>
 </body>
 
 <script type="text/javascript">

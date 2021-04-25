@@ -17,7 +17,7 @@
     <div>
       <input id="employerRecharge" class="employer_deposit-form" type="text" name="employerRecharge" value="" required>
     </div>
-    <button class="employer_deposit-button" type="button" onclick="depositMoney()">Deposit</button>
+    <button class="employer_deposit-button" type="button" onclick="depositMoney()">Recharge</button>
   </form>
   <button type="button" name="employer_depositBack" onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back</button>
 </div>

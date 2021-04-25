@@ -8,7 +8,7 @@
 </head>
 <body class="administrator_view_job-body">
   <h1>Review Job Description</h1>
-  <div class="administrator_view_job-body">
+  <div class="administrator_view_job-body-information">
       <p id="reviewedJobId"></p>
     <p id="reviewedJobName"></p>
     <p id="reviewedJobCompany"></p>
