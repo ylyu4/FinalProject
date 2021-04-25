@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Browse Applied Job Details</title>
-   <link rel="stylesheet" href="../../static/css/reset.css" />
-   <link rel="stylesheet" href="../../static/css/global.css" />
-   <script type="text/javascript" src="../../static/js/functions.js"></script>
+    <meta charset="utf-8">
+    <title>Browse Applied Job Details</title>
+    <link rel="stylesheet" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" href="../../static/css/global.css"/>
+    <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="freelancer_browse_applied_jobs_details-body">
-    <h1>Applied Job Details</h1>
-  <div class="freelancer_browse_applied_jobs_details-div">
-      <p id="appliedJobDetailName"></p>
-      <p id="appliedJobDetailCompany"></p>
-      <p id="appliedJobDetailExperience"></p>
-      <p id="appliedJobDetailLocation"></p>
-      <p id="appliedJobDetailField"></p>
-      <p id="appliedJobDetailSalary"></p>
-      <p id="appliedJobDetailContact"></p>
-      <p id="appliedJobDetailDescription"></p>
-  </div>
-    <button type="button" name="freelancer_browse_applied_jobs_detailsBack"  onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back</button>
+<h1>Applied Job Details</h1>
+<div class="freelancer_browse_applied_jobs_details-div">
+    <p id="appliedJobDetailName"></p>
+    <p id="appliedJobDetailCompany"></p>
+    <p id="appliedJobDetailExperience"></p>
+    <p id="appliedJobDetailLocation"></p>
+    <p id="appliedJobDetailField"></p>
+    <p id="appliedJobDetailSalary"></p>
+    <p id="appliedJobDetailContact"></p>
+    <p id="appliedJobDetailDescription"></p>
+</div>
+<button type="button" name="freelancer_browse_applied_jobs_detailsBack"
+        onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back
+</button>
 </body>
 
 <script type="text/javascript">
@@ -28,9 +30,9 @@
     loadPostedJobDetails();
   }
 
-  function loadPostedJobDetails() {
+  function loadPostedJobDetails () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId='+localStorage.getItem("employerViewDetailsJobId"), true);
+    request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId=' + localStorage.getItem("employerViewDetailsJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -55,9 +57,8 @@
     request.send();
   }
 
-
-  function buttonJump(destination){
-    window.location.href=destination;
+  function buttonJump (destination) {
+    window.location.href = destination;
   }
 
 </script>

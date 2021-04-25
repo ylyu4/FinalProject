@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Withdraw</title>
-   <link rel="stylesheet" href="../../static/css/reset.css" />
-   <link rel="stylesheet" href="../../static/css/global.css" />
-   <script type="text/javascript" src="../../static/js/functions.js"></script>
+    <meta charset="utf-8">
+    <title>Withdraw</title>
+    <link rel="stylesheet" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" href="../../static/css/global.css"/>
+    <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="freelancer_withdraw-body">
-  <div class="freelancer_withdraw-div">
-  <h1>Withdraw</h1>
-  <form action="">
-    <div>
-      <label class="freelancer_withdraw-form-label" for="amount">Amount</label>
-    </div>
-    <div>
-      <input id="freelancerWithdraw" class="freelancer_withdraw-form" type="text" name="freelancerWithdraw" value="" required>
-    </div>
-    <button class="freelancer_withdraw-button" type="button" onclick="freelancerWithdrawAmount()">Withdraw</button>
-  </form>
-  <button class="freelancer_withdraw-button" type="button" name="freelancer_withdrawBack" onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back</button>
-  </div>
+<div class="freelancer_withdraw-div">
+    <h1>Withdraw</h1>
+    <form action="">
+        <div>
+            <label class="freelancer_withdraw-form-label" for="amount">Amount</label>
+        </div>
+        <div>
+            <input id="freelancerWithdraw" class="freelancer_withdraw-form" type="text" name="freelancerWithdraw"
+                   value="" required>
+        </div>
+        <button class="freelancer_withdraw-button" type="button" onclick="freelancerWithdrawAmount()">Withdraw</button>
+    </form>
+    <button class="freelancer_withdraw-button" type="button" name="freelancer_withdrawBack"
+            onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back
+    </button>
+</div>
 </body>
 
 <script type="text/javascript">
 
-  function freelancerWithdrawAmount() {
+  function freelancerWithdrawAmount () {
     const amount = document.getElementById('freelancerWithdraw');
     if (!Number.isInteger(amount)) {
       alert('The amount should be a number!');
@@ -57,8 +60,8 @@
     }));
   }
 
-  function buttonJump(destination){
-    window.location.href=destination;
+  function buttonJump (destination) {
+    window.location.href = destination;
   }
 
 </script>

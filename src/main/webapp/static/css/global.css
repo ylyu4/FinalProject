@@ -30,7 +30,7 @@ body.freelancer_browse_applied_jobs_details-body {
 .freelancer_view_resume-body h1,
 .freelancer_browse_jobs-body h1,
 .freelancer_browse_jobs_details-body h1,
-.freelancer_browse_applied_jobs_details-body h1{
+.freelancer_browse_applied_jobs_details-body h1 {
     color: white;
     font: 700 2rem "Montserrat", sans-serif;
     text-decoration: underline;
@@ -68,7 +68,7 @@ label.employer_write_job_description-form-label,
 .freelancer_view_resume-div,
 .freelancer_browse_jobs-div,
 .freelancer_browse_jobs_details-div,
-.freelancer_browse_applied_jobs_details-div{
+.freelancer_browse_applied_jobs_details-div {
     height: 100%;
     width: 100%;
     text-align: center;
@@ -165,8 +165,8 @@ body.freelancer_login-body, body.freelancer_sign_up-body {
 table {
     color: white;
     width: 100%;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     border-color: #14bf98;
     display: block;
     height: 700px;
@@ -233,7 +233,7 @@ body.employer_profile-body textarea:disabled {
 
 .administrator_profile-div-left, .administrator_profile-div-middle,
 .administrator_profile-div-right {
-    float:left;
+    float: left;
 }
 
 .administrator_profile-div-left {
@@ -254,7 +254,7 @@ body.employer_profile-body textarea:disabled {
     margin-left: 2%;
 }
 
-body.administrator_view_job-body{
+body.administrator_view_job-body {
     margin-top: 2%;
     text-align: center;
 }
@@ -269,7 +269,7 @@ div.administrator_view_job-body-information {
     padding-bottom: 0.5rem;
 }
 
-.administrator_view_job-body button{
+.administrator_view_job-body button {
     margin: 1rem 1.5% 1rem 1.5%;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
@@ -290,9 +290,11 @@ div.administrator_view_job-body-information {
     width: 0.4rem;
     height: 0.4rem;
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: #14bf98;
 }
+
 ::-webkit-scrollbar-track {
     background: white;
 }
@@ -371,7 +373,7 @@ button.employer_profile-top-button-postNewJob {
 }
 
 .employer_profile-div-right {
-    float:left;
+    float: left;
     width: 60%;
     margin-left: 3%;
     margin-right: 3%;
@@ -412,6 +414,7 @@ body.employer_write_job_description-body textarea {
     margin-top: 2.5%;
     width: 20%;
 }
+
 .employer_write_job_description-right {
     margin-left: 10%;
     margin-top: 2.5%;
@@ -466,7 +469,7 @@ div.employer_view_posted_job_details-div p {
     padding-bottom: 0.5rem;
 }
 
-body.employer_view_posted_job_details-body{
+body.employer_view_posted_job_details-body {
     margin-top: 2%;
     text-align: center;
 }
@@ -500,9 +503,8 @@ div.employer_view_posted_job_details-div {
 .employer_check_applicant_qualification-div-left,
 .employer_check_applicant_qualification-div-middle,
 .employer_check_applicant_qualification-div-right {
-    float:left;
+    float: left;
 }
-
 
 
 .employer_check_applicant_qualification-div-left {
@@ -585,7 +587,7 @@ button.freelancer_profile-bottom-button {
 }
 
 .freelancer_profile-div-right {
-    float:left;
+    float: left;
     width: 60%;
     margin-left: 3%;
     margin-right: 3%;
@@ -602,7 +604,7 @@ button.freelancer_profile-right-button {
     min-width: 90px;
 }
 
-button.freelancer_profile-bottom-button-completeWork,  button.freelancer_profile-top-button-browseJobs {
+button.freelancer_profile-bottom-button-completeWork, button.freelancer_profile-top-button-browseJobs {
     margin: 1rem 0.7rem 1rem 0.7rem;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
@@ -666,7 +668,7 @@ button.freelancer_withdraw-button {
     margin-top: 2%;
 }
 
-.freelancer_view_resume-body h2{
+.freelancer_view_resume-body h2 {
     margin: 1rem 0rem 1rem 0rem;
     color: white;
     font: 700 1.5rem "Montserrat", sans-serif;

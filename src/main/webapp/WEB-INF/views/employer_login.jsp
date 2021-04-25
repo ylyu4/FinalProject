@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Employer Login</title>
-   <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
-   <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
+    <meta charset="utf-8">
+    <title>Employer Login</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/global.css"/>
 </head>
 <body class="employer_login-body">
-  <div class="employer_login-div">
+<div class="employer_login-div">
     <!-- Title -->
-    <h1 >Employer Login</h1>
+    <h1>Employer Login</h1>
     <!-- Input -->
     <div>
-    <form>
-      <div>
-        <label class="employer_login-form-label" for="account">Account</label>
-        </div>
-        <div>
-        <input type="text" class="employer_login-form" id="employerLoginUsername" name="account" required>
-      </div>
-      <div>
-        <label class="employer_login-form-label" for="account">Password</label>
-      </div>
-      <div>
-        <input type= "password" class="employer_login-form" id="employerLoginPassword" name="password" required>
-      </div>
-      <div class="employer_login-form-submit">
-        <button type="button" class="form-control-submit-button" onclick="login()">Login</button>
-      </div>
-    </form>
-    <button type="button" name="employer_LoginBack" onclick="buttonJump('http://localhost:8080/page/homepage')">Back</button>
-    <!-- Button -->
-      <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/employer/signup');">Sign Up!</a></p>
-  </div>
-  </div>
+        <form>
+            <div>
+                <label class="employer_login-form-label" for="account">Account</label>
+            </div>
+            <div>
+                <input type="text" class="employer_login-form" id="employerLoginUsername" name="account" required>
+            </div>
+            <div>
+                <label class="employer_login-form-label" for="account">Password</label>
+            </div>
+            <div>
+                <input type="password" class="employer_login-form" id="employerLoginPassword" name="password" required>
+            </div>
+            <div class="employer_login-form-submit">
+                <button type="button" class="form-control-submit-button" onclick="login()">Login</button>
+            </div>
+        </form>
+        <button type="button" name="employer_LoginBack" onclick="buttonJump('http://localhost:8080/page/homepage')">
+            Back
+        </button>
+        <!-- Button -->
+        <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/employer/signup');">Sign
+            Up!</a></p>
+    </div>
+</div>
 </body>
 
 <script type="text/javascript">
 
-  function login() {
+  function login () {
     const username = document.getElementById("employerLoginUsername").value;
     const password = document.getElementById("employerLoginPassword").value;
     console.log(username);
@@ -59,11 +62,11 @@
     request.send(null);
   }
 
-  function buttonJump(destination){
-    window.location.href=destination;
+  function buttonJump (destination) {
+    window.location.href = destination;
   }
 
-  function saveAdminToken(variable) {
+  function saveAdminToken (variable) {
     localStorage.setItem("token", variable);
   }
 </script>

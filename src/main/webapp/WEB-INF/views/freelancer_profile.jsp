@@ -1,96 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Freelancer Profile</title>
-   <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
-   <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
+    <meta charset="utf-8">
+    <title>Freelancer Profile</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/global.css"/>
 </head>
 <body class="freelancer_profile-body">
-  <div class="freelancer_profile-div">
+<div class="freelancer_profile-div">
     <div class="freelancer_profile-div-left">
-      <h1>Freelancer Profile</h1>
-      <p id="freelancerAccountBalance"></p>
-      <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw</button>
-      </div>
-      <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory" onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Remuneration History</button>
-      </div>
-      <div>
-        <button class="freelancer_profile-top-button" type="button" name="freelancer_profileViewResume" onclick="buttonJump('http://localhost:8080/page/freelancer/view-resume')">View Resume</button>
-      </div>
-      <form action="">
+        <h1>Freelancer Profile</h1>
+        <p id="freelancerAccountBalance"></p>
         <div>
-          <label class="freelancer_profile-form-label" for="name">Name</label>
+            <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw"
+                    onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw
+            </button>
         </div>
         <div>
-          <input id="freelancerEditName" class="freelancer_profile-form" type="text" name="freelancerName" disabled="disabled" value="" required>
-        </div><div>
-          <label class="freelancer_profile-form-label" for="age">Age</label>
+            <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory"
+                    onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Remuneration
+                History
+            </button>
         </div>
         <div>
-          <input id="freelancerEditAge" class="freelancer_profile-form" type="text" name="freelancerAge" disabled="disabled" value="" required>
+            <button class="freelancer_profile-top-button" type="button" name="freelancer_profileViewResume"
+                    onclick="buttonJump('http://localhost:8080/page/freelancer/view-resume')">View Resume
+            </button>
         </div>
-        <div>
-          <label class="freelancer_profile-form-label" for="location">Location</label>
-        </div>
-        <div>
-          <input id="freelancerEditLocation" class="freelancer_profile-form" type="text" name="freelancerLocation" disabled="disabled" value="" required>
-        </div>
-        <div>
-          <label class="freelancer_profile-form-label" for="phone">Phone</label>
-        </div>
-        <div>
-          <input id="freelancerEditPhone" class="freelancer_profile-form" type="text" name="freelancerPhone" disabled="disabled" value="" required>
-        </div>
-        <div>
-          <label class="freelancer_profile-form-label" for="email">Email</label>
-        </div>
-        <div>
-          <input id="freelancerEditEmail" class="freelancer_profile-form" type="text" name="freelancerEmail" disabled="disabled" value="" required>
-        </div>
-        <div>
-          <label class="freelancer_profile-form-label" for="school">School</label>
-        </div>
-        <div>
-          <input id="freelancerEditSchool" class="freelancer_profile-form" type="text" name="freelancerSchool" disabled="disabled" value="" required>
-        </div>
-        <div>
-          <label class="freelancer_profile-form-label" for="card">Card</label>
-        </div>
-        <div>
-          <input id="freelancerEditCard" class="freelancer_profile-form" type="text" name="freelancerCard" disabled="disabled" value="" required>
-        </div>
-      </form>
-      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileEdit" onclick="freelancerProfileEditEnable()">Edit</button>
-      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileSave" value="Save" onclick="updateFreelancerProfile()">Save</button>
-      <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileQuit" onclick="buttonJump('http://localhost:8080/page/homepage')">Quit</button>
+        <form action="">
+            <div>
+                <label class="freelancer_profile-form-label" for="name">Name</label>
+            </div>
+            <div>
+                <input id="freelancerEditName" class="freelancer_profile-form" type="text" name="freelancerName"
+                       disabled="disabled" value="" required>
+            </div>
+            <div>
+                <label class="freelancer_profile-form-label" for="age">Age</label>
+            </div>
+            <div>
+                <input id="freelancerEditAge" class="freelancer_profile-form" type="text" name="freelancerAge"
+                       disabled="disabled" value="" required>
+            </div>
+            <div>
+                <label class="freelancer_profile-form-label" for="location">Location</label>
+            </div>
+            <div>
+                <input id="freelancerEditLocation" class="freelancer_profile-form" type="text" name="freelancerLocation"
+                       disabled="disabled" value="" required>
+            </div>
+            <div>
+                <label class="freelancer_profile-form-label" for="phone">Phone</label>
+            </div>
+            <div>
+                <input id="freelancerEditPhone" class="freelancer_profile-form" type="text" name="freelancerPhone"
+                       disabled="disabled" value="" required>
+            </div>
+            <div>
+                <label class="freelancer_profile-form-label" for="email">Email</label>
+            </div>
+            <div>
+                <input id="freelancerEditEmail" class="freelancer_profile-form" type="text" name="freelancerEmail"
+                       disabled="disabled" value="" required>
+            </div>
+            <div>
+                <label class="freelancer_profile-form-label" for="school">School</label>
+            </div>
+            <div>
+                <input id="freelancerEditSchool" class="freelancer_profile-form" type="text" name="freelancerSchool"
+                       disabled="disabled" value="" required>
+            </div>
+            <div>
+                <label class="freelancer_profile-form-label" for="card">Card</label>
+            </div>
+            <div>
+                <input id="freelancerEditCard" class="freelancer_profile-form" type="text" name="freelancerCard"
+                       disabled="disabled" value="" required>
+            </div>
+        </form>
+        <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileEdit"
+                onclick="freelancerProfileEditEnable()">Edit
+        </button>
+        <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileSave" value="Save"
+                onclick="updateFreelancerProfile()">Save
+        </button>
+        <button class="freelancer_profile-bottom-button" type="button" name="freelancer_profileQuit"
+                onclick="buttonJump('http://localhost:8080/page/homepage')">Quit
+        </button>
     </div>
     <div class="freelancer_profile-div-right">
-      <h1>Job Applied</h1>
-      <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Browse Jobs</button>
-      <div>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"  onclick="viewAppliedJobDetail()">Details</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"   onclick="acceptOfferOrInterview()">Accept</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"   onclick="rejectOfferOrInterview()">Decline</button>
-        <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"    onclick="startWork()">Start</button>
-        <button class="freelancer_profile-bottom-button-completeWork" type="button" name="freelancer_profileTableComplete" onclick="completeWork()">Complete Work</button>
-      </div>
-      <table border="0" cellspacing="0" frame=below rules=rows id="appliedJobs">
-        <tr>
-          <th></th>
-          <th>Job ID</th>
-          <th>Job Name</th>
-          <th>Experience</th>
-          <th>Location</th>
-          <th>Salary</th>
-          <th>Status</th>
-          <th>Paid</th>
-        </tr>
-      </table>
+        <h1>Job Applied</h1>
+        <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs"
+                onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Browse Jobs
+        </button>
+        <div>
+            <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDetails"
+                    onclick="viewAppliedJobDetail()">Details
+            </button>
+            <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableAccept"
+                    onclick="acceptOfferOrInterview()">Accept
+            </button>
+            <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableDecline"
+                    onclick="rejectOfferOrInterview()">Decline
+            </button>
+            <button class="freelancer_profile-right-button" type="button" name="freelancer_profileTableStart"
+                    onclick="startWork()">Start
+            </button>
+            <button class="freelancer_profile-bottom-button-completeWork" type="button"
+                    name="freelancer_profileTableComplete" onclick="completeWork()">Complete Work
+            </button>
+        </div>
+        <table border="0" cellspacing="0" frame=below rules=rows id="appliedJobs">
+            <tr>
+                <th></th>
+                <th>Job ID</th>
+                <th>Job Name</th>
+                <th>Experience</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Status</th>
+                <th>Paid</th>
+            </tr>
+        </table>
     </div>
-  </div>
+</div>
 </body>
 
 <script type="text/javascript">
@@ -100,7 +133,7 @@
     loadAppliedJobs();
   }
 
-  function loadAppliedJobs() {
+  function loadAppliedJobs () {
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/freelancer/action/get/applied-jobs', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -115,20 +148,20 @@
             paidFlag = 'Yes';
           }
           listTable.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='appliedJob'></td>"
-                  + " <td>" + jobList[i].id + "</td>"
-                  + " <td>" + jobList[i].name + "</td>"
-                  + " <td>" + jobList[i].experience + "</td>"
-                  + " <td>" + jobList[i].location + "</td>"
-                  + " <td>" + jobList[i].salary + "</td>"
-                  + " <td>" + jobList[i].status + "</td>"
-                  + " <td>" + paidFlag + "</td></tr> ");
+            + " <td>" + jobList[i].id + "</td>"
+            + " <td>" + jobList[i].name + "</td>"
+            + " <td>" + jobList[i].experience + "</td>"
+            + " <td>" + jobList[i].location + "</td>"
+            + " <td>" + jobList[i].salary + "</td>"
+            + " <td>" + jobList[i].status + "</td>"
+            + " <td>" + paidFlag + "</td></tr> ");
         }
       }
     }
     request.send();
   }
 
-  function loadProfile() {
+  function loadProfile () {
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/freelancer/action/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -182,7 +215,7 @@
     request.send(null);
   }
 
-  function freelancerProfileEditEnable(){
+  function freelancerProfileEditEnable () {
     document.getElementById("freelancerEditName").disabled = "";
     document.getElementById("freelancerEditAge").disabled = "";
     document.getElementById("freelancerEditLocation").disabled = "";
@@ -192,8 +225,7 @@
     document.getElementById("freelancerEditCard").disabled = "";
   }
 
-
-  function updateFreelancerProfile() {
+  function updateFreelancerProfile () {
     let name = document.getElementById("freelancerEditName").value
     let age = document.getElementById("freelancerEditAge").value
     let location = document.getElementById("freelancerEditLocation").value
@@ -201,8 +233,6 @@
     let email = document.getElementById("freelancerEditEmail").value
     let school = document.getElementById("freelancerEditSchool").value
     let card = document.getElementById("freelancerEditCard").value
-
-
 
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:8080/freelancer/action/update/profile', true);
@@ -236,13 +266,13 @@
     }))
   }
 
-  function acceptOfferOrInterview() {
+  function acceptOfferOrInterview () {
     const radios = document.getElementsByName("appliedJob");
     let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
         flag = true;
-        const tr = document.getElementsByTagName("tr")[i+1];
+        const tr = document.getElementsByTagName("tr")[i + 1];
         const jobId = tr.getElementsByTagName("td")[1].innerHTML;
         const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'INVITING' || status === 'OFFER') {
@@ -274,13 +304,13 @@
     }
   }
 
-  function rejectOfferOrInterview() {
+  function rejectOfferOrInterview () {
     const radios = document.getElementsByName("appliedJob");
     let flag = false;
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
         flag = true;
-        const tr = document.getElementsByTagName("tr")[i+1];
+        const tr = document.getElementsByTagName("tr")[i + 1];
         const jobId = tr.getElementsByTagName("td")[1].innerHTML;
         const status = tr.getElementsByTagName("td")[6].innerHTML;
         if (status === 'INVITING' || status === 'APPROVED') {
@@ -312,12 +342,11 @@
     }
   }
 
-
-  function viewAppliedJobDetail() {
+  function viewAppliedJobDetail () {
     const radios = document.getElementsByName("appliedJob");
     for (let i = 0; i < radios.length; i++) {
       if (radios[i].checked) {
-        const tr = document.getElementsByTagName("tr")[i+1];
+        const tr = document.getElementsByTagName("tr")[i + 1];
         const td = tr.getElementsByTagName("td")[1];
         console.log(td.innerHTML);
         localStorage.setItem("freelancerViewAppliedJobId", td.innerHTML);
@@ -328,7 +357,7 @@
     alert("Please select a job from the list!");
   }
 
-  function startWork() {
+  function startWork () {
     const radios = document.getElementsByName("appliedJob");
     let flag = false;
     for (let i = 0; i < radios.length; i++) {
@@ -366,7 +395,7 @@
     }
   }
 
-  function completeWork() {
+  function completeWork () {
     const radios = document.getElementsByName("appliedJob");
     let flag = false;
     for (let i = 0; i < radios.length; i++) {
@@ -404,8 +433,8 @@
     }
   }
 
-  function buttonJump(destination){
-    window.location.href=destination;
+  function buttonJump (destination) {
+    window.location.href = destination;
   }
 
 </script>

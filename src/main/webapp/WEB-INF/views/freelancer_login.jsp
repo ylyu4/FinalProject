@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Freelancer Login</title>
-   <link rel="stylesheet" type="text/css" href="../../static/css/reset.css" />
-   <link rel="stylesheet" type="text/css" href="../../static/css/global.css" />
+    <meta charset="utf-8">
+    <title>Freelancer Login</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/global.css"/>
 </head>
 <body class="freelancer_login-body">
-  <div class="freelancer_login-div">
+<div class="freelancer_login-div">
     <!-- Title -->
-    <h1 >Freelancer Login</h1>
+    <h1>Freelancer Login</h1>
     <!-- Input -->
     <div>
-    <form action="freelancer_profile.jsp" method="">
-      <div>
-        <label class="freelancer_login-form-label" for="account">Account</label>
-        </div>
-        <div>
-        <input type="text" class="freelancer_login-form" id="freelancerLoginUsername" name="account" required>
-      </div>
-      <div>
-        <label class="freelancer_login-form-label" for="account">Password</label>
-      </div>
-      <div>
-        <input type= "password" class="freelancer_login-form" id="freelancerLoginPassword" name="password" required>
-      </div>
-      <div class="freelancer_login-form-submit">
-        <button type="button" class="form-control-submit-button" onclick="login()">Login</button>
-      </div>
-    </form>
-    <button type="button" name="freelancer_LoginBack" onclick="buttonJump('http://localhost:8080/page/homepage')">Back</button>
-    <!-- Button -->
-      <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/freelancer/signup');">Sign Up!</a></p>
-  </div>
-  </div>
+        <form action="freelancer_profile.jsp" method="">
+            <div>
+                <label class="freelancer_login-form-label" for="account">Account</label>
+            </div>
+            <div>
+                <input type="text" class="freelancer_login-form" id="freelancerLoginUsername" name="account" required>
+            </div>
+            <div>
+                <label class="freelancer_login-form-label" for="account">Password</label>
+            </div>
+            <div>
+                <input type="password" class="freelancer_login-form" id="freelancerLoginPassword" name="password"
+                       required>
+            </div>
+            <div class="freelancer_login-form-submit">
+                <button type="button" class="form-control-submit-button" onclick="login()">Login</button>
+            </div>
+        </form>
+        <button type="button" name="freelancer_LoginBack" onclick="buttonJump('http://localhost:8080/page/homepage')">
+            Back
+        </button>
+        <!-- Button -->
+        <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/freelancer/signup');">Sign
+            Up!</a></p>
+    </div>
+</div>
 </body>
 
 <script type="text/javascript">
 
-  function login() {
+  function login () {
     const username = document.getElementById("freelancerLoginUsername").value;
     const password = document.getElementById("freelancerLoginPassword").value;
     console.log(username);
@@ -59,11 +63,11 @@
     request.send(null);
   }
 
-  function buttonJump(destination){
-    window.location.href=destination;
+  function buttonJump (destination) {
+    window.location.href = destination;
   }
 
-  function saveAdminToken(variable) {
+  function saveAdminToken (variable) {
     localStorage.setItem("token", variable);
   }
 </script>

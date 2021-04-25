@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <title>Check Applicant Qualification</title>
-   <link rel="stylesheet" href="../../static/css/reset.css" />
-   <link rel="stylesheet" href="../../static/css/global.css" />
-   <script type="text/javascript" src="../../static/js/functions.js"></script>
+    <meta charset="utf-8">
+    <title>Check Applicant Qualification</title>
+    <link rel="stylesheet" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" href="../../static/css/global.css"/>
+    <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="employer_check_applicant_qualification-body">
-  <div class="employer_check_applicant_qualification-div">
-  <div class="employer_check_applicant_qualification-div-left">
-    <div class="employer_check_applicant_qualification-block">
-      <h1>Personal Information</h1>
-      <p id="applicantName"></p>
-      <p id="applicantAge"></p>
-      <p id="applicantLocation"></p>
-      <p id="applicantPhone"></p>
-      <p id="applicantEmail"></p>
+<div class="employer_check_applicant_qualification-div">
+    <div class="employer_check_applicant_qualification-div-left">
+        <div class="employer_check_applicant_qualification-block">
+            <h1>Personal Information</h1>
+            <p id="applicantName"></p>
+            <p id="applicantAge"></p>
+            <p id="applicantLocation"></p>
+            <p id="applicantPhone"></p>
+            <p id="applicantEmail"></p>
+        </div>
+        <div class="employer_check_applicant_qualification-block">
+            <h1>Education Experience</h1>
+            <p id="applicantEducationStartTime"></p>
+            <p id="applicantEducationEndTime"></p>
+            <p id="applicantEducationSchool"></p>
+            <p id="applicantEducationDegree"></p>
+            <p id="applicantEducationMajor"></p>
+            <p id="applicantEducationDescription"></p>
+        </div>
     </div>
-    <div class="employer_check_applicant_qualification-block">
-      <h1>Education Experience</h1>
-      <p id="applicantEducationStartTime"></p>
-      <p id="applicantEducationEndTime"></p>
-      <p id="applicantEducationSchool"></p>
-      <p id="applicantEducationDegree"></p>
-      <p id="applicantEducationMajor"></p>
-      <p id="applicantEducationDescription"></p>
+    <div class="employer_check_applicant_qualification-div-middle">
+        <div class="employer_check_applicant_qualification-block">
+            <h1>Work Experience</h1>
+            <p id="applicantWorkStartTime"></p>
+            <p id="applicantWorkEndTime"></p>
+            <p id="applicantWorkCompany"></p>
+            <p id="applicantWorkDepartment"></p>
+            <p id="applicantWorkPosition"></p>
+            <p id="applicantWorkDescription"></p>
+        </div>
+        <div class="employer_check_applicant_qualification-block">
+            <h1>Others</h1>
+            <p id="applicantLanguages"></p>
+            <p id="applicantSkills"></p>
+            <p id="applicantReviews"></p>
+        </div>
     </div>
-  </div>
-  <div class="employer_check_applicant_qualification-div-middle">
-    <div class="employer_check_applicant_qualification-block">
-      <h1>Work Experience</h1>
-      <p id="applicantWorkStartTime"></p>
-      <p id="applicantWorkEndTime"></p>
-      <p id="applicantWorkCompany"></p>
-      <p id="applicantWorkDepartment"></p>
-      <p id="applicantWorkPosition"></p>
-      <p id="applicantWorkDescription"></p>
+    <div class="employer_check_applicant_qualification-div-right">
+        <div class="employer_check_applicant_qualification-block">
+            <h1>Application Status</h1>
+            <select class="employer_check_applicant_qualification-select" id="applicationStatusSelect">
+                <option class="employer_check_applicant_qualification-option" value="PENDING">PENDING</option>
+                <option class="employer_check_applicant_qualification-option" value="INVITING">INVITING</option>
+                <option class="employer_check_applicant_qualification-option" value="INTERVIEWING">INTERVIEWING</option>
+                <option class="employer_check_applicant_qualification-option" value="APPROVED">OFFER</option>
+                <option class="employer_check_applicant_qualification-option" value="REJECTED">REJECTED</option>
+                <option class="employer_check_applicant_qualification-option" value="DONE">ACCEPTED</option>
+            </select><br>
+            <button type="button" name="employer_check_applicant_qualificationUpdate" onclick="updateApplication()">
+                Update
+            </button>
+            <button type="button" name="employer_back_to_previous_page"
+                    onclick="buttonJump('http://localhost:8080/page/employer/check-applicants-list')">Back
+            </button>
+        </div>
     </div>
-    <div class="employer_check_applicant_qualification-block">
-      <h1>Others</h1>
-      <p id="applicantLanguages"></p>
-      <p id="applicantSkills"></p>
-      <p id="applicantReviews"></p>
-    </div>
-  </div>
-  <div class="employer_check_applicant_qualification-div-right">
-    <div class="employer_check_applicant_qualification-block">
-      <h1>Application Status</h1>
-      <select class="employer_check_applicant_qualification-select" id="applicationStatusSelect">
-        <option class="employer_check_applicant_qualification-option" value ="PENDING">PENDING</option>
-        <option class="employer_check_applicant_qualification-option" value ="INVITING">INVITING</option>
-        <option class="employer_check_applicant_qualification-option" value ="INTERVIEWING">INTERVIEWING</option>
-        <option class="employer_check_applicant_qualification-option" value="APPROVED">OFFER</option>
-        <option class="employer_check_applicant_qualification-option" value ="REJECTED">REJECTED</option>
-        <option class="employer_check_applicant_qualification-option" value="DONE">ACCEPTED</option>
-      </select><br>
-      <button type="button" name="employer_check_applicant_qualificationUpdate" onclick="updateApplication()">Update</button>
-      <button type="button" name="employer_back_to_previous_page" onclick="buttonJump('http://localhost:8080/page/employer/check-applicants-list')">Back</button>
-      </div>
-    </div>
-  </div>
+</div>
 </body>
 
 <script type="text/javascript">
@@ -71,7 +75,7 @@
     displayApplicationStatus();
   }
 
-  function checkApplicantInformation() {
+  function checkApplicantInformation () {
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/employer/action/get/applicant/information?applicantId=' + localStorage.getItem("applicantId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -107,8 +111,7 @@
     request.send();
   }
 
-
-  function checkApplicantResume() {
+  function checkApplicantResume () {
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/employer/action/get/applicant/resume?applicantId=' + localStorage.getItem("applicantId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -208,7 +211,7 @@
     request.send();
   }
 
-  function displayApplicationStatus() {
+  function displayApplicationStatus () {
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/employer/action/get/applicant/application?applicationId=' + localStorage.getItem("applicationId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -225,7 +228,7 @@
     request.send();
   }
 
-  function updateApplication() {
+  function updateApplication () {
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:8080/employer/action/update/application', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -247,8 +250,8 @@
     }));
   }
 
-  function buttonJump(destination){
-    window.location.href=destination;
+  function buttonJump (destination) {
+    window.location.href = destination;
   }
 
 </script>
