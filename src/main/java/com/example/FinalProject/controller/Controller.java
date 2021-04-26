@@ -278,7 +278,7 @@ public class Controller {
 
     @PostMapping("/freelancer/action/start/work")
     public String freelancerStartWork(@RequestBody JobStatusCommand command) {
-        return freelancerApplicationService.startWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus()));
+        return JSON.toJSONString(freelancerApplicationService.startWork(Long.parseLong(command.getJobId()), JobStatus.valueOf(command.getStatus())));
     }
 
     @PostMapping("/freelancer/action/complete/work")

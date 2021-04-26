@@ -13,12 +13,12 @@
         <p id="freelancerAccountBalance"></p>
         <div>
             <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw"
-                    onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw
+                    onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw Money
             </button>
         </div>
         <div>
             <button class="freelancer_profile-top-button" type="button" name="freelancer_profilePaymentHistory"
-                    onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Remuneration
+                    onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Transaction
                 History
             </button>
         </div>
@@ -125,6 +125,12 @@
     </div>
 </div>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
+
 
 <script type="text/javascript">
 
@@ -313,7 +319,7 @@
         const tr = document.getElementsByTagName("tr")[i + 1];
         const jobId = tr.getElementsByTagName("td")[1].innerHTML;
         const status = tr.getElementsByTagName("td")[6].innerHTML;
-        if (status === 'INVITING' || status === 'APPROVED') {
+        if (status === 'INVITING' || status === 'OFFER') {
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/freelancer/action/decline/interview-offer', true);
           request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -342,21 +348,6 @@
     }
   }
 
-  function viewAppliedJobDetail () {
-    const radios = document.getElementsByName("appliedJob");
-    for (let i = 0; i < radios.length; i++) {
-      if (radios[i].checked) {
-        const tr = document.getElementsByTagName("tr")[i + 1];
-        const td = tr.getElementsByTagName("td")[1];
-        console.log(td.innerHTML);
-        localStorage.setItem("freelancerViewAppliedJobId", td.innerHTML);
-        buttonJump('http://localhost:8080/page/freelancer/applied-job-details');
-        return;
-      }
-    }
-    alert("Please select a job from the list!");
-  }
-
   function startWork () {
     const radios = document.getElementsByName("appliedJob");
     let flag = false;
@@ -370,14 +361,14 @@
           const request = new XMLHttpRequest();
           request.open('POST', 'http://localhost:8080/freelancer/action/start/work', true);
           request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-          request.setRequestHeader("Authorization", localStorage.getItem("token"))
+          request.setRequestHeader("Authorization", localStorage.getItem("token"));
           request.onload = function () {
             const data = JSON.parse(this.response);
             if (data === 'successfully') {
-              alert('Start work successfully!')
+              alert('Start work successfully!');
               buttonJump('http://localhost:8080/page/freelancer/profile');
             } else {
-              alert('System Error!')
+              alert('System Error!');
             }
           }
           request.send(JSON.stringify({
@@ -393,6 +384,21 @@
     if (flag === false) {
       alert("Please select a job from the list!");
     }
+  }
+
+  function viewAppliedJobDetail () {
+    const radios = document.getElementsByName("appliedJob");
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        const tr = document.getElementsByTagName("tr")[i + 1];
+        const td = tr.getElementsByTagName("td")[1];
+        console.log(td.innerHTML);
+        localStorage.setItem("freelancerViewAppliedJobId", td.innerHTML);
+        buttonJump('http://localhost:8080/page/freelancer/applied-job-details');
+        return;
+      }
+    }
+    alert("Please select a job from the list!");
   }
 
   function completeWork () {

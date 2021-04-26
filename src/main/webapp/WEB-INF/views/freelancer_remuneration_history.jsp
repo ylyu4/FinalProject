@@ -24,6 +24,11 @@
     </button>
 </div>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
 
 <script type="text/javascript">
 
@@ -45,9 +50,11 @@
           if (amount > 0) {
             amount = '+' + amount;
           }
+          const transactionArray = data[i].transactionTime.split('T');
+          const transactionTime = transactionArray[0] + ' ' + transactionArray[1];
           div.insertAdjacentHTML("beforeend", "<tr><td>" + data[i].paymentHistoryId + "</td>"
             + " <td>" + amount + "</td>"
-            + " <td>" + data[i].transactionTime + "</td></tr> ");
+            + " <td>" + transactionTime + "</td></tr> ");
         }
       }
     }

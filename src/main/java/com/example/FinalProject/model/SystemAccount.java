@@ -4,7 +4,6 @@ package com.example.FinalProject.model;
 import com.example.FinalProject.utils.IdGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -14,7 +13,6 @@ import javax.persistence.Id;
 @Setter
 @Getter
 @Entity
-
 @AllArgsConstructor
 public class SystemAccount {
 
@@ -26,6 +24,6 @@ public class SystemAccount {
 
     public SystemAccount() {
         this.id = IdGenerator.generateId();
-        this.accountBalance = 1000000000L;
+        this.accountBalance = 10000000L;
     }
 }

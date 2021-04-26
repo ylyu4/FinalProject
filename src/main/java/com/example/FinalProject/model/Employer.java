@@ -1,6 +1,5 @@
 package com.example.FinalProject.model;
 
-import com.example.FinalProject.converter.JpaConverterListJson;
 import com.example.FinalProject.utils.IdGenerator;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.AllArgsConstructor;

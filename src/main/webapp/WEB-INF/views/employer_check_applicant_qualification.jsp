@@ -52,7 +52,7 @@
                 <option class="employer_check_applicant_qualification-option" value="PENDING">PENDING</option>
                 <option class="employer_check_applicant_qualification-option" value="INVITING">INVITING</option>
                 <option class="employer_check_applicant_qualification-option" value="INTERVIEWING">INTERVIEWING</option>
-                <option class="employer_check_applicant_qualification-option" value="APPROVED">OFFER</option>
+                <option class="employer_check_applicant_qualification-option" value="OFFER">OFFER</option>
                 <option class="employer_check_applicant_qualification-option" value="REJECTED">REJECTED</option>
                 <option class="employer_check_applicant_qualification-option" value="DONE">ACCEPTED</option>
             </select><br>
@@ -66,6 +66,11 @@
     </div>
 </div>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
 
 <script type="text/javascript">
 

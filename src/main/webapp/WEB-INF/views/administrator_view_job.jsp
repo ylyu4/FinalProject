@@ -24,6 +24,12 @@
 <button type="button" name="administrator_view_jobApprove" onclick="processNewJob('Approve')">Approve</button>
 <button type="button" name="administrator_view_jobReject" onclick="processNewJob('Reject')">Reject</button>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
+
 <script type="text/javascript">
   window.onload = function () {
     loadReviewedJobDetail();

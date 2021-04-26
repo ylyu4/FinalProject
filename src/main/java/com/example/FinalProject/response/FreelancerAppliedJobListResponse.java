@@ -38,6 +38,6 @@ public class FreelancerAppliedJobListResponse {
         } else {
             this.status = application.getApplicationStatus().name();
         }
-        this.paid = this.status.equals("COMPLETED");
+        this.paid = job.getPaid();
     }
 }

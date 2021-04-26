@@ -133,6 +133,7 @@ body.freelancer_login-body, body.freelancer_sign_up-body {
     margin: 1rem 3rem 1rem 3rem;
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     border: 0.3rem solid #14bf98;
+    border-radius: 25px;
     background-color: #14bf98;
     color: white;
     font: 700 1.25rem "Montserrat", sans-serif;
@@ -757,4 +758,18 @@ body.freelancer_browse_applied_jobs_details-body {
 div.freelancer_browse_applied_jobs_details-div p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+footer {
+    color: white;
+    font-style: italic;
+    position:fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+h1.main {
+    font: 700 6rem 'Fredoka One', cursive;
 }

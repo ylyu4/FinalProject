@@ -24,6 +24,11 @@
         onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back
 </button>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
 
 <script type="text/javascript">
 

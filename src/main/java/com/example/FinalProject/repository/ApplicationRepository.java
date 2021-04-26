@@ -13,7 +13,7 @@ public interface ApplicationRepository extends CrudRepository<Application, Long>
 
     Optional<Application> findByFreelancerIdAndJobId(Long freelancerId, Long jobId);
 
-    Optional<Application> findByJobId(Long jobId);
+    Optional<Application> findByJobIdAndFreelancerId(Long jobId, Long freelancerId);
 
     List<Application> findAllByJobId(Long jobId);
 

@@ -5,6 +5,8 @@
     <title>Job Search System</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="main-body">
@@ -27,4 +29,9 @@
     </div>
 </div>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
 </html>

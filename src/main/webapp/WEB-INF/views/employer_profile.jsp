@@ -13,13 +13,13 @@
         <p id="employerAccountBalance"></p>
         <div>
             <button class="employer_profile-top-button-deposit" type="button" name="employer_profileDeposit"
-                    onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Recharge
+                    onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Recharge Money
             </button>
         </div>
         <div>
             <button class="employer_profile-top-button-paymentHistory" type="button"
                     name="employer_profilePaymentHistory"
-                    onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Payment History
+                    onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Transaction History
             </button>
         </div>
         <form action="">
@@ -83,10 +83,10 @@
         </button>
     </div>
     <div class="employer_profile-div-right">
-        <h1>Job Posted</h1>
+        <h1>Job Created</h1>
         <div>
             <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob"
-                    onclick="buttonJump('http://localhost:8080/page/employer/create-job')">Post New Job
+                    onclick="buttonJump('http://localhost:8080/page/employer/create-job')">Create New Job
             </button>
         </div>
         <div>
@@ -120,6 +120,12 @@
     </div>
 </div>
 </body>
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
+
 <script type="text/javascript">
 
   window.onload = function () {

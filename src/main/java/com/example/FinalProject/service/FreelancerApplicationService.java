@@ -149,7 +149,7 @@ public class FreelancerApplicationService {
         List<FreelancerAppliedJobListResponse> responses = new ArrayList<>();
         jobIds.forEach(jobId -> {
             Optional<Job> optionalJob = jobRepository.findById(jobId);
-            Optional<Application> optionalApplication = applicationRepository.findByJobId(jobId);
+            Optional<Application> optionalApplication = applicationRepository.findByJobIdAndFreelancerId(jobId, id);
             if (optionalApplication.isPresent() && optionalJob.isPresent()) {
                 responses.add(new FreelancerAppliedJobListResponse(optionalApplication.get(), optionalJob.get()));
             }

@@ -75,14 +75,19 @@
             <div>
                 <textarea id="jobDescription" name="jobDescription" required></textarea>
             </div>
-            <button type="button" name="employer_write_job_descriptionPost" onclick="createJob()">Post</button>
+            <button type="button" name="employer_write_job_descriptionPost" onclick="createJob()">Create</button>
             <button type="button" name="employer_write_job_descriptionBack"
                     onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back
             </button>
         </div>
     </form>
 </div>
-</body>
+</body>b
+<footer>
+    <div class="footerSetting">
+        <p>&copy;2021 Job Search System. All Rights Reserved.</p>
+    </div>
+</footer>
 
 <script type="text/javascript">
   function createJob () {
