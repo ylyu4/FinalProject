@@ -230,6 +230,15 @@ public class EmployerApplicationService {
             Long amount = job.getSalary();
             systemAccount.setAccountBalance(systemAccount.getAccountBalance() - amount);
             systemAccountRepository.save(systemAccount);
+            Long freelancerId = job.getFreelancerId();
+            Optional<Freelancer> optionalFreelancer = freelancerRepository.findById(freelancerId);
+            if (optionalFreelancer.isPresent()) {
+                Freelancer freelancer = optionalFreelancer.get();
+                freelancer.setAccountBalance(freelancer.getAccountBalance() + amount);
+                freelancerRepository.save(freelancer);
+            } else {
+                return "error";
+            }
             PaymentHistory systemPaymentHistory = new PaymentHistory(amount * -1);
             systemPaymentHistory.setAccountId(systemAccount.getId());
             PaymentHistory freelancerPaymentHistory = new PaymentHistory(amount);

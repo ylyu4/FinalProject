@@ -760,9 +760,9 @@ div.freelancer_browse_applied_jobs_details-div p {
     padding-bottom: 0.5rem;
 }
 
-footer {
+.footerSetting {
     color: white;
-    font-style: italic;
+    font: 700 1rem "Montserrat", sans-serif;
     position:fixed;
     width: 100%;
     left: 0;
