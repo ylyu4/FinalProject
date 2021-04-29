@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Withdraw</title>
+    <title>Withdraw Money</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
     <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="freelancer_withdraw-body">
 <div class="freelancer_withdraw-div">
-    <h1>Withdraw</h1>
+    <h1>Withdraw Money</h1>
     <form action="">
         <div>
             <label class="freelancer_withdraw-form-label" for="amount">Amount</label>
@@ -21,7 +21,7 @@
         <button class="freelancer_withdraw-button" type="button" onclick="freelancerWithdrawAmount()">Withdraw</button>
     </form>
     <button class="freelancer_withdraw-button" type="button" name="freelancer_withdrawBack"
-            onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back
+            onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Back
     </button>
 </div>
 </body>
@@ -34,12 +34,12 @@
 <script type="text/javascript">
 
   function freelancerWithdrawAmount () {
-    const amount = document.getElementById('freelancerWithdraw');
-    if (!Number.isInteger(amount)) {
+    const amount = document.getElementById('freelancerWithdraw').value;
+    if (!isNumeric(amount)) {
       alert('The amount should be a number!');
       return;
     }
-    const sign = Math.sign(amount);
+    const sign = Math.sign(parseInt(amount));
     if (sign !== 1) {
       alert('The amount should be positive!');
       return;
@@ -67,6 +67,10 @@
 
   function buttonJump (destination) {
     window.location.href = destination;
+  }
+
+  function isNumeric (num) {
+    return !isNaN(num)
   }
 
 </script>

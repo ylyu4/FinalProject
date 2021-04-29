@@ -5,12 +5,16 @@
     <title>Administrator Profile</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body class="administrator_profile-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
 <div class="administrator_profile-div">
-    <div class="administrator_profile-div-left">
-        <h1>Administrator Profile</h1>
-        <p id="systemBalance"></p>
+    <div class="administrator_personal_information">
+        <h1 id="admin_profile_title">Administrator Personal Information</h1>
         <form>
             <div>
                 <label class="administrator_profile-form-label" for="name">Name</label>
@@ -41,44 +45,8 @@
                 onclick="updateAdminProfile()">Save
         </button>
         <button class="administrator_profile-top-button" type="button" name="administrator_profileBack"
-                onclick="buttonJump('http://localhost:8080/page/homepage')">Quit
+                onclick="buttonJump('http://localhost:8080/page/admin/job')">Back
         </button>
-    </div>
-    <div class="administrator_profile-div-middle">
-        <h1>Review Job Post</h1>
-        <div class="administrator_profile-table">
-            <table border="0" cellspacing="0" frame=below rules=rows id="jobList">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Job ID</th>
-                    <th>Company</th>
-                    <th>Job Name</th>
-                    <th>Experience</th>
-                    <th>Location</th>
-                    <th>Salary</th>
-                    <th>Creator ID</th>
-                </tr>
-                </thead>
-            </table>
-            <button class="administrator_profile-bottom-button" type="button" name="administrator_profileTableView"
-                    onclick="viewNewJob()">View
-            </button>
-        </div>
-    </div>
-    <div class="administrator_profile-div-right">
-        <h1>Transaction History</h1>
-        <div class="administrator_profile-table">
-            <table border="1" cellspacing="0" frame=below rules=rows id="adminPaymentList">
-                <thead>
-                <tr>
-                    <th>Payment ID</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
     </div>
 </div>
 </body>
@@ -92,86 +60,6 @@
 
   window.onload = function () {
     loadProfile();
-    checkNewJobs();
-    checkCurrentBalance();
-    loadPaymentHistory();
-  }
-
-  function checkCurrentBalance () {
-    const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/get/system-balance', true);
-    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    request.setRequestHeader("Authorization", localStorage.getItem("token"));
-    request.onload = function () {
-      const data = JSON.parse(this.response);
-      const element = document.getElementById("systemBalance");
-      element.innerText = "Account Balance: " + data + " USD";
-    }
-    request.send();
-  }
-
-  function checkNewJobs () {
-    const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/get/jobs', true);
-    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    request.setRequestHeader("Authorization", localStorage.getItem("token"));
-    request.onload = function () {
-      const data = JSON.parse(this.response);
-      const div = document.getElementById("jobList");
-      if (data != null) {
-        for (let i = 0; i < data.length; i++) {
-          div.insertAdjacentHTML("beforeend", "<tr><td><input id='radio' type='radio' name='newJob' class='" + i + "'></td>"
-            + " <td>" + data[i].id + "</td>"
-            + " <td>" + data[i].company + "</td>"
-            + " <td>" + data[i].name + "</td>"
-            + " <td>" + data[i].experience + "</td>"
-            + " <td>" + data[i].location + "</td>"
-            + " <td>" + data[i].salary + "</td>"
-            + " <td>" + data[i].createdBy + "</td></tr> ");
-        }
-      }
-    }
-    request.send(null);
-  }
-
-  function loadPaymentHistory () {
-    const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/get/all/payment/history', true);
-    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    request.setRequestHeader("Authorization", localStorage.getItem("token"));
-    request.onload = function () {
-      const data = JSON.parse(this.response);
-      const div = document.getElementById("adminPaymentList");
-      if (data != null) {
-        for (let i = 0; i < data.length; i++) {
-          let amount = data[i].amount;
-          if (amount > 0) {
-            amount = '+' + amount;
-          }
-          const transactionArray = data[i].transactionTime.split('T');
-          const transactionTime = transactionArray[0] + ' ' + transactionArray[1];
-          div.insertAdjacentHTML("beforeend", "<tr><td>" + data[i].paymentHistoryId + "</td>"
-            + " <td>" + amount + "</td>"
-            + " <td>" + transactionTime + "</td></tr> ");
-        }
-      }
-    }
-    request.send(null);
-  }
-
-  function viewNewJob () {
-    const radios = document.getElementsByName("newJob");
-    for (let i = 0; i < radios.length; i++) {
-      if (radios[i].checked) {
-        const tr = document.getElementsByTagName("tr")[i + 1];
-        const td = tr.getElementsByTagName("td")[1];
-        console.log(td.innerHTML);
-        localStorage.setItem("administratorViewJobId", td.innerHTML);
-        buttonJump('http://localhost:8080/page/admin/view-job');
-        return;
-      }
-    }
-    alert("Please select a job from the list!");
   }
 
   function loadProfile () {

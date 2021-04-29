@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Browse Jobs</title>
+    <title>Available Jobs</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body class="freelancer_browse_jobs-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
 <div class="freelancer_browse_jobs-div">
-    <h1>Browse Jobs</h1>
+    <h1>Available Jobs</h1>
     <div class="freelancer_browse_jobs-table">
         <table border="0" cellspacing="0" frame=below rules=rows id="availableJobs">
             <tr>
@@ -21,11 +26,9 @@
                 <th>Salary</th>
             </tr>
         </table>
-        <button type="button" name="freelancer_browse_jobsDetails" onclick="viewAvailableJob()">Details</button>
     </div>
-    <button type="button" name="freelancer_browse_jobsBack"
-            onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back
-    </button>
+    <button type="button" name="freelancer_browse_jobsDetails" onclick="viewAvailableJob()">Details</button>
+    <button type="button" name="freelancer_browse_jobsBack" onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back</button>
 </div>
 </body>
 <%--<footer>--%>

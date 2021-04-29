@@ -62,7 +62,7 @@
         alert("Username or password is incorrect!")
       } else {
         saveAdminToken(data);
-        buttonJump('http://localhost:8080/page/employer/profile');
+        buttonJump('http://localhost:8080/page/employer/job');
       }
     }
     request.send(null);

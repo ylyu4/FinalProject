@@ -5,12 +5,18 @@
     <title>My Resume</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body class="freelancer_view_resume-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
 <div class="freelancer_view_resume-div">
     <h1>My Resume</h1>
     <form action="">
         <div class="freelancer_view_resume-form-content">
+            <hr class="style">
             <h2>Education Experience</h2>
             <div>
                 <label class="freelancer_view_resume-form-label" for="from">From</label>
@@ -53,6 +59,7 @@
             <div>
                 <textarea id="freelancerEditEEDescription" disabled="disabled" required></textarea>
             </div>
+            <hr class="style">
             <h2>Work Experience</h2>
             <div>
                 <label class="freelancer_view_resume-form-label" for="from">From</label>
@@ -95,14 +102,17 @@
             <div>
                 <textarea id="freelancerEditWEDescription" disabled="disabled" required></textarea>
             </div>
+            <hr class="style">
             <h2>Languages</h2>
             <div>
                 <textarea id="freelancerEditLanguage" disabled="disabled" required></textarea>
             </div>
+            <hr class="style">
             <h2>Skills</h2>
             <div>
                 <textarea id="freelancerEditSkill" disabled="disabled" required></textarea>
             </div>
+            <hr class="style">
             <h2>Self Reviews</h2>
             <div>
                 <textarea id="freelancerEditSelfReviews" disabled="disabled" required></textarea>
@@ -110,8 +120,7 @@
         </div>
         <button type="button" name="freelancer_view_resumeEdit" onclick="freelancerResumeEditEnable()">Edit</button>
         <button type="button" name="freelancer_view_resumeSave" onclick="updateFreelancerResume()">Save</button>
-        <button type="button" name="freelancer_view_resumeBack"
-                onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back
+        <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back
         </button>
     </form>
 </div>

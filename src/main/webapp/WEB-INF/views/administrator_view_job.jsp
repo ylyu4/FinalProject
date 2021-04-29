@@ -23,6 +23,7 @@
 <br>
 <button type="button" name="administrator_view_jobApprove" onclick="processNewJob('Approve')">Approve</button>
 <button type="button" name="administrator_view_jobReject" onclick="processNewJob('Reject')">Reject</button>
+<button type="button" name="administrator_view_back" onclick="buttonJump('http://localhost:8080/page/admin/job')">Back</button>
 </body>
 <%--<footer>--%>
 <%--    <div class="footerSetting">--%>
@@ -74,7 +75,7 @@
     request.onload = function () {
       const data = JSON.parse(this.response);
       if (data === "Successfully") {
-        buttonJump("http://localhost:8080/page/admin/profile");
+        buttonJump("http://localhost:8080/page/admin/job");
       } else {
         alert("System Error!")
       }

@@ -22,6 +22,11 @@ public class PageController {
         return "administrator_sign_up";
     }
 
+    @RequestMapping("/page/admin/job")
+    public String goToAdminJobPage() {
+        return "administrator_job";
+    }
+
     @RequestMapping("/page/admin/profile")
     public String goToAdminProfilePage() {
         return "administrator_profile";
@@ -32,6 +37,11 @@ public class PageController {
         return "administrator_view_job";
     }
 
+    @RequestMapping("/page/admin/transaction-history")
+    public String goToAdminTransactionHistoryPage() {
+        return "administrator_transaction_history";
+    }
+
     @RequestMapping("/page/employer/login")
     public String goToEmployerLoginPage() {
         return "employer_login";
@@ -40,6 +50,11 @@ public class PageController {
     @RequestMapping("/page/employer/signup")
     public String goToEmployerSignUpPage() {
         return "employer_sign_up";
+    }
+
+    @RequestMapping("/page/employer/job")
+    public String goToEmployerJobPage() {
+        return "employer_job";
     }
 
     @RequestMapping("/page/employer/profile")
@@ -86,6 +101,11 @@ public class PageController {
     @RequestMapping("/page/freelancer/signup")
     public String goToFreelancerSignUpPage() {
         return "freelancer_sign_up";
+    }
+
+    @RequestMapping("/page/freelancer/job")
+    public String goToFreelancerJobPage() {
+        return "freelancer_job";
     }
 
     @RequestMapping("/page/freelancer/profile")

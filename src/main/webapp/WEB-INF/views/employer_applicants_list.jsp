@@ -5,8 +5,13 @@
     <title>Applicants List</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body class="employer_applicants_list-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
 <div class="employer_applicants_list-div">
     <h1>Applicants</h1>
     <table border="0" cellspacing="0" frame=below rules=rows id="applicantsList">
@@ -21,7 +26,7 @@
             onclick="checkApplicantInformation()">View
     </button>
     <button class="employer_applicants_list-button" type="button" name="employer_payment_historyBack"
-            onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back
+            onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
     </button>
 </div>
 </body>

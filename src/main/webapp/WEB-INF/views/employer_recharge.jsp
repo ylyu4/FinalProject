@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Deposit</title>
+    <title>Recharge Money</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
     <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="employer_deposit-body">
 <div class="employer_deposit-div">
-    <h1>Recharge</h1>
+    <h1>Recharge Money</h1>
     <form action="">
         <div>
             <label class="employer_deposit-form-label" for="amount">Amount</label>
@@ -21,7 +21,7 @@
         <button class="employer_deposit-button" type="button" onclick="depositMoney()">Recharge</button>
     </form>
     <button type="button" name="employer_depositBack"
-            onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back
+            onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Back
     </button>
 </div>
 </body>

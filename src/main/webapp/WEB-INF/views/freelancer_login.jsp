@@ -12,7 +12,7 @@
     <h1>Freelancer Login</h1>
     <!-- Input -->
     <div>
-        <form action="freelancer_profile.jsp" method="">
+        <form action="" method="">
             <div>
                 <label class="freelancer_login-form-label" for="account">Account</label>
             </div>
@@ -63,7 +63,7 @@
         alert("Username or password is incorrect!")
       } else {
         saveAdminToken(data);
-        buttonJump('http://localhost:8080/page/freelancer/profile');
+        buttonJump('http://localhost:8080/page/freelancer/job');
       }
     }
     request.send(null);

@@ -5,9 +5,14 @@
     <title>Check Applicant Qualification</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="employer_check_applicant_qualification-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
 <div class="employer_check_applicant_qualification-div">
     <div class="employer_check_applicant_qualification-div-left">
         <div class="employer_check_applicant_qualification-block">

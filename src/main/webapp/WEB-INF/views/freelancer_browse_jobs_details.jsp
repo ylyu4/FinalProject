@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Browse Job Details</title>
+    <title>Available Job Details</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
     <script type="text/javascript" src="../../static/js/functions.js"></script>
 </head>
 <body class="freelancer_browse_jobs_details-body">
-<h1>Browse Job Details</h1>
+<h1>Available Job Details</h1>
 <div class="freelancer_browse_jobs_details-div">
     <p id="availableJobDetailName"></p>
     <p id="availableJobDetailCompany"></p>

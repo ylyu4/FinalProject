@@ -21,7 +21,7 @@
 </div>
 <br>
 <button type="button" name="employer_view_posted_job_detailsBack"
-        onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back
+        onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
 </button>
 </body>
 <%--<footer>--%>
@@ -44,7 +44,7 @@
     request.onload = function () {
       const data = JSON.parse(this.response);
       const name = document.getElementById("postedJobDetailName");
-      name.innerText = "Job Id: " + data.name;
+      name.innerText = "Job Name: " + data.name;
       const company = document.getElementById("postedJobDetailCompany");
       company.innerText = "Company: " + data.company;
       const experience = document.getElementById("postedJobDetailExperience");

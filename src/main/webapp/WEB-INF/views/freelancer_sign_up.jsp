@@ -12,7 +12,7 @@
     <h1>Freelancer Sign Up</h1>
     <!-- Input -->
     <div>
-        <form action="freelancer_profile.jsp" method="">
+        <form action="" method="">
             <div>
                 <label class="freelancer_sign_up-form-label" for="account">Account</label>
             </div>
@@ -32,7 +32,7 @@
             </div>
         </form>
         <button type="button" name="freelancerSignUpBack"
-                onclick="buttonJump('http://localhost:8080/page/employer/login')">Back
+                onclick="buttonJump('http://localhost:8080/page/freelancer/login')">Back
         </button>
     </div>
 </div>

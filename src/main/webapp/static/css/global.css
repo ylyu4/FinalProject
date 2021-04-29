@@ -1,10 +1,13 @@
 /* // 背 景 图 // */
-body.administrator_profile-body, body.administrator_view_job-body,
-body.employer_profile-body, body.employer_write_job_description-body,
+body.administrator_profile-body, body.administrator_job-body, body.administrator_view_job-body,
+body.admin_payment_history-body, body.employer_job-body,
+body.employer_profile-body,
+body.employer_write_job_description-body,
 body.employer_payment_history-body, body.employer_deposit-body,
 body.employer_view_posted_job_details-body,
 body.employer_applicants_list-body,
 body.employer_check_applicant_qualification-body,
+body.freelancer_job-body,
 body.freelancer_profile-body,
 body.freelancer_withdraw-body,
 body.freelancer_remuneration_history-body,
@@ -13,17 +16,18 @@ body.freelancer_browse_jobs-body,
 body.freelancer_browse_jobs_details-body,
 body.freelancer_browse_applied_jobs_details-body {
     background-size: cover;
-    background: url('../images/background-transparent.jpg') no-repeat;
+    background: url('../images/background-transparent.jpg') no-repeat center center fixed;
     width: 100%;
 }
 
 /* // 标题颜色大小 // */
 .administrator_profile-div h1, .administrator_view_job-body h1,
-.employer_profile-div h1, .employer_write_job_description-div h1,
-.employer_payment_history-body h1, .employer_deposit-body h1,
+.employer_profile-body h1, .employer_write_job_description-div h1,
+.employer_payment_history-body h1, .employer_deposit-body h1, .admin_payment_history-body h1,
 .employer_view_posted_job_details-body h1,
 .employer_applicants_list-body h1,
 .employer_check_applicant_qualification-body h1,
+.freelancer_job-body h1,
 .freelancer_profile-body h1,
 .freelancer_withdraw-body h1,
 .freelancer_remuneration_history-body h1,
@@ -33,18 +37,19 @@ body.freelancer_browse_applied_jobs_details-body {
 .freelancer_browse_applied_jobs_details-body h1 {
     color: white;
     font: 700 2rem "Montserrat", sans-serif;
-    text-decoration: underline;
 }
 
 /* //文字颜色// */
 .administrator_profile-div p, label.administrator_profile-form-label,
 .administrator_view_job-body p,
-.employer_profile-div p, label.employer_profile-form-label,
+.employer_profile-body label,
+.employer_profile-body p, label.employer_profile-form-label,
 body.employer_write_job_description-div p,
 label.employer_write_job_description-form-label,
 .employer_deposit-body label,
 .employer_view_posted_job_details-body p,
 .employer_check_applicant_qualification-body p,
+.freelancer_job-body label, .freelancer_job-body p,
 .freelancer_profile-body label, .freelancer_profile-body p,
 .freelancer_withdraw-body label,
 .freelancer_view_resume-body label,
@@ -59,11 +64,11 @@ label.employer_write_job_description-form-label,
 .administrator_view_job-body-information,
 .administrator_login-div, .employer_login-div, .freelancer_login-div,
 .administrator_sign_up-div, .employer_sign_up-div, .freelancer_sign_up-div,
-.employer_profile-div, .employer_write_job_description-div,
+.employer_write_job_description-div,
 .employer_payment_history-div, .employer_deposit-div,
 .employer_applicants_list-div, .employer_check_applicant_qualification-div,
 .employer_view_posted_job_details-div,
-.freelancer_profile-div, .freelancer_withdraw-div,
+.freelancer_withdraw-div,
 .freelancer_remuneration_history-div,
 .freelancer_view_resume-div,
 .freelancer_browse_jobs-div,
@@ -79,12 +84,15 @@ label.employer_write_job_description-form-label,
 
 /* //按钮翻转// */
 .administrator_profile-div button:hover,
-.employer_profile-div button:hover,
+.admin_payment_history-body button:hover,
+.employer_job-body button:hover,
+.employer_profile-body button:hover,
 .employer_write_job_description-div button:hover,
 .employer_payment_history-body button:hover,
 .employer_deposit-body button:hover,
 .employer_view_posted_job_details-body button:hover,
 .employer_check_applicant_qualification-body button:hover,
+.freelancer_job-body button:hover,
 .freelancer_profile-body button:hover,
 .freelancer_withdraw-body button:hover,
 .freelancer_remuneration_history-body button:hover,
@@ -172,12 +180,13 @@ table {
     display: block;
     height: 700px;
     border-bottom: none;
-    overflow-y: scroll;
+    overflow-y: auto;
     table-layout: fixed;
 }
 
 tr {
     height: 4rem;
+    width: 100%;
 }
 
 th {
@@ -187,7 +196,7 @@ th {
 }
 
 td {
-    padding: 1rem 0.5rem 1rem 0.5rem;
+    padding: 1rem 0;
     font: 700 1rem "Montserrat", sans-serif;
     border-width: 0.15rem;
     height: 100%;
@@ -204,13 +213,17 @@ button.administrator_profile-top-button {
     width: 4rem;
 }
 
-button.administrator_profile-bottom-button {
+
+button.administrator_profile-bottom-button{
+    margin-left: auto;
+    margin-right: auto;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
     color: white;
     font: 700 1rem "Montserrat", sans-serif;
-    width: 6rem;
-    margin-top: 2rem;
+    width: 6%;
+    display: inline-block;
+    min-width: 90px;
 }
 
 .administrator_profile-form, .employer_profile-form, .freelancer_profile-form,
@@ -232,11 +245,6 @@ body.employer_profile-body textarea:disabled {
     background-color: #dddddd;
 }
 
-.administrator_profile-div-left, .administrator_profile-div-middle,
-.administrator_profile-div-right {
-    float: left;
-}
-
 .administrator_profile-div-left {
     width: 15%;
 }
@@ -246,8 +254,11 @@ body.employer_profile-body textarea:disabled {
 }
 
 .administrator_profile-div-middle {
-    width: 50%;
-    margin-left: 2%;
+    width: 70%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 4%;
 }
 
 .administrator_profile-div-right {
@@ -268,16 +279,29 @@ div.administrator_view_job-body-information {
 .administrator_view_job-body-information p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    font-size: 20px;
 }
 
 .administrator_view_job-body button {
-    margin: 1rem 1.5% 1rem 1.5%;
+    margin: 2.5rem 0.5rem 0.5rem 0.5rem;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
     color: white;
     font: 700 1rem "Montserrat", sans-serif;
-    width: 8rem;
-    height: 2.5rem;
+    width: 8%;
+}
+
+.admin_payment_history-body button {
+    margin: 1rem auto 1rem auto;
+    border: 0.3rem solid #14bf98;
+    background-color: #14bf98;
+    color: white;
+    font: 700 1rem "Montserrat", sans-serif;
+    width: 10%;
+}
+
+.admin_payment_history-body, .employer_payment_history-body, .freelancer_remuneration_history-body {
+    margin-bottom: 3%;
 }
 
 .administrator_view_job-body button:hover,
@@ -300,84 +324,26 @@ div.administrator_view_job-body-information {
     background: white;
 }
 
-button.employer_profile-top-button {
-    margin: 1rem 0.5rem 1rem 0.5rem;
-    border: 0.3rem solid #14bf98;
-    background-color: #14bf98;
-    color: white;
-    font: 700 1rem "Montserrat", sans-serif;
-    width: 12%;
-    min-width: 60px;
-}
-
-button.employer_profile-right-button {
-    margin: 1rem 0.5% 1rem 0.5%;
-    border: 0.3rem solid #14bf98;
-    background-color: #14bf98;
-    color: white;
-    font: 700 100% "Montserrat", sans-serif;
-    width: 12%;
-    display: inline-block;
-    min-width: 90px;
-}
 
 button.employer_profile-right-button-Application {
-    margin: 1rem 0.5% 1rem 0.5%;
+    margin-left: 0.5px;
+    margin-right: 0.5px;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
     color: white;
     font: 700 1rem "Montserrat", sans-serif;
-    width: 12%;
-    min-width: 95px;
+    width: 10%;
+    display: inline-block;
+    min-width: 100px;
 }
 
-button.employer_profile-top-button-paymentHistory,
-button.employer_profile-top-button-deposit {
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
-    border: 0.3rem solid #14bf98;
-    background-color: #14bf98;
-    color: white;
-    font: 700 1rem "Montserrat", sans-serif;
-    width: 40%;
-    min-width: 150px;
-}
-
-button.employer_profile-top-button-deposit {
-    margin-top: 4%;
-}
-
-button.employer_profile-top-button-paymentHistory {
-    margin-bottom: 4%;
-}
-
-button.employer_profile-top-button-postNewJob {
-    margin: 1rem 0.5rem 0.5rem 0.5rem;
-    border: 0.3rem solid #14bf98;
-    background-color: #14bf98;
-    color: white;
-    font: 700 1rem "Montserrat", sans-serif;
-    width: 66%;
-}
-
-.employer_profile-div-left {
-    width: 30%;
-    margin-left: 1%;
-    float: left;
-}
-
-.employer_profile-div-left input {
-    width: 42%;
-}
-
-.employer_profile-div-left textarea {
-    max-width: 42%;
-}
 
 .employer_profile-div-right {
-    float: left;
-    width: 60%;
-    margin-left: 3%;
-    margin-right: 3%;
+    text-align: center;
+    width: 75%;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body.employer_profile-body textarea {
@@ -437,7 +403,7 @@ body.employer_view_posted_job_details-body button {
 }
 
 .employer_payment_history-body button, .employer_deposit-body button {
-    margin: 1rem 0.5rem 1rem 0.5rem;
+    margin: 1rem auto 1rem auto;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
     color: white;
@@ -455,7 +421,7 @@ body.employer_view_posted_job_details-body button {
 }
 
 .employer_deposit-form {
-    margin: 1rem 0rem 1rem 0rem;
+    margin: 1rem auto 1rem auto;
     border: 0.15rem solid #14bf98;
     background-color: white;
     color: #14bf98;
@@ -468,6 +434,7 @@ body.employer_view_posted_job_details-body button {
 div.employer_view_posted_job_details-div p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    font-size: 20px;
 }
 
 body.employer_view_posted_job_details-body {
@@ -525,7 +492,7 @@ div.employer_view_posted_job_details-div {
 }
 
 .employer_check_applicant_qualification-block {
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 .employer_check_applicant_qualification-block p {
@@ -557,7 +524,7 @@ div.employer_view_posted_job_details-div {
 /* EMPLOYER结束 */
 /* EMPLOYER结束 */
 
-button.freelancer_profile-top-button {
+/*button.freelancer_profile-top-button {
     margin: 1rem 0.5rem 1rem 0.5rem;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
@@ -565,7 +532,7 @@ button.freelancer_profile-top-button {
     font: 700 1rem "Montserrat", sans-serif;
     width: 45%;
     min-width: 150px;
-}
+}*/
 
 button.freelancer_profile-bottom-button {
     margin: 1rem 0.7rem 1rem 0.7rem;
@@ -577,42 +544,42 @@ button.freelancer_profile-bottom-button {
 }
 
 
-.freelancer_profile-div-left {
-    width: 30%;
-    margin-left: 1%;
-    float: left;
-}
+/*.freelancer_profile-div-left {*/
+/*    width: 30%;*/
+/*    margin-left: 1%;*/
+/*    float: left;*/
+/*}*/
 
-.freelancer_profile-div-left input {
-    width: 42%;
-}
+/*.freelancer_profile-div-left input {*/
+/*    width: 42%;*/
+/*}*/
 
-.freelancer_profile-div-right {
-    float: left;
-    width: 60%;
-    margin-left: 3%;
-    margin-right: 3%;
-}
+/*.freelancer_profile-div-right {*/
+/*    float: left;*/
+/*    width: 60%;*/
+/*    margin-left: 3%;*/
+/*    margin-right: 3%;*/
+/*}*/
 
-button.freelancer_profile-right-button {
-    margin: 1rem 0.7rem 1rem 0.7rem;
-    border: 0.3rem solid #14bf98;
-    background-color: #14bf98;
-    color: white;
-    font: 700 1rem "Montserrat", sans-serif;
-    width: 12%;
-    display: inline-block;
-    min-width: 90px;
-}
+/*button.freelancer_profile-right-button {*/
+/*    margin: 1rem 0.7rem 1rem 0.7rem;*/
+/*    border: 0.3rem solid #14bf98;*/
+/*    background-color: #14bf98;*/
+/*    color: white;*/
+/*    font: 700 1rem "Montserrat", sans-serif;*/
+/*    width: 12%;*/
+/*    display: inline-block;*/
+/*    min-width: 90px;*/
+/*}*/
 
-button.freelancer_profile-bottom-button-completeWork, button.freelancer_profile-top-button-browseJobs {
-    margin: 1rem 0.7rem 1rem 0.7rem;
-    border: 0.3rem solid #14bf98;
-    background-color: #14bf98;
-    color: white;
-    font: 700 1rem "Montserrat", sans-serif;
-    width: 55%;
-}
+/*button.freelancer_profile-bottom-button-completeWork, button.freelancer_profile-top-button-browseJobs {*/
+/*    margin: 1rem 0.7rem 1rem 0.7rem;*/
+/*    border: 0.3rem solid #14bf98;*/
+/*    background-color: #14bf98;*/
+/*    color: white;*/
+/*    font: 700 1rem "Montserrat", sans-serif;*/
+/*    width: 55%;*/
+/*}*/
 
 button.freelancer_withdraw-button {
     margin: 1rem 0.5rem 1rem 0.5rem;
@@ -639,16 +606,17 @@ button.freelancer_withdraw-button {
 }
 
 .freelancer_remuneration_history-div {
+    margin-top: 3%;
     width: 35%;
 }
 
 .freelancer_remuneration_history-body button {
-    margin: 1rem 0.5rem 1rem 0.5rem;
+    margin: 1rem auto 1rem auto;
     border: 0.3rem solid #14bf98;
     background-color: #14bf98;
     color: white;
     font: 700 1rem "Montserrat", sans-serif;
-    width: 8rem;
+    width: 10%;
 }
 
 .freelancer_view_resume-body button {
@@ -661,19 +629,16 @@ button.freelancer_withdraw-button {
 }
 
 .freelancer_view_resume-form-content {
-    overflow-y: scroll;
-    height: 48rem;
-    width: 40%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2%;
 }
 
 .freelancer_view_resume-body h2 {
-    margin: 1rem 0rem 1rem 0rem;
+    margin: 2% 0;
     color: white;
-    font: 700 1.5rem "Montserrat", sans-serif;
-    text-decoration: underline;
+    font: 700 28px "Montserrat", sans-serif;
 }
 
 .freelancer_view_resume-body input {
@@ -743,6 +708,7 @@ body.freelancer_browse_jobs_details-body {
 div.freelancer_browse_jobs_details-div p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    font-size: 20px;
 }
 
 div.freelancer_browse_applied_jobs_details-div {
@@ -758,6 +724,7 @@ body.freelancer_browse_applied_jobs_details-body {
 div.freelancer_browse_applied_jobs_details-div p {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    font-size: 20px;
 }
 
 .footerSetting {
@@ -773,3 +740,163 @@ div.freelancer_browse_applied_jobs_details-div p {
 h1.main {
     font: 700 6rem 'Fredoka One', cursive;
 }
+
+.header {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    margin: 1.5% auto 3%;
+}
+
+p.systemTitle {
+    font-size:calc(36px + 1.5vw);
+    width: 100%;
+    text-align: center;
+    font-family: 'Fredoka One', cursive;
+}
+
+nav.userNav {
+    position: absolute;
+    top: 60;
+    right: 0;
+    width: 25%;
+    text-align: left;
+}
+
+.userNav li {
+    display: inline-block;
+    font: 700 1rem "Montserrat", sans-serif;
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.userNav button {
+    background:transparent;
+    color: white;
+    border: 2px solid white;
+    font: 700 1.5rem "Montserrat", sans-serif;
+}
+
+.userNav button:hover, .dropDownContent p:hover {
+    background-color: transparent;
+    color: #14bf98;
+    text-decoration: none;
+}
+
+
+div.freelancer_job_detail {
+    text-align: center;
+    width: 80%;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1#jobAppliedTitle, h1#searchMoreJobTitle, h1#freelancer_profile_title, h1#remunerationHistory,
+.employer_profile-div-right h1, h1#createNewJobTitle, h1#employer_profile_title, h1#jobNeedToReview,
+h1#admin_profile_title {
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+}
+
+button.freelancer_profile-top-button-browseJobs, button.employer_profile-top-button-postNewJob, button.employer_profile-top-button {
+    margin: 1rem 0.7rem 1rem 0.7rem;
+    border: 0.3rem solid #14bf98;
+    background-color: #14bf98;
+    color: white;
+    font: 700 1rem "Montserrat", sans-serif;
+    width: 15%;
+}
+
+button.freelancer_profile-right-button, button.employer_profile-right-button {
+    margin-left: 0.5px;
+    margin-right: 0.5px;
+    border: 0.3rem solid #14bf98;
+    background-color: #14bf98;
+    color: white;
+    font: 700 1rem "Montserrat", sans-serif;
+    width: 6%;
+    display: inline-block;
+    min-width: 90px;
+}
+
+#appliedJobs, #createdJobs, #jobList {
+    margin-top: 1%;
+}
+
+#searchAvailableJobs, #createNewJob {
+    margin-bottom: 3%;
+}
+
+.freelancer_personal_information, .employer_personal_information, .administrator_personal_information {
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#freelancer_profile_title, #employer_profile_title, #admin_profile_title {
+    margin-bottom: 2%;
+}
+
+.accountBalance {
+    font-size: 26px;
+    text-align: center;
+    color: white;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.freelancer_remuneration_history-table {
+    margin-top: 2%;
+}
+
+.freelancer_view_resume-div h1 {
+    font-size: 34px;
+}
+
+.style {
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #14bf98 inset;
+    margin: 10px 10%;
+}
+
+.freelancer_withdraw-div form, .employer_deposit-div form {
+    margin-top: 4%;
+}
+
+.employer_personal_information {
+    margin-bottom: 3%;
+}
+
+.dropDown {
+    display: inline-block;
+}
+
+.dropDownElement {
+    cursor: pointer;
+}
+
+.dropDownContent {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+}
+
+.dropDownContent p {
+    padding: 5px;
+    border: 0.5px solid white;
+}
+
+.firstDropDownItem {
+    margin-top: 3px;
+}
+
+
+.show {display:block;}

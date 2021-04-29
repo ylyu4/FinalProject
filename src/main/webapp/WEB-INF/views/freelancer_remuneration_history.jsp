@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Remuneration History</title>
+    <title>Remuneration</title>
     <link rel="stylesheet" href="../../static/css/reset.css"/>
     <link rel="stylesheet" href="../../static/css/global.css"/>
-    <script type="text/javascript" src="../../static/js/functions.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body class="freelancer_remuneration_history-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
+<div class="accountBalance">
+    <p id="freelancerAccountBalanceAmount"></p>
+    <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw Money</button>
+</div>
 <div class="freelancer_remuneration_history-div">
-    <h1>Remuneration History for Freelancer</h1>
+    <h1 id="remunerationHistory">Remuneration History</h1>
     <div class="freelancer_remuneration_history-table">
         <table border="0" cellspacing="0" frame=below rules=rows id="freelancerPaymentList">
             <tr>
-                <th>Payment ID</th>
+                <th>Transaction ID</th>
                 <th>Amount</th>
                 <th>Date</th>
             </tr>
         </table>
     </div>
     <button type="button" name="freelancer_remuneration_historyBack"
-            onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Back
+            onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back
     </button>
 </div>
 </body>
@@ -34,6 +42,7 @@
 
   window.onload = function () {
     loadPaymentHistory();
+    loadProfile();
   }
 
   function loadPaymentHistory () {
@@ -57,6 +66,18 @@
             + " <td>" + transactionTime + "</td></tr> ");
         }
       }
+    }
+    request.send(null);
+  }
+
+  function loadProfile () {
+    const request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:8080/freelancer/action/profile', true);
+    request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+    request.setRequestHeader("Authorization", localStorage.getItem("token"));
+    request.onload = function () {
+      const data = JSON.parse(this.response);
+      document.getElementById("freelancerAccountBalanceAmount").innerText = "Account Balance: " + data.accountBalance + " USD";
     }
     request.send(null);
   }

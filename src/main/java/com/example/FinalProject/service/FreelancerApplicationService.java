@@ -188,6 +188,7 @@ public class FreelancerApplicationService {
                 if (optionalJob.isPresent()) {
                     Job job = optionalJob.get();
                     job.setJobStatus(JobStatus.ASSIGNED);
+                    job.setFreelancerId(userId);
                     jobRepository.save(job);
                     Long employerId = job.getCreatedBy();
                     Optional<Employer> optionalEmployer = employerRepository.findById(employerId);

@@ -5,8 +5,13 @@
     <title>Write Job Description</title>
     <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="../../static/css/global.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body class="employer_write_job_description-body">
+<div class="header">
+    <p class="systemTitle">Job Search System</p>
+</div>
 <div class="employer_write_job_description-div">
     <h1>Write Job Description</h1>
     <form action="employer_write_job_description.jsp">
@@ -77,7 +82,7 @@
             </div>
             <button type="button" name="employer_write_job_descriptionPost" onclick="createJob()">Create</button>
             <button type="button" name="employer_write_job_descriptionBack"
-                    onclick="buttonJump('http://localhost:8080/page/employer/profile')">Back
+                    onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
             </button>
         </div>
     </form>
@@ -109,7 +114,7 @@
       const data = JSON.parse(this.response);
       if (data === "Created") {
         alert("Create Job Successfully!");
-        buttonJump('http://localhost:8080/page/employer/profile');
+        buttonJump('http://localhost:8080/page/employer/job');
       } else {
         alert("System Error!");
       }
