@@ -22,7 +22,7 @@
 <br>
 <button type="button" name="freelancer_browse_jobs_detailsApply" onclick="applyJob()">Apply</button>
 <button type="button" name="freelancer_browse_jobs_detailsBack"
-        onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Back
+        onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/browse-jobs')">Back
 </button>
 </body>
 <%--<footer>--%>
@@ -40,7 +40,7 @@
 
   function loadAvailableJobDetails () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId=' + localStorage.getItem("freelancerViewAvailableJobId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/user/action/get/job/detail?jobId=' + localStorage.getItem("freelancerViewAvailableJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -67,7 +67,7 @@
 
   function applyJob () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/freelancer/action/apply/job?jobId=' + localStorage.getItem("freelancerViewAvailableJobId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/freelancer/action/apply/job?jobId=' + localStorage.getItem("freelancerViewAvailableJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

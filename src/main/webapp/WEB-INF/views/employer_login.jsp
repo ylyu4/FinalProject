@@ -29,11 +29,11 @@
                 <button type="button" class="form-control-submit-button" onclick="login()">Login</button>
             </div>
         </form>
-        <button type="button" name="employer_LoginBack" onclick="buttonJump('http://localhost:8080/page/homepage')">
+        <button type="button" name="employer_LoginBack" onclick="buttonJump('${pageContext.request.contextPath}/')">
             Back
         </button>
         <!-- Button -->
-        <p>Don't have an account? <a href="javascript:buttonJump('http://localhost:8080/page/employer/signup');">Sign
+        <p>Don't have an account? <a href="javascript:buttonJump('${pageContext.request.contextPath}/page/employer/signup');">Sign
             Up!</a></p>
     </div>
 </div>
@@ -54,7 +54,7 @@
     console.log(password);
 
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/login?' + 'username=' + username + '&' + 'password=' + password, true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/login?' + 'username=' + username + '&' + 'password=' + password, true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.onload = function () {
       const data = JSON.parse(this.response);
@@ -62,7 +62,7 @@
         alert("Username or password is incorrect!")
       } else {
         saveAdminToken(data);
-        buttonJump('http://localhost:8080/page/employer/job');
+        buttonJump('${pageContext.request.contextPath}/page/employer/job');
       }
     }
     request.send(null);

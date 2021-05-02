@@ -17,12 +17,12 @@
                 <div class="dropDown">
                     <button onclick="dropDownFunction()" class="dropDownElement">Profile</button>
                     <div id="myDropdown" class="dropDownContent">
-                        <p class="firstDropDownItem" onclick="buttonJump('http://localhost:8080/page/employer/profile')">Personal Information</p>
-                        <p onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Transaction History</p>
+                        <p class="firstDropDownItem" onclick="buttonJump('${pageContext.request.contextPath}/page/employer/profile')">Personal Information</p>
+                        <p onclick="buttonJump('${pageContext.request.contextPath}/page/employer/payment-history')">Transaction History</p>
                     </div>
                 </div>
             </li>
-            <li><button onclick="buttonJump('http://localhost:8080/page/homepage')">Logout</button></li>
+            <li><button onclick="buttonJump('${pageContext.request.contextPath}/')">Logout</button></li>
         </ul>
     </nav>
 </div>
@@ -48,7 +48,7 @@
     </table>
     <div id="createNewJob">
         <h1 id="createNewJobTitle">Click Here For Creating A New Job</h1>
-        <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob" onclick="buttonJump('http://localhost:8080/page/employer/create-job')">Create New Job</button>
+        <button class="employer_profile-top-button-postNewJob" type="button" name="employer_profilePostNewJob" onclick="buttonJump('${pageContext.request.contextPath}/page/employer/create-job')">Create New Job</button>
     </div>
 </div>
 </body>
@@ -66,7 +66,7 @@
 
   function loadPostedJobs () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/posted-jobs', true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/posted-jobs', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -96,7 +96,7 @@
     const td = tr.getElementsByTagName("td")[0];
     console.log(td.innerHTML);
     localStorage.setItem("employerViewJobId", td.innerHTML);
-    buttonJump('http://localhost:8080/page/employer/check-applicants-list');
+    buttonJump('${pageContext.request.contextPath}/page/employer/check-applicants-list');
   }
 
   function viewPostedJobDetail (id) {
@@ -104,7 +104,7 @@
     const td = tr.getElementsByTagName("td")[0];
     console.log(td.innerHTML);
     localStorage.setItem("employerViewDetailsJobId", td.innerHTML);
-    buttonJump('http://localhost:8080/page/employer/view-post-job-details');
+    buttonJump('${pageContext.request.contextPath}/page/employer/view-post-job-details');
   }
 
   function postNewReleasedJob (id) {
@@ -113,14 +113,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'APPROVED') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/employer/action/post/job', true);
+      request.open('POST', '${pageContext.request.contextPath}/employer/action/post/job', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"))
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Post the job successfully!')
-          buttonJump('http://localhost:8080/page/employer/job');
+          buttonJump('${pageContext.request.contextPath}/page/employer/job');
         } else {
           alert('System Error!')
         }
@@ -140,14 +140,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'FINISHED') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/employer/action/confirm/completed-work', true);
+      request.open('POST', '${pageContext.request.contextPath}/employer/action/confirm/completed-work', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"))
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Confirm the qualified job successfully!')
-          buttonJump('http://localhost:8080/page/employer/job');
+          buttonJump('${pageContext.request.contextPath}/page/employer/job');
         } else {
           alert('System Error!')
         }
@@ -167,14 +167,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'FINISHED') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/employer/action/reject/completed-work', true);
+      request.open('POST', '${pageContext.request.contextPath}/employer/action/reject/completed-work', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"))
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Reject the unqualified job successfully!')
-          buttonJump('http://localhost:8080/page/employer/job');
+          buttonJump('${pageContext.request.contextPath}/page/employer/job');
         } else {
           alert('System Error!')
         }

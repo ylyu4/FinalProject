@@ -17,13 +17,13 @@
                 <div class="dropDown">
                     <button onclick="dropDownFunction()" class="dropDownElement">Profile</button>
                     <div id="myDropdown" class="dropDownContent">
-                        <p class="firstDropDownItem" onclick="buttonJump('http://localhost:8080/page/admin/profile')">Personal Information</p>
-                        <p onclick="buttonJump('http://localhost:8080/page/admin/transaction-history')">Transaction History</p>
+                        <p class="firstDropDownItem" onclick="buttonJump('${pageContext.request.contextPath}/page/admin/profile')">Personal Information</p>
+                        <p onclick="buttonJump('${pageContext.request.contextPath}/page/admin/transaction-history')">Transaction History</p>
                     </div>
                 </div>
             </li>
             <li>
-                <button onclick="buttonJump('http://localhost:8080/page/homepage')">Logout</button>
+                <button onclick="buttonJump('${pageContext.request.contextPath}/')">Logout</button>
             </li>
         </ul>
     </nav>
@@ -64,7 +64,7 @@
 
   function checkNewJobs () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/get/jobs', true);
+    request.open('GET', '${pageContext.request.contextPath}/admin/action/get/jobs', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -91,7 +91,7 @@
     const td = tr.getElementsByTagName("td")[0];
     console.log(td.innerHTML);
     localStorage.setItem("administratorViewJobId", td.innerHTML);
-    buttonJump('http://localhost:8080/page/admin/view-job');
+    buttonJump('${pageContext.request.contextPath}/page/admin/view-job');
   }
 
   function buttonJump (destination) {

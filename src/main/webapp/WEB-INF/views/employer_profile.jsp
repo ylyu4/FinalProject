@@ -69,7 +69,7 @@
             onclick="updateEmployerProfile()">Save
     </button>
     <button class="employer_profile-top-button" type="button" name="employer_profileQuit"
-            onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
+            onclick="buttonJump('${pageContext.request.contextPath}/page/employer/job')">Back
     </button>
 </div>
 </body>
@@ -87,7 +87,7 @@
 
   function loadProfile () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/profile', true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -158,7 +158,7 @@
     let description = document.getElementById("employerEditDescription").value
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/employer/action/update/profile', true);
+    request.open('POST', '${pageContext.request.contextPath}/employer/action/update/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"))
     request.onload = function () {

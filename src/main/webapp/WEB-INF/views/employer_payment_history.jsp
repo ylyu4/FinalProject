@@ -15,7 +15,7 @@
 </div>
 <div class="accountBalance">
     <p id="employerAccountBalanceAmount"></p>
-    <button class="employer_profile-top-button" type="button" name="employer_profileRecharge" onclick="buttonJump('http://localhost:8080/page/employer/recharge')">Recharge Money</button>
+    <button class="employer_profile-top-button" type="button" name="employer_profileRecharge" onclick="buttonJump('${pageContext.request.contextPath}/page/employer/recharge')">Recharge Money</button>
 </div>
 <div class="employer_payment_history-div">
     <h1>Transaction History</h1>
@@ -29,7 +29,7 @@
         </table>
     </div>
     <button type="button" name="employer_payment_historyBack"
-            onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
+            onclick="buttonJump('${pageContext.request.contextPath}/page/employer/job')">Back
     </button>
 </div>
 </body>
@@ -48,7 +48,7 @@
 
   function loadProfile () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/profile', true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -60,7 +60,7 @@
 
   function loadPaymentHistory () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/get/all/payment/history', true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/get/all/payment/history', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

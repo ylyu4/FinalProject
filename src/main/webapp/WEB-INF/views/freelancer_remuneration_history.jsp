@@ -14,7 +14,7 @@
 </div>
 <div class="accountBalance">
     <p id="freelancerAccountBalanceAmount"></p>
-    <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('http://localhost:8080/page/freelancer/withdraw')">Withdraw Money</button>
+    <button class="freelancer_profile-top-button" type="button" name="freelancer_profileWithdraw" onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/withdraw')">Withdraw Money</button>
 </div>
 <div class="freelancer_remuneration_history-div">
     <h1 id="remunerationHistory">Remuneration History</h1>
@@ -28,7 +28,7 @@
         </table>
     </div>
     <button type="button" name="freelancer_remuneration_historyBack"
-            onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back
+            onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/job')">Back
     </button>
 </div>
 </body>
@@ -47,7 +47,7 @@
 
   function loadPaymentHistory () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/freelancer/action/get/all/payment/history', true);
+    request.open('GET', '${pageContext.request.contextPath}/freelancer/action/get/all/payment/history', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -72,7 +72,7 @@
 
   function loadProfile () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/freelancer/action/profile', true);
+    request.open('GET', '${pageContext.request.contextPath}/freelancer/action/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

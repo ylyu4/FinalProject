@@ -28,7 +28,7 @@
         </table>
     </div>
     <button type="button" name="freelancer_browse_jobsDetails" onclick="viewAvailableJob()">Details</button>
-    <button type="button" name="freelancer_browse_jobsBack" onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back</button>
+    <button type="button" name="freelancer_browse_jobsBack" onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/job')">Back</button>
 </div>
 </body>
 <%--<footer>--%>
@@ -45,7 +45,7 @@
 
   function loadAvailableJobs () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/freelancer/action/get/available-jobs', true);
+    request.open('GET', '${pageContext.request.contextPath}/freelancer/action/get/available-jobs', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -74,7 +74,7 @@
         const td = tr.getElementsByTagName("td")[1];
         console.log(td.innerHTML);
         localStorage.setItem("freelancerViewAvailableJobId", td.innerHTML);
-        buttonJump('http://localhost:8080/page/freelancer/browse-job-details');
+        buttonJump('${pageContext.request.contextPath}/page/freelancer/browse-job-details');
         return;
       }
     }

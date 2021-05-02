@@ -82,7 +82,7 @@
             </div>
             <button type="button" name="employer_write_job_descriptionPost" onclick="createJob()">Create</button>
             <button type="button" name="employer_write_job_descriptionBack"
-                    onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
+                    onclick="buttonJump('${pageContext.request.contextPath}/page/employer/job')">Back
             </button>
         </div>
     </form>
@@ -122,14 +122,14 @@
     }
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/employer/action/create/job', true);
+    request.open('POST', '${pageContext.request.contextPath}/employer/action/create/job', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"))
     request.onload = function () {
       const data = JSON.parse(this.response);
       if (data === "Created") {
         alert("Create Job Successfully!");
-        buttonJump('http://localhost:8080/page/employer/job');
+        buttonJump('${pageContext.request.contextPath}/page/employer/job');
       } else {
         alert("System Error!");
       }

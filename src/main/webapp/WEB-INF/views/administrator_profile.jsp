@@ -45,7 +45,7 @@
                 onclick="updateAdminProfile()">Save
         </button>
         <button class="administrator_profile-top-button" type="button" name="administrator_profileBack"
-                onclick="buttonJump('http://localhost:8080/page/admin/job')">Back
+                onclick="buttonJump('${pageContext.request.contextPath}/page/admin/job')">Back
         </button>
     </div>
 </div>
@@ -64,7 +64,7 @@
 
   function loadProfile () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/profile', true);
+    request.open('GET', '${pageContext.request.contextPath}/admin/action/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -103,7 +103,7 @@
     let email = document.getElementById("administratorEditEmail").value
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/admin/action/update/profile', true);
+    request.open('POST', '${pageContext.request.contextPath}/admin/action/update/profile', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"))
     request.onload = function () {

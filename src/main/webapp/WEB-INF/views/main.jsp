@@ -13,17 +13,17 @@
 <div class="main-div">
     <h1 class="main">Job Search System</h1>
     <div class="btn-top">
-        <button type="button" name="forFreelancer" onclick="buttonJump('http://localhost:8080/page/freelancer/login')">
+        <button type="button" name="forFreelancer" onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/login')">
             For Freelancer
         </button>
     </div>
     <div class="btn-mid">
-        <button type="button" name="forEmployer" onclick="buttonJump('http://localhost:8080/page/employer/login')">For
+        <button type="button" name="forEmployer" onclick="buttonJump('${pageContext.request.contextPath}/page/employer/login')">For
             Employer
         </button>
     </div>
     <div class="btn-bot">
-        <button type="button" name="forAdministrator" onclick="buttonJump('http://localhost:8080/page/admin/login')">For
+        <button type="button" name="forAdministrator" onclick="buttonJump('${pageContext.request.contextPath}/page/admin/login')">For
             Administrator
         </button>
     </div>

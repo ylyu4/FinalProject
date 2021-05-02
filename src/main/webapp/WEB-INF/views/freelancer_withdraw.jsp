@@ -21,7 +21,7 @@
         <button class="freelancer_withdraw-button" type="button" onclick="freelancerWithdrawAmount()">Withdraw</button>
     </form>
     <button class="freelancer_withdraw-button" type="button" name="freelancer_withdrawBack"
-            onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Back
+            onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/remuneration-history')">Back
     </button>
 </div>
 </body>
@@ -45,7 +45,7 @@
       return;
     }
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/freelancer/action/withdraw/money', true);
+    request.open('POST', '${pageContext.request.contextPath}/freelancer/action/withdraw/money', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

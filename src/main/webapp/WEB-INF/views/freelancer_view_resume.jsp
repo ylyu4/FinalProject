@@ -120,7 +120,7 @@
         </div>
         <button type="button" name="freelancer_view_resumeEdit" onclick="freelancerResumeEditEnable()">Edit</button>
         <button type="button" name="freelancer_view_resumeSave" onclick="updateFreelancerResume()">Save</button>
-        <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back
+        <button type="button" name="freelancer_view_resumeBack" onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/job')">Back
         </button>
     </form>
 </div>
@@ -140,7 +140,7 @@
 
   function loadResume () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/freelancer/action/get/resume', true);
+    request.open('GET', '${pageContext.request.contextPath}/freelancer/action/get/resume', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -274,7 +274,7 @@
     let selfReviews = document.getElementById("freelancerEditSelfReviews").value
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/freelancer/action/update/resume', true);
+    request.open('POST', '${pageContext.request.contextPath}/freelancer/action/update/resume', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"))
     request.onload = function () {

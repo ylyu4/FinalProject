@@ -21,7 +21,7 @@
         <button class="employer_deposit-button" type="button" onclick="depositMoney()">Recharge</button>
     </form>
     <button type="button" name="employer_depositBack"
-            onclick="buttonJump('http://localhost:8080/page/employer/payment-history')">Back
+            onclick="buttonJump('${pageContext.request.contextPath}/page/employer/payment-history')">Back
     </button>
 </div>
 </body>
@@ -46,7 +46,7 @@
     }
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/employer/action/recharge', true);
+    request.open('POST', '${pageContext.request.contextPath}/employer/action/recharge', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

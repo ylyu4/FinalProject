@@ -26,7 +26,7 @@
             onclick="checkApplicantInformation()">View
     </button>
     <button class="employer_applicants_list-button" type="button" name="employer_payment_historyBack"
-            onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
+            onclick="buttonJump('${pageContext.request.contextPath}/page/employer/job')">Back
     </button>
 </div>
 </body>
@@ -44,7 +44,7 @@
 
   function checkApplicantList () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/check/job/applicants?jobId=' + localStorage.getItem("employerViewJobId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/check/job/applicants?jobId=' + localStorage.getItem("employerViewJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -71,7 +71,7 @@
         localStorage.setItem("applicationId", applicationId.innerHTML)
         const applicantId = tr.getElementsByTagName("td")[2];
         localStorage.setItem("applicantId", applicantId.innerHTML);
-        buttonJump('http://localhost:8080/page/employer/check-applicant-qualification');
+        buttonJump('${pageContext.request.contextPath}/page/employer/check-applicant-qualification');
         return;
       }
     }

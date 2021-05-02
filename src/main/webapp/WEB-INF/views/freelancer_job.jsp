@@ -17,13 +17,13 @@
                 <div class="dropDown">
                     <button onclick="dropDownFunction()" class="dropDownElement">Profile</button>
                     <div id="myDropdown" class="dropDownContent">
-                        <p class="firstDropDownItem" onclick="buttonJump('http://localhost:8080/page/freelancer/profile')">Personal Information</p>
-                        <p onclick="buttonJump('http://localhost:8080/page/freelancer/view-resume')">Resume</p>
-                        <p onclick="buttonJump('http://localhost:8080/page/freelancer/remuneration-history')">Remuneration</p>
+                        <p class="firstDropDownItem" onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/profile')">Personal Information</p>
+                        <p onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/view-resume')">Resume</p>
+                        <p onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/remuneration-history')">Remuneration</p>
                     </div>
                 </div>
             </li>
-            <li><button onclick="buttonJump('http://localhost:8080/page/homepage')">Logout</button></li>
+            <li><button onclick="buttonJump('${pageContext.request.contextPath}/')">Logout</button></li>
         </ul>
     </nav>
 </div>
@@ -51,7 +51,7 @@
         </table>
     <div id="searchAvailableJobs">
         <h1 id="searchMoreJobTitle">Check More Available Jobs</h1>
-        <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('http://localhost:8080/page/freelancer/browse-jobs')">Search Jobs</button>
+        <button class="freelancer_profile-top-button-browseJobs" type="button" name="freelancer_profileBrowseJobs" onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/browse-jobs')">Search Jobs</button>
     </div>
 </div>
 </body>
@@ -63,7 +63,7 @@
 
   function loadAppliedJobs () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/freelancer/action/get/applied-jobs', true);
+    request.open('GET', '${pageContext.request.contextPath}/freelancer/action/get/applied-jobs', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -99,14 +99,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'INVITING' || status === 'OFFER') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/freelancer/action/accept/interview-offer', true);
+      request.open('POST', '${pageContext.request.contextPath}/freelancer/action/accept/interview-offer', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"))
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Accept Successfully!');
-          buttonJump('http://localhost:8080/page/freelancer/job');
+          buttonJump('${pageContext.request.contextPath}/page/freelancer/job');
         } else {
           alert('System Error');
         }
@@ -126,14 +126,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'INVITING' || status === 'OFFER') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/freelancer/action/decline/interview-offer', true);
+      request.open('POST', '${pageContext.request.contextPath}/freelancer/action/decline/interview-offer', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"))
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Decline Successfully!');
-          buttonJump('http://localhost:8080/page/freelancer/job');
+          buttonJump('${pageContext.request.contextPath}/page/freelancer/job');
         } else {
           alert('System Error');
         }
@@ -153,14 +153,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'ASSIGNED') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/freelancer/action/start/work', true);
+      request.open('POST', '${pageContext.request.contextPath}/freelancer/action/start/work', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"));
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Start work successfully!');
-          buttonJump('http://localhost:8080/page/freelancer/job');
+          buttonJump('${pageContext.request.contextPath}/page/freelancer/job');
         } else {
           alert('System Error!');
         }
@@ -180,7 +180,7 @@
     const td = tr.getElementsByTagName("td")[0];
     console.log(td.innerHTML);
     localStorage.setItem("freelancerViewAppliedJobId", td.innerHTML);
-    buttonJump('http://localhost:8080/page/freelancer/applied-job-details');
+    buttonJump('${pageContext.request.contextPath}/page/freelancer/applied-job-details');
   }
 
   function completeWork (id) {
@@ -189,14 +189,14 @@
     const status = tr.getElementsByTagName("td")[5].innerHTML;
     if (status === 'WORKING') {
       const request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/freelancer/action/complete/work', true);
+      request.open('POST', '${pageContext.request.contextPath}/freelancer/action/complete/work', true);
       request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
       request.setRequestHeader("Authorization", localStorage.getItem("token"))
       request.onload = function () {
         const data = JSON.parse(this.response);
         if (data === 'successfully') {
           alert('Update job working progress successfully!')
-          buttonJump('http://localhost:8080/page/freelancer/job');
+          buttonJump('${pageContext.request.contextPath}/page/freelancer/job');
         } else {
           alert('System Error!')
         }

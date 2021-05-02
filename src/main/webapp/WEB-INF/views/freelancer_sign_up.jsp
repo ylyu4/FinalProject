@@ -32,7 +32,7 @@
             </div>
         </form>
         <button type="button" name="freelancerSignUpBack"
-                onclick="buttonJump('http://localhost:8080/page/freelancer/login')">Back
+                onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/login')">Back
         </button>
     </div>
 </div>
@@ -52,7 +52,7 @@
     console.log(password);
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/freelancer/signup', true);
+    request.open('POST', '${pageContext.request.contextPath}/freelancer/signup', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.onload = function () {
       const data = JSON.parse(this.response);

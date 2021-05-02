@@ -65,7 +65,7 @@
                 Update
             </button>
             <button type="button" name="employer_back_to_previous_page"
-                    onclick="buttonJump('http://localhost:8080/page/employer/check-applicants-list')">Back
+                    onclick="buttonJump('${pageContext.request.contextPath}/page/employer/check-applicants-list')">Back
             </button>
         </div>
     </div>
@@ -90,7 +90,7 @@
 
   function checkApplicantInformation () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/get/applicant/information?applicantId=' + localStorage.getItem("applicantId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/get/applicant/information?applicantId=' + localStorage.getItem("applicantId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -126,7 +126,7 @@
 
   function checkApplicantResume () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/get/applicant/resume?applicantId=' + localStorage.getItem("applicantId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/get/applicant/resume?applicantId=' + localStorage.getItem("applicantId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -226,7 +226,7 @@
 
   function displayApplicationStatus () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/employer/action/get/applicant/application?applicationId=' + localStorage.getItem("applicationId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/employer/action/get/applicant/application?applicationId=' + localStorage.getItem("applicationId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -250,14 +250,14 @@
     }
 
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/employer/action/update/application', true);
+    request.open('POST', '${pageContext.request.contextPath}/employer/action/update/application', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
       const data = JSON.parse(this.response);
       if (data === 'successfully') {
         alert("Update Application Successfully!")
-        buttonJump('http://localhost:8080/page/employer/check-applicants-list')
+        buttonJump('${pageContext.request.contextPath}/page/employer/check-applicants-list')
       } else if (data === 'recharge') {
         alert("Your account balance is not enough! Please recharge at first!")
       } else {

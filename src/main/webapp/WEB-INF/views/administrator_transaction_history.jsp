@@ -28,7 +28,7 @@
             </thead>
         </table>
     </div>
-    <button type="button" name="admin_payment_historyBack" onclick="buttonJump('http://localhost:8080/page/admin/job')">Back</button>
+    <button type="button" name="admin_payment_historyBack" onclick="buttonJump('${pageContext.request.contextPath}/page/admin/job')">Back</button>
 </div>
 </body>
 
@@ -41,7 +41,7 @@
 
   function loadPaymentHistory () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/get/all/payment/history', true);
+    request.open('GET', '${pageContext.request.contextPath}/admin/action/get/all/payment/history', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -66,7 +66,7 @@
 
   function checkCurrentBalance () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/admin/action/get/system-balance', true);
+    request.open('GET', '${pageContext.request.contextPath}/admin/action/get/system-balance', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

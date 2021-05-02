@@ -19,7 +19,7 @@
     <p id="appliedJobDetailDescription"></p>
 </div>
 <button type="button" name="freelancer_browse_applied_jobs_detailsBack"
-        onclick="buttonJump('http://localhost:8080/page/freelancer/job')">Back
+        onclick="buttonJump('${pageContext.request.contextPath}/page/freelancer/job')">Back
 </button>
 </body>
 <%--<footer>--%>
@@ -37,7 +37,7 @@
 
   function loadPostedJobDetails () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId=' + localStorage.getItem("freelancerViewAppliedJobId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/user/action/get/job/detail?jobId=' + localStorage.getItem("freelancerViewAppliedJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {

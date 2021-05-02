@@ -23,7 +23,7 @@
 <br>
 <button type="button" name="administrator_view_jobApprove" onclick="processNewJob('Approve')">Approve</button>
 <button type="button" name="administrator_view_jobReject" onclick="processNewJob('Reject')">Reject</button>
-<button type="button" name="administrator_view_back" onclick="buttonJump('http://localhost:8080/page/admin/job')">Back</button>
+<button type="button" name="administrator_view_back" onclick="buttonJump('${pageContext.request.contextPath}/page/admin/job')">Back</button>
 </body>
 <%--<footer>--%>
 <%--    <div class="footerSetting">--%>
@@ -38,7 +38,7 @@
 
   function loadReviewedJobDetail () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId=' + localStorage.getItem("administratorViewJobId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/user/action/get/job/detail?jobId=' + localStorage.getItem("administratorViewJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
@@ -69,13 +69,13 @@
 
   function processNewJob (action) {
     const request = new XMLHttpRequest();
-    request.open('POST', 'http://localhost:8080/admin/action/process/job', true);
+    request.open('POST', '${pageContext.request.contextPath}/admin/action/process/job', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
       const data = JSON.parse(this.response);
       if (data === "Successfully") {
-        buttonJump("http://localhost:8080/page/admin/job");
+        buttonJump("${pageContext.request.contextPath}/page/admin/job");
       } else {
         alert("System Error!")
       }

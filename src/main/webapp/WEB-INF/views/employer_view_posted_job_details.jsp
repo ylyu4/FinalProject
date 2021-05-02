@@ -21,7 +21,7 @@
 </div>
 <br>
 <button type="button" name="employer_view_posted_job_detailsBack"
-        onclick="buttonJump('http://localhost:8080/page/employer/job')">Back
+        onclick="buttonJump('${pageContext.request.contextPath}/page/employer/job')">Back
 </button>
 </body>
 <%--<footer>--%>
@@ -38,7 +38,7 @@
 
   function loadPostedJobDetails () {
     const request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8080/user/action/get/job/detail?jobId=' + localStorage.getItem("employerViewDetailsJobId"), true);
+    request.open('GET', '${pageContext.request.contextPath}/user/action/get/job/detail?jobId=' + localStorage.getItem("employerViewDetailsJobId"), true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     request.setRequestHeader("Authorization", localStorage.getItem("token"));
     request.onload = function () {
