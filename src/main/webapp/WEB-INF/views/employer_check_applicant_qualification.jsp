@@ -85,6 +85,9 @@
     displayApplicationStatus();
   }
 
+
+  let currentStatus = 'PENDING';
+
   function checkApplicantInformation () {
     const request = new XMLHttpRequest();
     request.open('GET', 'http://localhost:8080/employer/action/get/applicant/information?applicantId=' + localStorage.getItem("applicantId"), true);
@@ -231,6 +234,7 @@
       let option = document.getElementById('applicationStatusSelect');
       if (data.applicationStatus != null) {
         option.value = data.applicationStatus;
+        currentStatus = data.applicationStatus;
       } else {
         option.value = 'PENDING';
       }
@@ -239,6 +243,12 @@
   }
 
   function updateApplication () {
+    const updateStatus = document.getElementById('applicationStatusSelect').value
+    if (currentStatus === 'REJECTED') {
+      alert("You cannot update the rejected status")
+      return;
+    }
+
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:8080/employer/action/update/application', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -256,7 +266,7 @@
     }
     request.send(JSON.stringify({
       "applicationId": localStorage.getItem("applicationId"),
-      "status": document.getElementById('applicationStatusSelect').value
+      "status": updateStatus
     }));
   }
 

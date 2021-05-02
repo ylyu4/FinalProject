@@ -7,6 +7,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class RedisService {
@@ -20,6 +21,7 @@ public class RedisService {
         redisTemplate.setKeySerializer(redisSerializer);
         ValueOperations<String, Object> vo = redisTemplate.opsForValue();
         vo.set(key, value);
+        redisTemplate.expire(key, 30, TimeUnit.MINUTES);
     }
 
     public Object get(String key) {

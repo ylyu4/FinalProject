@@ -69,7 +69,7 @@
                 <label class="employer_write_job_description-form-label" for="jobDueDate">Due Date</label>
             </div>
             <div>
-                <input class="employer_write_job_description-form" id="jobDueDate" type="text" name="jobDueDate"
+                <input class="employer_write_job_description-form" id="jobDueDate" type="date" name="jobDueDate"
                        value="" required>
             </div>
         </div>
@@ -106,6 +106,21 @@
     const dueDate = document.getElementById("jobDueDate").value;
     const description = document.getElementById("jobDescription").value;
 
+    if (!isNumeric(salary)) {
+      alert('The salary should be a number!');
+      return;
+    }
+    const sign = Math.sign(parseInt(salary));
+    if (sign !== 1) {
+      alert('The salary should be positive!');
+      return;
+    }
+
+    if (!dueDate) {
+      alert('Please input the due date!');
+      return;
+    }
+
     const request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:8080/employer/action/create/job', true);
     request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
@@ -134,6 +149,10 @@
 
   function buttonJump (destination) {
     window.location.href = destination;
+  }
+
+  function isNumeric (num) {
+    return !isNaN(num)
   }
 </script>
 </html>
