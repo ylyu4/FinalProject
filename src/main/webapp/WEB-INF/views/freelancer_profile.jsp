@@ -13,7 +13,7 @@
     <p class="systemTitle">Job Search System</p>
 </div>
 <div class="freelancer_personal_information">
-    <h1 id="freelancer_profile_title">Personal Information</h1>
+    <h1 id="freelancer_profile_title">Freelancer Personal Information</h1>
     <div>
         <label class="freelancer_profile-form-label" for="name">Name</label>
     </div>

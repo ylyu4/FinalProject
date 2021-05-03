@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active: local
+  main:
+    allow-bean-definition-overriding: true
+
+  #  redis:
+  #    host: us1-fancy-mastiff-33262.upstash.io
+  #    port: 33262
+  #    database: 0
+  #    password=: 9d556b6040844f9eacbd23ac7d325b2e
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    password=:
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  #  datasource:
+  #    type: com.alibaba.druid.pool.DruidDataSource
+  #    url: jdbc:mysql://finalproject.cnz8q60exo6v.us-east-1.rds.amazonaws.com:3306/job_search_system?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  #    username: root
+  #    password: root1234
+  #    driver-class-name: com.mysql.jdbc.Driver
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/job_search_system?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+server:
+  port: 8080
+
+
+
+
