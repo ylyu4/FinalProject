@@ -34,11 +34,6 @@
             Up!</a></p>
     </div>
 </div>
-<%--<footer>--%>
-<%--    <div class="footerSetting">--%>
-<%--        <p>&copy;2021 Job Search System. All Rights Reserved.</p>--%>
-<%--    </div>--%>
-<%--</footer>--%>
 </body>
 
 <script type="text/javascript">

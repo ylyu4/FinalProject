@@ -25,11 +25,7 @@
 <button type="button" name="administrator_view_jobReject" onclick="processNewJob('Reject')">Reject</button>
 <button type="button" name="administrator_view_back" onclick="buttonJump('${pageContext.request.contextPath}/page/admin/job')">Back</button>
 </body>
-<%--<footer>--%>
-<%--    <div class="footerSetting">--%>
-<%--        <p>&copy;2021 Job Search System. All Rights Reserved.</p>--%>
-<%--    </div>--%>
-<%--</footer>--%>
+
 
 <script type="text/javascript">
   window.onload = function () {

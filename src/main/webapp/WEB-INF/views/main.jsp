@@ -29,9 +29,4 @@
     </div>
 </div>
 </body>
-<%--<footer>--%>
-<%--    <div class="footerSetting">--%>
-<%--        <p>&copy;2021 Job Search System. All Rights Reserved.</p>--%>
-<%--    </div>--%>
-<%--</footer>--%>
 </html>
