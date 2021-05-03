@@ -298,7 +298,7 @@ div.administrator_view_job-body-information {
     background-color: #14bf98;
     color: white;
     font: 700 1rem "Montserrat", sans-serif;
-    width: 10%;
+    width: 4rem;
 }
 
 .admin_payment_history-body, .employer_payment_history-body, .freelancer_remuneration_history-body {
@@ -400,7 +400,7 @@ body.employer_view_posted_job_details-body button {
     background-color: #14bf98;
     color: white;
     font: 700 1rem "Montserrat", sans-serif;
-    width: 4rem;
+    width: 5rem;
 }
 
 .employer_payment_history-body button, .employer_deposit-body button {
